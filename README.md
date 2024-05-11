@@ -1,0 +1,1 @@
+# QuickClip-Universal

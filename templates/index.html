@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Downloader</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container py-5">
+        <h1 class="mb-4">Download and Convert Videos</h1>
+        <form id="downloadForm" class="mt-3">
+            <div class="mb-3">
+                <label for="url" class="form-label">Video URL:</label>
+                <input type="text" class="form-control" id="url" name="url" required>
+            </div>
+            <div class="mb-3">
+                <label for="format" class="form-label">Format:</label>
+                <select class="form-select" id="format" name="format">
+                    <option value="mp4">MP4</option>
+                    <option value="wav">WAV (audio only)</option>
+                </select>
+            </div>
+            <button type="button" class="btn btn-primary" onclick="startDownload()">Download</button>
+            <div id="progress" style="margin-top: 20px;"></div>
+        </form>
+    </div>
+    <script>
+        function startDownload() {
+        const url = document.getElementById('url').value;
+        const format = document.getElementById('format').value;
+        const progressElement = document.getElementById('progress');
+        progressElement.textContent = 'Downloading...';
+
+        fetch('/download', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ url, format })
+        }).then(response => {
+            if (!response.ok) throw new Error('Failed to download.');
+            return response.blob();
+        }).then(blob => {
+            progressElement.textContent = 'Download complete!';
+            const blobUrl = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = blobUrl;
+            a.download = `downloaded_file.${format}`;
+            document.body.appendChild(a);
+            a.click();
+            a.remove();
+            window.URL.revokeObjectURL(blobUrl);
+        }).catch(error => {
+            progressElement.textContent = error.message;
+        });
+    }
+
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
