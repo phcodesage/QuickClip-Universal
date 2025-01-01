@@ -8,3 +8,7 @@ MarkupSafe==2.1.5
 Werkzeug==3.0.3
 yt-dlp==2024.3.10
 pytube==15.0.0  # Adding as a backup option
+flask-socketio==5.3.6
+python-engineio==4.8.2
+python-socketio==5.11.1
+flask-socketio==5.3.6

@@ -5,57 +5,180 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Video Downloader</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .progress {
+            height: 25px;
+        }
+        .status-container {
+            min-height: 100px;
+            margin-top: 20px;
+        }
+        .status-message {
+            margin-bottom: 10px;
+        }
+        .spinner-border {
+            margin-right: 10px;
+        }
+        .download-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .error-message {
+            color: #dc3545;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #f8d7da;
+            border: 1px solid #f5c6cb;
+            display: none;
+        }
+        .success-message {
+            color: #28a745;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #d4edda;
+            border: 1px solid #c3e6cb;
+            display: none;
+        }
+    </style>
 </head>
-<body>
+<body class="bg-light">
     <div class="container py-5">
-        <h1 class="mb-4">Download and Convert Videos</h1>
-        <form id="downloadForm" class="mt-3">
-            <div class="mb-3">
-                <label for="url" class="form-label">Video URL:</label>
-                <input type="text" class="form-control" id="url" name="url" required>
-            </div>
-            <div class="mb-3">
-                <label for="format" class="form-label">Format:</label>
-                <select class="form-select" id="format" name="format">
-                    <option value="mp4">MP4</option>
-                    <option value="wav">WAV (audio only)</option>
-                </select>
-            </div>
-            <button type="button" class="btn btn-primary" onclick="startDownload()">Download</button>
-            <div id="progress" style="margin-top: 20px;"></div>
-        </form>
+        <div class="download-container">
+            <h1 class="text-center mb-4">Video Downloader</h1>
+            <form id="downloadForm" class="mt-3">
+                <div class="mb-3">
+                    <label for="url" class="form-label">Video URL:</label>
+                    <input type="text" class="form-control" id="url" name="url" required 
+                           placeholder="Enter YouTube URL">
+                </div>
+                <div class="mb-3">
+                    <label for="format" class="form-label">Format:</label>
+                    <select class="form-select" id="format" name="format">
+                        <option value="mp4">MP4 (Video)</option>
+                        <option value="wav">WAV (Audio only)</option>
+                    </select>
+                </div>
+                <button type="button" class="btn btn-primary w-100" id="downloadBtn" onclick="startDownload()">
+                    Download
+                </button>
+                
+                <div class="status-container">
+                    <div class="error-message" id="errorMessage"></div>
+                    <div class="success-message" id="successMessage"></div>
+                    <div class="status-message" id="statusMessage"></div>
+                    <div class="progress" style="display: none;">
+                        <div class="progress-bar progress-bar-striped progress-bar-animated" 
+                             role="progressbar" style="width: 0%">0%</div>
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
+
     <script>
-        function startDownload() {
-        const url = document.getElementById('url').value;
-        const format = document.getElementById('format').value;
-        const progressElement = document.getElementById('progress');
-        progressElement.textContent = 'Downloading...';
-
-        fetch('/download', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ url, format })
-        }).then(response => {
-            if (!response.ok) throw new Error('Failed to download.');
-            return response.blob();
-        }).then(blob => {
-            progressElement.textContent = 'Download complete!';
-            const blobUrl = window.URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = blobUrl;
-            a.download = `downloaded_file.${format}`;
-            document.body.appendChild(a);
-            a.click();
-            a.remove();
-            window.URL.revokeObjectURL(blobUrl);
-        }).catch(error => {
-            progressElement.textContent = error.message;
+        const socket = io();
+        
+        socket.on('connect', () => {
+            console.log('Connected to server');
         });
-    }
 
+        socket.on('download_progress', (data) => {
+            updateProgress(data.progress);
+            updateStatus(data.status);
+        });
+
+        socket.on('download_status', (data) => {
+            updateStatus(data.status);
+        });
+
+        function updateStatus(message, type = 'info') {
+            const statusMessage = document.getElementById('statusMessage');
+            const errorMessage = document.getElementById('errorMessage');
+            const successMessage = document.getElementById('successMessage');
+            const progress = document.querySelector('.progress');
+            
+            // Reset all messages
+            errorMessage.style.display = 'none';
+            successMessage.style.display = 'none';
+            statusMessage.innerHTML = '';
+            
+            switch(type) {
+                case 'error':
+                    errorMessage.textContent = message;
+                    errorMessage.style.display = 'block';
+                    progress.style.display = 'none';
+                    break;
+                case 'success':
+                    successMessage.textContent = message;
+                    successMessage.style.display = 'block';
+                    break;
+                default:
+                    statusMessage.innerHTML = `
+                        <div class="d-flex align-items-center">
+                            <div class="spinner-border text-primary" role="status">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
+                            <span>${message}</span>
+                        </div>
+                    `;
+                    progress.style.display = 'block';
+            }
+        }
+
+        function updateProgress(percent) {
+            const progressBar = document.querySelector('.progress-bar');
+            progressBar.style.width = `${percent}%`;
+            progressBar.textContent = `${Math.round(percent)}%`;
+        }
+
+        function startDownload() {
+            const url = document.getElementById('url').value;
+            const format = document.getElementById('format').value;
+            const downloadBtn = document.getElementById('downloadBtn');
+            
+            if (!url) {
+                updateStatus('Please enter a valid URL', 'error');
+                return;
+            }
+
+            downloadBtn.disabled = true;
+            updateStatus('Initializing download...');
+            updateProgress(0);
+
+            fetch('/download', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ url, format })
+            }).then(response => {
+                if (!response.ok) {
+                    throw new Error('Download failed. Please try again.');
+                }
+                return response.blob();
+            }).then(blob => {
+                updateStatus('Download complete!', 'success');
+                
+                const blobUrl = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = blobUrl;
+                a.download = `downloaded_file.${format}`;
+                document.body.appendChild(a);
+                a.click();
+                a.remove();
+                window.URL.revokeObjectURL(blobUrl);
+            }).catch(error => {
+                updateStatus(error.message, 'error');
+            }).finally(() => {
+                downloadBtn.disabled = false;
+            });
+        }
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
