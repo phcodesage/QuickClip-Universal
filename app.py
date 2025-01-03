@@ -12,6 +12,7 @@ import shutil
 import logging
 from flask_socketio import SocketIO, emit
 import re
+from pytube import YouTube
 
 app = Flask(__name__, static_folder='static', template_folder='templates')
 CORS(app)
@@ -36,12 +37,66 @@ logger = logging.getLogger(__name__)
 def index():
     return render_template('index.html')
 
+@app.route('/video-info', methods=['POST'])
+def get_video_info():
+    try:
+        data = request.get_json()
+        url = data['url']
+        
+        # Use yt-dlp to get video info
+        cmd = [
+            'yt-dlp',
+            '-j',  # Output video info as JSON
+            '--no-playlist',
+            url
+        ]
+        
+        process = subprocess.Popen(
+            cmd,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            universal_newlines=True
+        )
+        
+        stdout, stderr = process.communicate()
+        
+        if process.returncode != 0:
+            raise Exception(f"Failed to fetch video info: {stderr}")
+            
+        video_info = json.loads(stdout)
+        
+        return jsonify({
+            'title': video_info.get('title', 'Unknown Title'),
+            'thumbnail': video_info.get('thumbnail', ''),
+            'duration': video_info.get('duration', 0),
+            'author': video_info.get('uploader', 'Unknown Author')
+        })
+    except Exception as e:
+        logger.error(f"Error fetching video info: {str(e)}")
+        return jsonify({'error': str(e)}), 400
+
 @app.route('/download', methods=['POST'])
 def download_video():
     try:
         data = request.get_json()
         url = data['url']
         format = data['format']
+        
+        # Get video info for filename
+        cmd = ['yt-dlp', '-j', '--no-playlist', url]
+        process = subprocess.Popen(
+            cmd,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            universal_newlines=True
+        )
+        stdout, stderr = process.communicate()
+        
+        if process.returncode != 0:
+            raise Exception(f"Failed to get video info: {stderr}")
+            
+        video_info = json.loads(stdout)
+        safe_title = "".join([c for c in video_info['title'] if c.isalpha() or c.isdigit() or c==' ']).rstrip()
         
         logger.info(f"Starting download request for URL: {url} in format: {format}")
 
@@ -50,8 +105,7 @@ def download_video():
             return jsonify({'error': 'Unsupported format'}), 400
 
         timestamp = datetime.now().strftime("%Y%m%d%H%M%S")
-        video_id = extract_video_id(url)
-        output_filename = f"{video_id}_{timestamp}.{format}"
+        output_filename = f"{safe_title}_{timestamp}.{format}"
         output_path = os.path.join(DOWNLOAD_FOLDER, output_filename)
         
         logger.info(f"Generated output path: {output_path}")
@@ -71,7 +125,7 @@ def download_video():
                 ]
             else:  # wav
                 logger.info("Configuring audio download...")
-                temp_output = os.path.join(DOWNLOAD_FOLDER, f"{video_id}_{timestamp}_temp.%(ext)s")
+                temp_output = os.path.join(DOWNLOAD_FOLDER, f"{safe_title}_{timestamp}_temp.%(ext)s")
                 cmd = [
                     'yt-dlp',
                     '-f', 'bestaudio',
@@ -129,7 +183,7 @@ def download_video():
 
             # For audio downloads, we need to find the converted file
             if format == 'wav':
-                temp_files = [f for f in os.listdir(DOWNLOAD_FOLDER) if f.startswith(f"{video_id}_{timestamp}_temp")]
+                temp_files = [f for f in os.listdir(DOWNLOAD_FOLDER) if f.startswith(f"{safe_title}_{timestamp}_temp")]
                 if temp_files:
                     temp_file = os.path.join(DOWNLOAD_FOLDER, temp_files[0])
                     shutil.move(temp_file, output_path)

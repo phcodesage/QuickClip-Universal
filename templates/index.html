@@ -176,7 +176,7 @@
 
         .download-options.show {
             opacity: 1;
-            max-height: 200px;
+            max-height: 500px;
         }
 
         .url-input-container {
@@ -250,6 +250,54 @@
             background: linear-gradient(45deg, var(--accent-color), #00c3ff);
             transition: width 0.3s ease;
         }
+
+        .video-preview-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .preview-card {
+            background-color: var(--secondary-dark);
+            border-radius: 15px;
+            padding: 15px;
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .video-thumbnail {
+            width: 160px;
+            height: 90px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .video-info {
+            flex: 1;
+        }
+
+        .video-title {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            color: var(--text-primary);
+        }
+
+        .video-author {
+            color: var(--accent-color);
+            font-size: 0.9rem;
+            margin-bottom: 4px;
+        }
+
+        .video-duration {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .download-complete {
+            color: var(--accent-color);
+            font-weight: 600;
+        }
     </style>
 </head>
 <body class="bg-light">
@@ -266,6 +314,17 @@
                 <button class="clear-input" id="clearUrl">
                     <i class="fas fa-times"></i>
                 </button>
+            </div>
+
+            <div class="video-preview-container mt-4" style="display: none;">
+                <div class="preview-card">
+                    <img src="" alt="Video thumbnail" class="video-thumbnail">
+                    <div class="video-info">
+                        <h3 class="video-title"></h3>
+                        <p class="video-author"></p>
+                        <p class="video-duration"></p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -415,6 +474,7 @@
             const progressContainer = document.querySelector('.download-progress-container');
             const progressBar = document.querySelector('.progress-bar');
             const progressPercentage = document.querySelector('.progress-percentage');
+            const progressStatus = document.querySelector('.progress-status');
             
             progressContainer.style.display = 'block';
             progressBar.style.width = `${percent}%`;
@@ -423,8 +483,11 @@
             
             if (percent >= 100) {
                 progressBar.classList.remove('progress-bar-animated');
+                progressStatus.textContent = 'Download Complete!';
+                progressStatus.classList.add('download-complete');
             } else {
                 progressBar.classList.add('progress-bar-animated');
+                progressStatus.classList.remove('download-complete');
             }
         }
 
@@ -441,19 +504,86 @@
             progressDetail.textContent = message;
         }
 
+        let videoTitle = '';
+
+        function formatDuration(seconds) {
+            const hours = Math.floor(seconds / 3600);
+            const minutes = Math.floor((seconds % 3600) / 60);
+            const secs = seconds % 60;
+            
+            if (hours > 0) {
+                return `${hours}:${minutes.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+            }
+            return `${minutes}:${secs.toString().padStart(2, '0')}`;
+        }
+
+        async function getVideoInfo(url) {
+            try {
+                const progressContainer = document.querySelector('.download-progress-container');
+                const downloadBtn = document.getElementById('downloadBtn');
+                
+                const response = await fetch('/video-info', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ url })
+                });
+                
+                if (!response.ok) {
+                    throw new Error('Failed to fetch video info');
+                }
+                
+                const data = await response.json();
+                
+                if (data.error) {
+                    throw new Error(data.error);
+                }
+                
+                videoTitle = data.title;
+                
+                // Update preview
+                const previewContainer = document.querySelector('.video-preview-container');
+                const thumbnail = document.querySelector('.video-thumbnail');
+                const title = document.querySelector('.video-title');
+                const author = document.querySelector('.video-author');
+                const duration = document.querySelector('.video-duration');
+                
+                thumbnail.src = data.thumbnail;
+                thumbnail.onerror = () => {
+                    thumbnail.src = 'https://via.placeholder.com/160x90?text=No+Thumbnail';
+                };
+                
+                title.textContent = data.title || 'Unknown Title';
+                author.textContent = data.author || 'Unknown Author';
+                duration.textContent = formatDuration(data.duration || 0);
+                
+                previewContainer.style.display = 'block';
+                downloadBtn.disabled = false;
+                
+            } catch (error) {
+                console.error('Error fetching video info:', error);
+                updateStatus(`Error: ${error.message}`, 'error');
+                document.querySelector('.video-preview-container').style.display = 'none';
+                downloadBtn.disabled = true;
+            }
+        }
+
         function startDownload() {
             const progressContainer = document.querySelector('.download-progress-container');
+            const downloadBtn = document.getElementById('downloadBtn');
+            
             progressContainer.style.display = 'block';
+            downloadBtn.disabled = true;
+            
             const url = document.getElementById('url').value;
             const format = document.getElementById('format').value;
-            const downloadBtn = document.getElementById('downloadBtn');
             
             if (!url) {
                 updateStatus('Please enter a valid URL', 'error');
                 return;
             }
 
-            downloadBtn.disabled = true;
             updateStatus('Initializing download...');
             updateProgress(0);
 
@@ -465,7 +595,9 @@
                 body: JSON.stringify({ url, format })
             }).then(response => {
                 if (!response.ok) {
-                    throw new Error('Download failed. Please try again.');
+                    return response.json().then(data => {
+                        throw new Error(data.error || 'Download failed');
+                    });
                 }
                 return response.blob();
             }).then(blob => {
@@ -474,7 +606,7 @@
                 const blobUrl = window.URL.createObjectURL(blob);
                 const a = document.createElement('a');
                 a.href = blobUrl;
-                a.download = `downloaded_file.${format}`;
+                a.download = `${videoTitle || 'video'}.${format}`;
                 document.body.appendChild(a);
                 a.click();
                 a.remove();
@@ -497,6 +629,7 @@
             clearBtn.style.display = urlValue ? 'block' : 'none';
 
             if (urlValue && isValidYouTubeUrl(urlValue)) {
+                getVideoInfo(urlValue);
                 downloadOptions.classList.add('show');
                 setTimeout(() => {
                     formatContainer.classList.add('show');
@@ -506,6 +639,7 @@
                 downloadOptions.classList.remove('show');
                 formatContainer.classList.remove('show');
                 downloadBtn.disabled = true;
+                document.querySelector('.video-preview-container').style.display = 'none';
             }
         });
 

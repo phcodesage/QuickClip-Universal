@@ -4141,3 +4141,195 @@
 2025-01-04 05:49:03,308 - __main__ - INFO - Deleting original file /home/rech/proj/flask-proj/QuickClip-Universal/downloads/sMqMT5EEoVU_20250104054748.f616.mp4 (pass -k to keep)
 2025-01-04 05:49:03,319 - __main__ - INFO - Deleting original file /home/rech/proj/flask-proj/QuickClip-Universal/downloads/sMqMT5EEoVU_20250104054748.f140.m4a (pass -k to keep)
 2025-01-04 05:49:03,366 - werkzeug - INFO - 127.0.0.1 - - [04/Jan/2025 05:49:03] "POST /download HTTP/1.1" 200 -
+2025-01-04 05:58:15,148 - werkzeug - INFO -  * Detected change in '/home/rech/proj/flask-proj/QuickClip-Universal/app.py', reloading
+2025-01-04 05:58:15,178 - werkzeug - INFO -  * Restarting with stat
+2025-01-04 05:58:15,343 - werkzeug - WARNING -  * Debugger is active!
+2025-01-04 05:58:15,343 - werkzeug - INFO -  * Debugger PIN: 300-833-890
+2025-01-04 05:58:15,618 - werkzeug - INFO - 127.0.0.1 - - [04/Jan/2025 05:58:15] "GET / HTTP/1.1" 200 -
+2025-01-04 05:58:15,812 - werkzeug - INFO - 127.0.0.1 - - [04/Jan/2025 05:58:15] "GET /socket.io/?EIO=4&transport=polling&t=PGkBHm2 HTTP/1.1" 200 -
+2025-01-04 05:58:15,826 - werkzeug - INFO - 127.0.0.1 - - [04/Jan/2025 05:58:15] "POST /socket.io/?EIO=4&transport=polling&t=PGkBHmC&sid=vCb9mdAzoVUQ6qpjAAAA HTTP/1.1" 200 -
+2025-01-04 05:58:15,827 - werkzeug - INFO - 127.0.0.1 - - [04/Jan/2025 05:58:15] "GET /socket.io/?EIO=4&transport=polling&t=PGkBHmD&sid=vCb9mdAzoVUQ6qpjAAAA HTTP/1.1" 200 -
+2025-01-04 05:58:15,834 - werkzeug - INFO - 127.0.0.1 - - [04/Jan/2025 05:58:15] "GET /socket.io/?EIO=4&transport=polling&t=PGkBHmM&sid=vCb9mdAzoVUQ6qpjAAAA HTTP/1.1" 200 -
+2025-01-04 05:58:15,964 - werkzeug - INFO - 127.0.0.1 - - [04/Jan/2025 05:58:15] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-01-04 05:58:29,909 - pytube.helpers - DEBUG - matched regex search: (?:v=|\/)([0-9A-Za-z_-]{11}).*
+2025-01-04 05:58:31,085 - werkzeug - INFO - 127.0.0.1 - - [04/Jan/2025 05:58:31] "[31m[1mPOST /video-info HTTP/1.1[0m" 400 -
+2025-01-04 05:58:40,465 - pytube.helpers - DEBUG - matched regex search: (?:v=|\/)([0-9A-Za-z_-]{11}).*
+2025-01-04 05:58:41,526 - werkzeug - INFO - 127.0.0.1 - - [04/Jan/2025 05:58:41] "[35m[1mPOST /download HTTP/1.1[0m" 500 -
+2025-01-04 05:59:59,513 - werkzeug - INFO -  * Detected change in '/home/rech/proj/flask-proj/QuickClip-Universal/app.py', reloading
+2025-01-04 05:59:59,541 - werkzeug - INFO -  * Restarting with stat
+2025-01-04 05:59:59,699 - werkzeug - WARNING -  * Debugger is active!
+2025-01-04 05:59:59,699 - werkzeug - INFO -  * Debugger PIN: 300-833-890
+2025-01-04 06:00:00,810 - werkzeug - INFO - 127.0.0.1 - - [04/Jan/2025 06:00:00] "GET /socket.io/?EIO=4&transport=polling&t=PGkBhOc HTTP/1.1" 200 -
+2025-01-04 06:00:00,819 - werkzeug - INFO - 127.0.0.1 - - [04/Jan/2025 06:00:00] "POST /socket.io/?EIO=4&transport=polling&t=PGkBhOi&sid=4R1Ts8xGBb0T5z2bAAAA HTTP/1.1" 200 -
+2025-01-04 06:00:00,820 - werkzeug - INFO - 127.0.0.1 - - [04/Jan/2025 06:00:00] "GET /socket.io/?EIO=4&transport=polling&t=PGkBhOj&sid=4R1Ts8xGBb0T5z2bAAAA HTTP/1.1" 200 -
+2025-01-04 06:00:01,632 - werkzeug - INFO - 127.0.0.1 - - [04/Jan/2025 06:00:01] "GET /socket.io/?EIO=4&transport=websocket&sid=4R1Ts8xGBb0T5z2bAAAA HTTP/1.1" 200 -
+2025-01-04 06:00:01,641 - werkzeug - INFO - 127.0.0.1 - - [04/Jan/2025 06:00:01] "GET / HTTP/1.1" 200 -
+2025-01-04 06:00:01,838 - werkzeug - INFO - 127.0.0.1 - - [04/Jan/2025 06:00:01] "GET /socket.io/?EIO=4&transport=polling&t=PGkBhei HTTP/1.1" 200 -
+2025-01-04 06:00:01,849 - werkzeug - INFO - 127.0.0.1 - - [04/Jan/2025 06:00:01] "POST /socket.io/?EIO=4&transport=polling&t=PGkBhen&sid=aGQERhYVhZHjvNTIAAAC HTTP/1.1" 200 -
+2025-01-04 06:00:01,849 - werkzeug - INFO - 127.0.0.1 - - [04/Jan/2025 06:00:01] "GET /socket.io/?EIO=4&transport=polling&t=PGkBheo&sid=aGQERhYVhZHjvNTIAAAC HTTP/1.1" 200 -
+2025-01-04 06:00:01,856 - werkzeug - INFO - 127.0.0.1 - - [04/Jan/2025 06:00:01] "GET /socket.io/?EIO=4&transport=polling&t=PGkBhez&sid=aGQERhYVhZHjvNTIAAAC HTTP/1.1" 200 -
+2025-01-04 06:00:01,960 - werkzeug - INFO - 127.0.0.1 - - [04/Jan/2025 06:00:01] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-01-04 06:00:10,627 - werkzeug - INFO - 127.0.0.1 - - [04/Jan/2025 06:00:10] "POST /video-info HTTP/1.1" 200 -
+2025-01-04 06:00:17,798 - __main__ - INFO - Starting download request for URL: https://www.youtube.com/watch?v=HuO5rRDF3_8 in format: mp4
+2025-01-04 06:00:17,798 - __main__ - INFO - Generated output path: /home/rech/proj/flask-proj/QuickClip-Universal/downloads/Tawag ng Tanghalan John Mark Saga  Didnt We Almost Have It All Day 4 Semifinals_20250104060017.mp4
+2025-01-04 06:00:17,798 - __main__ - INFO - Configuring video download...
+2025-01-04 06:00:17,798 - __main__ - DEBUG - Executing command: yt-dlp -f bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best --merge-output-format mp4 -o /home/rech/proj/flask-proj/QuickClip-Universal/downloads/Tawag ng Tanghalan John Mark Saga  Didnt We Almost Have It All Day 4 Semifinals_20250104060017.mp4 --no-playlist --progress --newline https://www.youtube.com/watch?v=HuO5rRDF3_8
+2025-01-04 06:00:18,014 - __main__ - INFO - [youtube] Extracting URL: https://www.youtube.com/watch?v=HuO5rRDF3_8
+2025-01-04 06:00:18,014 - __main__ - INFO - [youtube] HuO5rRDF3_8: Downloading webpage
+2025-01-04 06:00:18,660 - __main__ - INFO - [youtube] HuO5rRDF3_8: Downloading ios player API JSON
+2025-01-04 06:00:18,785 - __main__ - INFO - [youtube] HuO5rRDF3_8: Downloading android player API JSON
+2025-01-04 06:00:18,862 - __main__ - INFO - [youtube] HuO5rRDF3_8: Downloading m3u8 information
+2025-01-04 06:00:19,196 - __main__ - INFO - [info] HuO5rRDF3_8: Downloading 1 format(s): 137+140
+2025-01-04 06:00:19,321 - __main__ - INFO - [download] Destination: /home/rech/proj/flask-proj/QuickClip-Universal/downloads/Tawag ng Tanghalan John Mark Saga  Didnt We Almost Have It All Day 4 Semifinals_20250104060017.f137.mp4
+2025-01-04 06:00:19,321 - __main__ - INFO - [download]   0.0% of   88.20MiB at  393.13KiB/s ETA 03:50
+2025-01-04 06:00:19,321 - __main__ - INFO - [download]   0.0% of   88.20MiB at    1.03MiB/s ETA 01:25
+2025-01-04 06:00:19,321 - __main__ - INFO - [download]   0.0% of   88.20MiB at    2.27MiB/s ETA 00:38
+2025-01-04 06:00:19,322 - __main__ - INFO - [download]   0.0% of   88.20MiB at    4.63MiB/s ETA 00:19
+2025-01-04 06:00:19,333 - __main__ - INFO - [download]   0.0% of   88.20MiB at    2.05MiB/s ETA 00:43
+2025-01-04 06:00:19,345 - __main__ - INFO - [download]   0.1% of   88.20MiB at    2.32MiB/s ETA 00:37
+2025-01-04 06:00:19,359 - __main__ - INFO - [download]   0.1% of   88.20MiB at    3.07MiB/s ETA 00:28
+2025-01-04 06:00:19,394 - __main__ - INFO - [download]   0.3% of   88.20MiB at    3.30MiB/s ETA 00:26
+2025-01-04 06:00:19,464 - __main__ - INFO - [download]   0.6% of   88.20MiB at    3.42MiB/s ETA 00:25
+2025-01-04 06:00:19,608 - __main__ - INFO - [download]   1.1% of   88.20MiB at    3.45MiB/s ETA 00:25
+2025-01-04 06:00:19,896 - __main__ - INFO - [download]   2.3% of   88.20MiB at    3.46MiB/s ETA 00:24
+2025-01-04 06:00:20,489 - __main__ - INFO - [download]   4.5% of   88.20MiB at    3.42MiB/s ETA 00:24
+2025-01-04 06:00:21,458 - __main__ - INFO - [download]   8.4% of   88.20MiB at    3.44MiB/s ETA 00:23
+2025-01-04 06:00:22,109 - __main__ - INFO - [download]  10.9% of   88.20MiB at    3.46MiB/s ETA 00:22
+2025-01-04 06:00:22,339 - __main__ - INFO - [download]  10.9% of   88.20MiB at  Unknown B/s ETA Unknown
+2025-01-04 06:00:22,339 - __main__ - INFO - [download]  10.9% of   88.20MiB at  Unknown B/s ETA Unknown
+2025-01-04 06:00:22,339 - __main__ - INFO - [download]  10.9% of   88.20MiB at  Unknown B/s ETA Unknown
+2025-01-04 06:00:22,339 - __main__ - INFO - [download]  10.9% of   88.20MiB at  Unknown B/s ETA Unknown
+2025-01-04 06:00:22,339 - __main__ - INFO - [download]  11.0% of   88.20MiB at  Unknown B/s ETA Unknown
+2025-01-04 06:00:22,339 - __main__ - INFO - [download]  11.0% of   88.20MiB at  Unknown B/s ETA Unknown
+2025-01-04 06:00:22,356 - __main__ - INFO - [download]  11.1% of   88.20MiB at    7.08MiB/s ETA 00:11
+2025-01-04 06:00:22,388 - __main__ - INFO - [download]  11.2% of   88.20MiB at    5.04MiB/s ETA 00:15
+2025-01-04 06:00:22,464 - __main__ - INFO - [download]  11.5% of   88.20MiB at    3.97MiB/s ETA 00:19
+2025-01-04 06:00:22,608 - __main__ - INFO - [download]  12.1% of   88.20MiB at    3.71MiB/s ETA 00:20
+2025-01-04 06:00:22,895 - __main__ - INFO - [download]  13.2% of   88.20MiB at    3.59MiB/s ETA 00:21
+2025-01-04 06:00:23,480 - __main__ - INFO - [download]  15.5% of   88.20MiB at    3.50MiB/s ETA 00:21
+2025-01-04 06:00:24,458 - __main__ - INFO - [download]  19.3% of   88.20MiB at    3.50MiB/s ETA 00:20
+2025-01-04 06:00:25,085 - __main__ - INFO - [download]  21.8% of   88.20MiB at    3.50MiB/s ETA 00:19
+2025-01-04 06:00:25,308 - __main__ - INFO - [download]  21.8% of   88.20MiB at  Unknown B/s ETA Unknown
+2025-01-04 06:00:25,308 - __main__ - INFO - [download]  21.8% of   88.20MiB at  Unknown B/s ETA Unknown
+2025-01-04 06:00:25,308 - __main__ - INFO - [download]  21.8% of   88.20MiB at  Unknown B/s ETA Unknown
+2025-01-04 06:00:25,309 - __main__ - INFO - [download]  21.8% of   88.20MiB at  Unknown B/s ETA Unknown
+2025-01-04 06:00:25,309 - __main__ - INFO - [download]  21.9% of   88.20MiB at  Unknown B/s ETA Unknown
+2025-01-04 06:00:25,309 - __main__ - INFO - [download]  21.9% of   88.20MiB at  Unknown B/s ETA Unknown
+2025-01-04 06:00:25,334 - __main__ - INFO - [download]  22.0% of   88.20MiB at    4.79MiB/s ETA 00:14
+2025-01-04 06:00:25,367 - __main__ - INFO - [download]  22.1% of   88.20MiB at    4.26MiB/s ETA 00:16
+2025-01-04 06:00:25,439 - __main__ - INFO - [download]  22.4% of   88.20MiB at    3.81MiB/s ETA 00:17
+2025-01-04 06:00:25,587 - __main__ - INFO - [download]  23.0% of   88.20MiB at    3.59MiB/s ETA 00:18
+2025-01-04 06:00:25,871 - __main__ - INFO - [download]  24.1% of   88.20MiB at    3.55MiB/s ETA 00:18
+2025-01-04 06:00:26,457 - __main__ - INFO - [download]  26.4% of   88.20MiB at    3.48MiB/s ETA 00:18
+2025-01-04 06:00:27,436 - __main__ - INFO - [download]  30.2% of   88.20MiB at    3.48MiB/s ETA 00:17
+2025-01-04 06:00:28,174 - __main__ - INFO - [download]  33.1% of   88.20MiB at    3.47MiB/s ETA 00:16
+2025-01-04 06:00:28,380 - __main__ - INFO - [download]  33.1% of   88.20MiB at  Unknown B/s ETA Unknown
+2025-01-04 06:00:28,380 - __main__ - INFO - [download]  33.1% of   88.20MiB at  Unknown B/s ETA Unknown
+2025-01-04 06:00:28,380 - __main__ - INFO - [download]  33.1% of   88.20MiB at  Unknown B/s ETA Unknown
+2025-01-04 06:00:28,380 - __main__ - INFO - [download]  33.1% of   88.20MiB at  Unknown B/s ETA Unknown
+2025-01-04 06:00:28,380 - __main__ - INFO - [download]  33.2% of   88.20MiB at  Unknown B/s ETA Unknown
+2025-01-04 06:00:28,380 - __main__ - INFO - [download]  33.2% of   88.20MiB at  Unknown B/s ETA Unknown
+2025-01-04 06:00:28,409 - __main__ - INFO - [download]  33.3% of   88.20MiB at    4.28MiB/s ETA 00:13
+2025-01-04 06:00:28,504 - __main__ - INFO - [download]  33.4% of   88.20MiB at    2.01MiB/s ETA 00:29
+2025-01-04 06:00:28,734 - __main__ - INFO - [download]  33.7% of   88.20MiB at    1.41MiB/s ETA 00:41
+2025-01-04 06:00:28,876 - __main__ - INFO - [download]  34.3% of   88.20MiB at    2.01MiB/s ETA 00:28
+2025-01-04 06:00:29,164 - __main__ - INFO - [download]  35.4% of   88.20MiB at    2.55MiB/s ETA 00:22
+2025-01-04 06:00:29,741 - __main__ - INFO - [download]  37.7% of   88.20MiB at    2.94MiB/s ETA 00:18
+2025-01-04 06:00:30,738 - __main__ - INFO - [download]  41.6% of   88.20MiB at    3.16MiB/s ETA 00:16
+2025-01-04 06:00:31,382 - __main__ - INFO - [download]  44.1% of   88.20MiB at    3.23MiB/s ETA 00:15
+2025-01-04 06:00:31,612 - __main__ - INFO - [download]  44.1% of   88.20MiB at  321.90KiB/s ETA 02:37
+2025-01-04 06:00:31,613 - __main__ - INFO - [download]  44.1% of   88.20MiB at  890.70KiB/s ETA 00:56
+2025-01-04 06:00:31,613 - __main__ - INFO - [download]  44.1% of   88.20MiB at    1.92MiB/s ETA 00:25
+2025-01-04 06:00:31,613 - __main__ - INFO - [download]  44.1% of   88.20MiB at    3.96MiB/s ETA 00:12
+2025-01-04 06:00:31,615 - __main__ - INFO - [download]  44.1% of   88.20MiB at    4.91MiB/s ETA 00:10
+2025-01-04 06:00:31,623 - __main__ - INFO - [download]  44.2% of   88.20MiB at    4.52MiB/s ETA 00:10
+2025-01-04 06:00:31,639 - __main__ - INFO - [download]  44.3% of   88.20MiB at    4.23MiB/s ETA 00:11
+2025-01-04 06:00:31,676 - __main__ - INFO - [download]  44.4% of   88.20MiB at    3.74MiB/s ETA 00:13
+2025-01-04 06:00:31,748 - __main__ - INFO - [download]  44.7% of   88.20MiB at    3.60MiB/s ETA 00:13
+2025-01-04 06:00:31,891 - __main__ - INFO - [download]  45.2% of   88.20MiB at    3.55MiB/s ETA 00:13
+2025-01-04 06:00:32,180 - __main__ - INFO - [download]  46.4% of   88.20MiB at    3.50MiB/s ETA 00:13
+2025-01-04 06:00:32,755 - __main__ - INFO - [download]  48.6% of   88.20MiB at    3.49MiB/s ETA 00:12
+2025-01-04 06:00:33,761 - __main__ - INFO - [download]  52.6% of   88.20MiB at    3.48MiB/s ETA 00:12
+2025-01-04 06:00:34,359 - __main__ - INFO - [download]  55.0% of   88.20MiB at    3.48MiB/s ETA 00:11
+2025-01-04 06:00:34,384 - __main__ - INFO - [download]  55.0% of   88.20MiB at  347.24KiB/s ETA 01:57
+2025-01-04 06:00:34,384 - __main__ - INFO - [download]  55.0% of   88.20MiB at  956.51KiB/s ETA 00:42
+2025-01-04 06:00:34,385 - __main__ - INFO - [download]  55.0% of   88.20MiB at    2.08MiB/s ETA 00:19
+2025-01-04 06:00:34,385 - __main__ - INFO - [download]  55.0% of   88.20MiB at    4.26MiB/s ETA 00:09
+2025-01-04 06:00:34,390 - __main__ - INFO - [download]  55.0% of   88.20MiB at    3.62MiB/s ETA 00:10
+2025-01-04 06:00:34,396 - __main__ - INFO - [download]  55.0% of   88.20MiB at    4.11MiB/s ETA 00:09
+2025-01-04 06:00:34,412 - __main__ - INFO - [download]  55.1% of   88.20MiB at    4.12MiB/s ETA 00:09
+2025-01-04 06:00:34,567 - __main__ - INFO - [download]  55.2% of   88.20MiB at    1.34MiB/s ETA 00:29
+2025-01-04 06:00:34,708 - __main__ - INFO - [download]  55.5% of   88.20MiB at    1.53MiB/s ETA 00:25
+2025-01-04 06:00:34,852 - __main__ - INFO - [download]  56.1% of   88.20MiB at    2.12MiB/s ETA 00:18
+2025-01-04 06:00:35,144 - __main__ - INFO - [download]  57.2% of   88.20MiB at    2.62MiB/s ETA 00:14
+2025-01-04 06:00:35,719 - __main__ - INFO - [download]  59.5% of   88.20MiB at    2.99MiB/s ETA 00:11
+2025-01-04 06:00:36,718 - __main__ - INFO - [download]  63.4% of   88.20MiB at    3.20MiB/s ETA 00:10
+2025-01-04 06:00:37,404 - __main__ - INFO - [download]  66.1% of   88.20MiB at    3.27MiB/s ETA 00:09
+2025-01-04 06:00:37,698 - __main__ - INFO - [download]  66.2% of   88.20MiB at  Unknown B/s ETA Unknown
+2025-01-04 06:00:37,699 - __main__ - INFO - [download]  66.2% of   88.20MiB at  Unknown B/s ETA Unknown
+2025-01-04 06:00:37,699 - __main__ - INFO - [download]  66.2% of   88.20MiB at  Unknown B/s ETA Unknown
+2025-01-04 06:00:37,699 - __main__ - INFO - [download]  66.2% of   88.20MiB at  Unknown B/s ETA Unknown
+2025-01-04 06:00:37,699 - __main__ - INFO - [download]  66.2% of   88.20MiB at  Unknown B/s ETA Unknown
+2025-01-04 06:00:37,699 - __main__ - INFO - [download]  66.2% of   88.20MiB at  Unknown B/s ETA Unknown
+2025-01-04 06:00:37,723 - __main__ - INFO - [download]  66.3% of   88.20MiB at    5.08MiB/s ETA 00:05
+2025-01-04 06:00:37,753 - __main__ - INFO - [download]  66.4% of   88.20MiB at    4.52MiB/s ETA 00:06
+2025-01-04 06:00:37,825 - __main__ - INFO - [download]  66.7% of   88.20MiB at    3.93MiB/s ETA 00:07
+2025-01-04 06:00:37,969 - __main__ - INFO - [download]  67.3% of   88.20MiB at    3.69MiB/s ETA 00:07
+2025-01-04 06:00:38,260 - __main__ - INFO - [download]  68.4% of   88.20MiB at    3.56MiB/s ETA 00:07
+2025-01-04 06:00:38,848 - __main__ - INFO - [download]  70.7% of   88.20MiB at    3.48MiB/s ETA 00:07
+2025-01-04 06:00:39,831 - __main__ - INFO - [download]  74.5% of   88.20MiB at    3.47MiB/s ETA 00:06
+2025-01-04 06:00:40,568 - __main__ - INFO - [download]  77.4% of   88.20MiB at    3.47MiB/s ETA 00:05
+2025-01-04 06:00:40,770 - __main__ - INFO - [download]  77.4% of   88.20MiB at  643.40KiB/s ETA 00:31
+2025-01-04 06:00:40,770 - __main__ - INFO - [download]  77.4% of   88.20MiB at    1.61MiB/s ETA 00:12
+2025-01-04 06:00:40,770 - __main__ - INFO - [download]  77.4% of   88.20MiB at    3.48MiB/s ETA 00:05
+2025-01-04 06:00:40,770 - __main__ - INFO - [download]  77.5% of   88.20MiB at    6.94MiB/s ETA 00:02
+2025-01-04 06:00:40,771 - __main__ - INFO - [download]  77.5% of   88.20MiB at   13.39MiB/s ETA 00:01
+2025-01-04 06:00:40,771 - __main__ - INFO - [download]  77.5% of   88.20MiB at   25.49MiB/s ETA 00:00
+2025-01-04 06:00:40,816 - __main__ - INFO - [download]  77.6% of   88.20MiB at    2.62MiB/s ETA 00:07
+2025-01-04 06:00:41,036 - __main__ - INFO - [download]  77.7% of   88.20MiB at  952.19KiB/s ETA 00:21
+2025-01-04 06:00:41,107 - __main__ - INFO - [download]  78.0% of   88.20MiB at    1.47MiB/s ETA 00:13
+2025-01-04 06:00:41,252 - __main__ - INFO - [download]  78.6% of   88.20MiB at    2.07MiB/s ETA 00:09
+2025-01-04 06:00:41,543 - __main__ - INFO - [download]  79.7% of   88.20MiB at    2.58MiB/s ETA 00:06
+2025-01-04 06:00:42,132 - __main__ - INFO - [download]  82.0% of   88.20MiB at    2.93MiB/s ETA 00:05
+2025-01-04 06:00:43,107 - __main__ - INFO - [download]  85.8% of   88.20MiB at    3.16MiB/s ETA 00:03
+2025-01-04 06:00:43,846 - __main__ - INFO - [download]  88.7% of   88.20MiB at    3.24MiB/s ETA 00:03
+2025-01-04 06:00:44,047 - __main__ - INFO - [download]  88.7% of   88.20MiB at  637.82KiB/s ETA 00:16
+2025-01-04 06:00:44,047 - __main__ - INFO - [download]  88.7% of   88.20MiB at    1.62MiB/s ETA 00:06
+2025-01-04 06:00:44,047 - __main__ - INFO - [download]  88.8% of   88.20MiB at    3.45MiB/s ETA 00:02
+2025-01-04 06:00:44,047 - __main__ - INFO - [download]  88.8% of   88.20MiB at    6.87MiB/s ETA 00:01
+2025-01-04 06:00:44,047 - __main__ - INFO - [download]  88.8% of   88.20MiB at   13.30MiB/s ETA 00:00
+2025-01-04 06:00:44,048 - __main__ - INFO - [download]  88.8% of   88.20MiB at   25.33MiB/s ETA 00:00
+2025-01-04 06:00:44,077 - __main__ - INFO - [download]  88.9% of   88.20MiB at    3.96MiB/s ETA 00:02
+2025-01-04 06:00:44,111 - __main__ - INFO - [download]  89.0% of   88.20MiB at    3.78MiB/s ETA 00:02
+2025-01-04 06:00:44,178 - __main__ - INFO - [download]  89.3% of   88.20MiB at    3.75MiB/s ETA 00:02
+2025-01-04 06:00:44,335 - __main__ - INFO - [download]  89.9% of   88.20MiB at    3.46MiB/s ETA 00:02
+2025-01-04 06:00:44,621 - __main__ - INFO - [download]  91.0% of   88.20MiB at    3.48MiB/s ETA 00:02
+2025-01-04 06:00:45,195 - __main__ - INFO - [download]  93.3% of   88.20MiB at    3.48MiB/s ETA 00:01
+2025-01-04 06:00:46,203 - __main__ - INFO - [download]  97.2% of   88.20MiB at    3.47MiB/s ETA 00:00
+2025-01-04 06:00:46,867 - __main__ - INFO - [download]  99.9% of   88.20MiB at    3.48MiB/s ETA 00:00
+2025-01-04 06:00:47,119 - __main__ - INFO - [download]  99.9% of   88.20MiB at  600.56KiB/s ETA 00:00
+2025-01-04 06:00:47,119 - __main__ - INFO - [download]  99.9% of   88.20MiB at    1.44MiB/s ETA 00:00
+2025-01-04 06:00:47,119 - __main__ - INFO - [download]  99.9% of   88.20MiB at    3.09MiB/s ETA 00:00
+2025-01-04 06:00:47,119 - __main__ - INFO - [download]  99.9% of   88.20MiB at    6.20MiB/s ETA 00:00
+2025-01-04 06:00:47,120 - __main__ - INFO - [download]  99.9% of   88.20MiB at   12.12MiB/s ETA 00:00
+2025-01-04 06:00:47,120 - __main__ - INFO - [download]  99.9% of   88.20MiB at   23.20MiB/s ETA 00:00
+2025-01-04 06:00:47,142 - __main__ - INFO - [download] 100.0% of   88.20MiB at    4.87MiB/s ETA 00:00
+2025-01-04 06:00:47,164 - __main__ - INFO - [download] 100% of   88.20MiB in 00:00:27 at 3.16MiB/s
+2025-01-04 06:00:47,568 - __main__ - INFO - [download] Destination: /home/rech/proj/flask-proj/QuickClip-Universal/downloads/Tawag ng Tanghalan John Mark Saga  Didnt We Almost Have It All Day 4 Semifinals_20250104060017.f140.m4a
+2025-01-04 06:00:47,569 - __main__ - INFO - [download]   0.0% of    3.99MiB at  188.09KiB/s ETA 00:21
+2025-01-04 06:00:47,569 - __main__ - INFO - [download]   0.1% of    3.99MiB at  538.98KiB/s ETA 00:07
+2025-01-04 06:00:47,569 - __main__ - INFO - [download]   0.2% of    3.99MiB at    1.19MiB/s ETA 00:03
+2025-01-04 06:00:47,569 - __main__ - INFO - [download]   0.4% of    3.99MiB at    2.43MiB/s ETA 00:01
+2025-01-04 06:00:47,583 - __main__ - INFO - [download]   0.8% of    3.99MiB at    1.53MiB/s ETA 00:02
+2025-01-04 06:00:47,645 - __main__ - INFO - [download]   1.5% of    3.99MiB at  770.21KiB/s ETA 00:05
+2025-01-04 06:00:47,717 - __main__ - INFO - [download]   3.1% of    3.99MiB at  828.92KiB/s ETA 00:04
+2025-01-04 06:00:47,783 - __main__ - INFO - [download]   6.2% of    3.99MiB at    1.13MiB/s ETA 00:03
+2025-01-04 06:00:47,852 - __main__ - INFO - [download]  12.5% of    3.99MiB at    1.73MiB/s ETA 00:02
+2025-01-04 06:00:47,995 - __main__ - INFO - [download]  25.0% of    3.99MiB at    2.31MiB/s ETA 00:01
+2025-01-04 06:00:48,283 - __main__ - INFO - [download]  50.1% of    3.99MiB at    2.78MiB/s ETA 00:00
+2025-01-04 06:00:48,906 - __main__ - INFO - [download] 100.0% of    3.99MiB at    2.97MiB/s ETA 00:00
+2025-01-04 06:00:48,906 - __main__ - INFO - [download] 100% of    3.99MiB in 00:00:01 at 2.29MiB/s
+2025-01-04 06:00:48,909 - __main__ - INFO - [Merger] Merging formats into "/home/rech/proj/flask-proj/QuickClip-Universal/downloads/Tawag ng Tanghalan John Mark Saga  Didnt We Almost Have It All Day 4 Semifinals_20250104060017.mp4"
+2025-01-04 06:00:49,044 - __main__ - INFO - Deleting original file /home/rech/proj/flask-proj/QuickClip-Universal/downloads/Tawag ng Tanghalan John Mark Saga  Didnt We Almost Have It All Day 4 Semifinals_20250104060017.f140.m4a (pass -k to keep)
+2025-01-04 06:00:49,045 - __main__ - INFO - Deleting original file /home/rech/proj/flask-proj/QuickClip-Universal/downloads/Tawag ng Tanghalan John Mark Saga  Didnt We Almost Have It All Day 4 Semifinals_20250104060017.f137.mp4 (pass -k to keep)
+2025-01-04 06:00:49,094 - werkzeug - INFO - 127.0.0.1 - - [04/Jan/2025 06:00:49] "POST /download HTTP/1.1" 200 -
