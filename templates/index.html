@@ -215,6 +215,41 @@
             transform: translateY(0);
             opacity: 1;
         }
+
+        .download-progress-container {
+            background-color: var(--primary-dark);
+            padding: 15px;
+            border-radius: 10px;
+            border: 1px solid #404040;
+        }
+
+        .progress-info {
+            color: var(--text-primary);
+        }
+
+        .progress-status {
+            font-weight: 500;
+        }
+
+        .progress-percentage {
+            color: var(--accent-color);
+            font-weight: 600;
+        }
+
+        .progress-detail {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+        }
+
+        .progress {
+            background-color: rgba(255, 255, 255, 0.1);
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            background: linear-gradient(45deg, var(--accent-color), #00c3ff);
+            transition: width 0.3s ease;
+        }
     </style>
 </head>
 <body class="bg-light">
@@ -248,6 +283,24 @@
                                 <option value="wav">WAV (Audio only)</option>
                             </select>
                         </div>
+
+                        <div class="download-progress-container mb-4" style="display: none;">
+                            <div class="progress-info d-flex justify-content-between mb-2">
+                                <span class="progress-status">Processing...</span>
+                                <span class="progress-percentage">0%</span>
+                            </div>
+                            <div class="progress" style="height: 8px;">
+                                <div class="progress-bar progress-bar-animated" 
+                                     role="progressbar" 
+                                     style="width: 0%"
+                                     aria-valuenow="0" 
+                                     aria-valuemin="0" 
+                                     aria-valuemax="100">
+                                </div>
+                            </div>
+                            <div class="progress-detail mt-2 text-secondary small"></div>
+                        </div>
+
                         <button type="button" class="btn btn-primary w-100" id="downloadBtn" onclick="startDownload()" disabled>
                             <i class="fas fa-download me-2"></i>Download
                         </button>
@@ -317,7 +370,7 @@
 
         socket.on('download_progress', (data) => {
             updateProgress(data.progress);
-            updateStatus(data.status);
+            updateProgressDetail(data.status);
         });
 
         socket.on('download_status', (data) => {
@@ -359,12 +412,38 @@
         }
 
         function updateProgress(percent) {
+            const progressContainer = document.querySelector('.download-progress-container');
             const progressBar = document.querySelector('.progress-bar');
+            const progressPercentage = document.querySelector('.progress-percentage');
+            
+            progressContainer.style.display = 'block';
             progressBar.style.width = `${percent}%`;
-            progressBar.textContent = `${Math.round(percent)}%`;
+            progressBar.setAttribute('aria-valuenow', percent);
+            progressPercentage.textContent = `${Math.round(percent)}%`;
+            
+            if (percent >= 100) {
+                progressBar.classList.remove('progress-bar-animated');
+            } else {
+                progressBar.classList.add('progress-bar-animated');
+            }
+        }
+
+        function updateProgressDetail(message) {
+            const progressDetail = document.querySelector('.progress-detail');
+            const progressStatus = document.querySelector('.progress-status');
+            
+            if (message.includes('Downloading')) {
+                progressStatus.textContent = 'Downloading...';
+            } else if (message.includes('Merging')) {
+                progressStatus.textContent = 'Processing...';
+            }
+            
+            progressDetail.textContent = message;
         }
 
         function startDownload() {
+            const progressContainer = document.querySelector('.download-progress-container');
+            progressContainer.style.display = 'block';
             const url = document.getElementById('url').value;
             const format = document.getElementById('format').value;
             const downloadBtn = document.getElementById('downloadBtn');
@@ -437,6 +516,7 @@
             document.getElementById('downloadOptions').classList.remove('show');
             document.querySelector('.format-container').classList.remove('show');
             document.getElementById('downloadBtn').disabled = true;
+            document.querySelector('.download-progress-container').style.display = 'none';
         });
 
         function isValidYouTubeUrl(url) {
