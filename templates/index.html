@@ -3,84 +3,311 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Video Downloader</title>
+    <title>QuickClip - Video Downloader</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        .progress {
-            height: 25px;
+        :root {
+            --primary-dark: #1a1a1a;
+            --secondary-dark: #2d2d2d;
+            --accent-color: #00ff9d;
+            --text-primary: #ffffff;
+            --text-secondary: #b3b3b3;
         }
-        .status-container {
-            min-height: 100px;
-            margin-top: 20px;
+
+        body {
+            background-color: var(--primary-dark);
+            color: var(--text-primary);
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
-        .status-message {
-            margin-bottom: 10px;
+
+        .hero-section {
+            padding: 80px 0 40px 0;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            text-align: center;
         }
-        .spinner-border {
-            margin-right: 10px;
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, var(--accent-color), #00c3ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
+
+        .hero-subtitle {
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+        }
+
+        .download-section {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            padding: 0 0 80px 0;
+        }
+
         .download-container {
             max-width: 600px;
             margin: 0 auto;
             padding: 20px;
-            background-color: #f8f9fa;
+            background-color: var(--secondary-dark);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .form-control, .form-select {
+            background-color: var(--primary-dark);
+            border: 2px solid #404040;
+            color: var(--text-primary);
+            padding: 12px;
             border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
         }
+
+        .form-control:focus, .form-select:focus {
+            background-color: var(--primary-dark);
+            border-color: var(--accent-color);
+            color: var(--text-primary);
+            box-shadow: 0 0 0 0.25rem rgba(0, 255, 157, 0.1);
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, var(--accent-color), #00c3ff);
+            border: none;
+            padding: 12px 24px;
+            font-weight: 600;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(0, 255, 157, 0.2);
+        }
+
+        .progress {
+            height: 10px;
+            background-color: var(--primary-dark);
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+
+        .progress-bar {
+            background: linear-gradient(45deg, var(--accent-color), #00c3ff);
+            border-radius: 5px;
+        }
+
+        .status-container {
+            min-height: 100px;
+            margin-top: 30px;
+        }
+
         .error-message {
+            background-color: rgba(220, 53, 69, 0.1);
+            border: 1px solid #dc3545;
             color: #dc3545;
-            padding: 10px;
-            border-radius: 5px;
-            background-color: #f8d7da;
-            border: 1px solid #f5c6cb;
+            padding: 15px;
+            border-radius: 10px;
             display: none;
         }
+
         .success-message {
+            background-color: rgba(40, 167, 69, 0.1);
+            border: 1px solid #28a745;
             color: #28a745;
-            padding: 10px;
-            border-radius: 5px;
-            background-color: #d4edda;
-            border: 1px solid #c3e6cb;
+            padding: 15px;
+            border-radius: 10px;
             display: none;
+        }
+
+        .status-message {
+            color: var(--text-secondary);
+        }
+
+        .features-section {
+            padding: 60px 0;
+            background-color: var(--secondary-dark);
+        }
+
+        .feature-card {
+            background-color: var(--primary-dark);
+            padding: 30px;
+            border-radius: 15px;
+            height: 100%;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            margin-bottom: 20px;
+        }
+
+        .spinner-border {
+            width: 1.5rem;
+            height: 1.5rem;
+            border-width: 0.2em;
+            margin-right: 10px;
+        }
+
+        footer {
+            background-color: var(--primary-dark);
+            padding: 20px 0;
+            margin-top: auto;
+            text-align: center;
+            color: var(--text-secondary);
+        }
+
+        .download-options {
+            opacity: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.5s ease-in-out;
+            margin-top: 20px;
+        }
+
+        .download-options.show {
+            opacity: 1;
+            max-height: 200px;
+        }
+
+        .url-input-container {
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .url-input-container .form-control {
+            padding-right: 50px;
+        }
+
+        .url-input-container .clear-input {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            cursor: pointer;
+            display: none;
+        }
+
+        .url-input-container .clear-input:hover {
+            color: var(--text-primary);
+        }
+
+        .format-container {
+            transform: translateY(20px);
+            opacity: 0;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .format-container.show {
+            transform: translateY(0);
+            opacity: 1;
         }
     </style>
 </head>
 <body class="bg-light">
-    <div class="container py-5">
-        <div class="download-container">
-            <h1 class="text-center mb-4">Video Downloader</h1>
-            <form id="downloadForm" class="mt-3">
-                <div class="mb-3">
-                    <label for="url" class="form-label">Video URL:</label>
-                    <input type="text" class="form-control" id="url" name="url" required 
-                           placeholder="Enter YouTube URL">
-                </div>
-                <div class="mb-3">
-                    <label for="format" class="form-label">Format:</label>
-                    <select class="form-select" id="format" name="format">
-                        <option value="mp4">MP4 (Video)</option>
-                        <option value="wav">WAV (Audio only)</option>
-                    </select>
-                </div>
-                <button type="button" class="btn btn-primary w-100" id="downloadBtn" onclick="startDownload()">
-                    Download
+    <!-- Hero Section with Download -->
+    <section class="hero-section">
+        <div class="container">
+            <h1 class="hero-title">QuickClip</h1>
+            <p class="hero-subtitle">Transform YouTube Videos into Personal Media Instantly</p>
+            
+            <!-- URL Input -->
+            <div class="url-input-container">
+                <input type="text" class="form-control" id="url" name="url" required 
+                       placeholder="Paste your YouTube URL here">
+                <button class="clear-input" id="clearUrl">
+                    <i class="fas fa-times"></i>
                 </button>
-                
-                <div class="status-container">
-                    <div class="error-message" id="errorMessage"></div>
-                    <div class="success-message" id="successMessage"></div>
-                    <div class="status-message" id="statusMessage"></div>
-                    <div class="progress" style="display: none;">
-                        <div class="progress-bar progress-bar-striped progress-bar-animated" 
-                             role="progressbar" style="width: 0%">0%</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download Options Section -->
+    <section class="download-section">
+        <div class="container">
+            <div class="download-options" id="downloadOptions">
+                <div class="download-container">
+                    <form id="downloadForm">
+                        <div class="format-container mb-4">
+                            <label for="format" class="form-label">Format</label>
+                            <select class="form-select" id="format" name="format">
+                                <option value="mp4">MP4 (Video)</option>
+                                <option value="wav">WAV (Audio only)</option>
+                            </select>
+                        </div>
+                        <button type="button" class="btn btn-primary w-100" id="downloadBtn" onclick="startDownload()" disabled>
+                            <i class="fas fa-download me-2"></i>Download
+                        </button>
+                        
+                        <div class="status-container">
+                            <div class="error-message" id="errorMessage"></div>
+                            <div class="success-message" id="successMessage"></div>
+                            <div class="status-message" id="statusMessage"></div>
+                            <div class="progress" style="display: none;">
+                                <div class="progress-bar progress-bar-striped progress-bar-animated" 
+                                     role="progressbar" style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <i class="fas fa-bolt feature-icon"></i>
+                        <h3>Fast Download</h3>
+                        <p>Download your favorite videos in seconds with our optimized download engine.</p>
                     </div>
                 </div>
-            </form>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <i class="fas fa-check-circle feature-icon"></i>
+                        <h3>High Quality</h3>
+                        <p>Get the best available quality for both video and audio downloads.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <i class="fas fa-shield-alt feature-icon"></i>
+                        <h3>Safe & Secure</h3>
+                        <p>Your downloads are processed securely with no data collection.</p>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
+    </section>
 
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 QuickClip. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Keep the existing JavaScript -->
     <script>
         const socket = io();
         
@@ -179,7 +406,43 @@
                 downloadBtn.disabled = false;
             });
         }
+
+        document.getElementById('url').addEventListener('input', function() {
+            const urlValue = this.value.trim();
+            const downloadOptions = document.getElementById('downloadOptions');
+            const formatContainer = document.querySelector('.format-container');
+            const downloadBtn = document.getElementById('downloadBtn');
+            const clearBtn = document.getElementById('clearUrl');
+            
+            // Show/hide clear button
+            clearBtn.style.display = urlValue ? 'block' : 'none';
+
+            if (urlValue && isValidYouTubeUrl(urlValue)) {
+                downloadOptions.classList.add('show');
+                setTimeout(() => {
+                    formatContainer.classList.add('show');
+                }, 300);
+                downloadBtn.disabled = false;
+            } else {
+                downloadOptions.classList.remove('show');
+                formatContainer.classList.remove('show');
+                downloadBtn.disabled = true;
+            }
+        });
+
+        document.getElementById('clearUrl').addEventListener('click', function() {
+            const urlInput = document.getElementById('url');
+            urlInput.value = '';
+            this.style.display = 'none';
+            document.getElementById('downloadOptions').classList.remove('show');
+            document.querySelector('.format-container').classList.remove('show');
+            document.getElementById('downloadBtn').disabled = true;
+        });
+
+        function isValidYouTubeUrl(url) {
+            const youtubeRegex = /^(https?:\/\/)?(www\.)?(youtube\.com|youtu\.be)\/.+/;
+            return youtubeRegex.test(url);
+        }
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
