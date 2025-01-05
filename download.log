@@ -4333,3 +4333,21 @@
 2025-01-04 06:00:49,044 - __main__ - INFO - Deleting original file /home/rech/proj/flask-proj/QuickClip-Universal/downloads/Tawag ng Tanghalan John Mark Saga  Didnt We Almost Have It All Day 4 Semifinals_20250104060017.f140.m4a (pass -k to keep)
 2025-01-04 06:00:49,045 - __main__ - INFO - Deleting original file /home/rech/proj/flask-proj/QuickClip-Universal/downloads/Tawag ng Tanghalan John Mark Saga  Didnt We Almost Have It All Day 4 Semifinals_20250104060017.f137.mp4 (pass -k to keep)
 2025-01-04 06:00:49,094 - werkzeug - INFO - 127.0.0.1 - - [04/Jan/2025 06:00:49] "POST /download HTTP/1.1" 200 -
+2025-01-04 06:27:15,099 - werkzeug - INFO - 127.0.0.1 - - [04/Jan/2025 06:27:15] "GET /socket.io/?EIO=4&transport=websocket&sid=aGQERhYVhZHjvNTIAAAC HTTP/1.1" 200 -
+2025-01-05 23:58:05,961 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-01-05 23:58:05,961 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-01-05 23:58:05,961 - werkzeug - INFO -  * Restarting with stat
+2025-01-05 23:58:06,254 - werkzeug - WARNING -  * Debugger is active!
+2025-01-05 23:58:06,260 - werkzeug - INFO -  * Debugger PIN: 491-680-250
+2025-01-05 23:58:30,583 - werkzeug - INFO - 127.0.0.1 - - [05/Jan/2025 23:58:30] "GET / HTTP/1.1" 200 -
+2025-01-05 23:58:30,971 - werkzeug - INFO - 127.0.0.1 - - [05/Jan/2025 23:58:30] "GET /socket.io/?EIO=4&transport=polling&t=PGtC7Wu HTTP/1.1" 200 -
+2025-01-05 23:58:31,044 - werkzeug - INFO - 127.0.0.1 - - [05/Jan/2025 23:58:31] "POST /socket.io/?EIO=4&transport=polling&t=PGtC7Xq&sid=34YgaXLH4DbATU57AAAA HTTP/1.1" 200 -
+2025-01-05 23:58:31,047 - werkzeug - INFO - 127.0.0.1 - - [05/Jan/2025 23:58:31] "GET /socket.io/?EIO=4&transport=polling&t=PGtC7Xs&sid=34YgaXLH4DbATU57AAAA HTTP/1.1" 200 -
+2025-01-05 23:58:31,197 - werkzeug - INFO - 127.0.0.1 - - [05/Jan/2025 23:58:31] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-01-05 23:59:07,763 - werkzeug - INFO - 127.0.0.1 - - [05/Jan/2025 23:59:07] "GET /socket.io/?EIO=4&transport=websocket&sid=34YgaXLH4DbATU57AAAA HTTP/1.1" 200 -
+2025-01-05 23:59:07,778 - werkzeug - INFO - 127.0.0.1 - - [05/Jan/2025 23:59:07] "GET / HTTP/1.1" 200 -
+2025-01-05 23:59:08,163 - werkzeug - INFO - 127.0.0.1 - - [05/Jan/2025 23:59:08] "GET /socket.io/?EIO=4&transport=polling&t=PGtCGb_ HTTP/1.1" 200 -
+2025-01-05 23:59:08,175 - werkzeug - INFO - 127.0.0.1 - - [05/Jan/2025 23:59:08] "POST /socket.io/?EIO=4&transport=polling&t=PGtCGc6&sid=-y0i2RlsyIVxtq8wAAAC HTTP/1.1" 200 -
+2025-01-05 23:59:08,180 - werkzeug - INFO - 127.0.0.1 - - [05/Jan/2025 23:59:08] "GET /socket.io/?EIO=4&transport=polling&t=PGtCGc8&sid=-y0i2RlsyIVxtq8wAAAC HTTP/1.1" 200 -
+2025-01-05 23:59:08,346 - werkzeug - INFO - 127.0.0.1 - - [05/Jan/2025 23:59:08] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
