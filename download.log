@@ -4591,3 +4591,98 @@
 2025-01-08 21:18:21,999 - __main__ - INFO - [ExtractAudio] Destination: /home/rech/proj/flask-proj/QuickClip-Universal/downloads/Billie Eilish  BIRDS OF A FEATHER Official Music Video_20250108211815_temp.wav
 2025-01-08 21:18:22,436 - __main__ - INFO - Deleting original file /home/rech/proj/flask-proj/QuickClip-Universal/downloads/Billie Eilish  BIRDS OF A FEATHER Official Music Video_20250108211815_temp.m4a (pass -k to keep)
 2025-01-08 21:18:22,546 - werkzeug - INFO - 127.0.0.1 - - [08/Jan/2025 21:18:22] "POST /download HTTP/1.1" 200 -
+2025-01-08 21:21:24,921 - werkzeug - INFO - 127.0.0.1 - - [08/Jan/2025 21:21:24] "GET /socket.io/?EIO=4&transport=websocket&sid=F1WxEH47oK9v6-axAAAA HTTP/1.1" 200 -
+2025-01-08 21:21:24,941 - werkzeug - INFO - 127.0.0.1 - - [08/Jan/2025 21:21:24] "GET / HTTP/1.1" 200 -
+2025-01-08 21:21:25,476 - werkzeug - INFO - 127.0.0.1 - - [08/Jan/2025 21:21:25] "GET /socket.io/?EIO=4&transport=polling&t=PH64xdW HTTP/1.1" 200 -
+2025-01-08 21:21:25,501 - werkzeug - INFO - 127.0.0.1 - - [08/Jan/2025 21:21:25] "POST /socket.io/?EIO=4&transport=polling&t=PH64xdh&sid=0c9jMe0E4O8_lBNWAAAC HTTP/1.1" 200 -
+2025-01-08 21:21:25,502 - werkzeug - INFO - 127.0.0.1 - - [08/Jan/2025 21:21:25] "GET /socket.io/?EIO=4&transport=polling&t=PH64xdj&sid=0c9jMe0E4O8_lBNWAAAC HTTP/1.1" 200 -
+2025-01-08 21:21:25,518 - werkzeug - INFO - 127.0.0.1 - - [08/Jan/2025 21:21:25] "GET /socket.io/?EIO=4&transport=polling&t=PH64xe5&sid=0c9jMe0E4O8_lBNWAAAC HTTP/1.1" 200 -
+2025-01-08 21:21:25,907 - werkzeug - INFO - 127.0.0.1 - - [08/Jan/2025 21:21:25] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-01-08 21:21:32,432 - werkzeug - INFO - 127.0.0.1 - - [08/Jan/2025 21:21:32] "POST /video-info HTTP/1.1" 200 -
+2025-01-08 21:21:45,299 - __main__ - INFO - Starting download request for URL: https://www.youtube.com/watch?v=V9PVRfjEBTI&list=RDV9PVRfjEBTI&start_radio=1 in format: wav
+2025-01-08 21:21:45,299 - __main__ - INFO - Generated output path: /home/rech/proj/flask-proj/QuickClip-Universal/downloads/Billie Eilish  BIRDS OF A FEATHER Official Music Video_20250108212145.wav
+2025-01-08 21:21:45,299 - __main__ - INFO - Configuring audio download...
+2025-01-08 21:21:45,299 - __main__ - DEBUG - Executing command: yt-dlp -f bestaudio -x --audio-format wav -o /home/rech/proj/flask-proj/QuickClip-Universal/downloads/Billie Eilish  BIRDS OF A FEATHER Official Music Video_20250108212145_temp.%(ext)s --no-playlist --progress --newline https://www.youtube.com/watch?v=V9PVRfjEBTI&list=RDV9PVRfjEBTI&start_radio=1
+2025-01-08 21:21:45,790 - __main__ - INFO - [youtube:tab] Extracting URL: https://www.youtube.com/watch?v=V9PVRfjEBTI&list=RDV9PVRfjEBTI&start_radio=1
+2025-01-08 21:21:45,790 - __main__ - INFO - [youtube:tab] Downloading just the video V9PVRfjEBTI because of --no-playlist
+2025-01-08 21:21:45,806 - __main__ - INFO - [youtube] Extracting URL: https://www.youtube.com/watch?v=V9PVRfjEBTI
+2025-01-08 21:21:45,806 - __main__ - INFO - [youtube] V9PVRfjEBTI: Downloading webpage
+2025-01-08 21:21:47,205 - __main__ - INFO - [youtube] V9PVRfjEBTI: Downloading ios player API JSON
+2025-01-08 21:21:47,401 - __main__ - INFO - [youtube] V9PVRfjEBTI: Downloading android player API JSON
+2025-01-08 21:21:47,564 - __main__ - INFO - [youtube] V9PVRfjEBTI: Downloading m3u8 information
+2025-01-08 21:21:48,144 - __main__ - INFO - [info] V9PVRfjEBTI: Downloading 1 format(s): 140
+2025-01-08 21:21:49,058 - __main__ - INFO - [download] Destination: /home/rech/proj/flask-proj/QuickClip-Universal/downloads/Billie Eilish  BIRDS OF A FEATHER Official Music Video_20250108212145_temp.m4a
+2025-01-08 21:21:49,059 - __main__ - INFO - [download]   0.0% of    3.56MiB at   43.26KiB/s ETA 01:24
+2025-01-08 21:21:49,060 - __main__ - INFO - [download]   0.1% of    3.56MiB at  120.22KiB/s ETA 00:30
+2025-01-08 21:21:49,061 - __main__ - INFO - [download]   0.2% of    3.56MiB at  271.64KiB/s ETA 00:13
+2025-01-08 21:21:49,062 - __main__ - INFO - [download]   0.4% of    3.56MiB at  564.70KiB/s ETA 00:06
+2025-01-08 21:21:49,096 - __main__ - INFO - [download]   0.8% of    3.56MiB at  513.47KiB/s ETA 00:07
+2025-01-08 21:21:49,145 - __main__ - INFO - [download]   1.7% of    3.56MiB at  574.28KiB/s ETA 00:06
+2025-01-08 21:21:49,234 - __main__ - INFO - [download]   3.5% of    3.56MiB at  638.05KiB/s ETA 00:05
+2025-01-08 21:21:49,301 - __main__ - INFO - [download]   7.0% of    3.56MiB at  959.12KiB/s ETA 00:03
+2025-01-08 21:21:49,384 - __main__ - INFO - [download]  14.0% of    3.56MiB at    1.43MiB/s ETA 00:02
+2025-01-08 21:21:49,550 - __main__ - INFO - [download]  28.0% of    3.56MiB at    1.94MiB/s ETA 00:01
+2025-01-08 21:21:49,869 - __main__ - INFO - [download]  56.1% of    3.56MiB at    2.40MiB/s ETA 00:00
+2025-01-08 21:21:50,366 - __main__ - INFO - [download] 100.0% of    3.56MiB at    2.68MiB/s ETA 00:00
+2025-01-08 21:21:50,368 - __main__ - INFO - [download] 100% of    3.56MiB in 00:00:02 at 1.63MiB/s
+2025-01-08 21:21:50,477 - __main__ - INFO - [FixupM4a] Correcting container of "/home/rech/proj/flask-proj/QuickClip-Universal/downloads/Billie Eilish  BIRDS OF A FEATHER Official Music Video_20250108212145_temp.m4a"
+2025-01-08 21:21:50,792 - __main__ - INFO - [ExtractAudio] Destination: /home/rech/proj/flask-proj/QuickClip-Universal/downloads/Billie Eilish  BIRDS OF A FEATHER Official Music Video_20250108212145_temp.wav
+2025-01-08 21:21:51,220 - __main__ - INFO - Deleting original file /home/rech/proj/flask-proj/QuickClip-Universal/downloads/Billie Eilish  BIRDS OF A FEATHER Official Music Video_20250108212145_temp.m4a (pass -k to keep)
+2025-01-08 21:21:51,331 - werkzeug - INFO - 127.0.0.1 - - [08/Jan/2025 21:21:51] "POST /download HTTP/1.1" 200 -
+2025-01-08 21:22:19,215 - werkzeug - INFO - 127.0.0.1 - - [08/Jan/2025 21:22:19] "POST /video-info HTTP/1.1" 200 -
+2025-01-08 21:22:19,984 - __main__ - INFO - Starting download request for URL: https://www.youtube.com/watch?v=V9PVRfjEBTI&list=RDV9PVRfjEBTI&start_radio=1 in format: wav
+2025-01-08 21:22:19,984 - __main__ - INFO - Generated output path: /home/rech/proj/flask-proj/QuickClip-Universal/downloads/Billie Eilish  BIRDS OF A FEATHER Official Music Video_20250108212219.wav
+2025-01-08 21:22:19,984 - __main__ - INFO - Configuring audio download...
+2025-01-08 21:22:19,984 - __main__ - DEBUG - Executing command: yt-dlp -f bestaudio -x --audio-format wav -o /home/rech/proj/flask-proj/QuickClip-Universal/downloads/Billie Eilish  BIRDS OF A FEATHER Official Music Video_20250108212219_temp.%(ext)s --no-playlist --progress --newline https://www.youtube.com/watch?v=V9PVRfjEBTI&list=RDV9PVRfjEBTI&start_radio=1
+2025-01-08 21:22:20,513 - __main__ - INFO - [youtube:tab] Extracting URL: https://www.youtube.com/watch?v=V9PVRfjEBTI&list=RDV9PVRfjEBTI&start_radio=1
+2025-01-08 21:22:20,513 - __main__ - INFO - [youtube:tab] Downloading just the video V9PVRfjEBTI because of --no-playlist
+2025-01-08 21:22:20,533 - __main__ - INFO - [youtube] Extracting URL: https://www.youtube.com/watch?v=V9PVRfjEBTI
+2025-01-08 21:22:20,533 - __main__ - INFO - [youtube] V9PVRfjEBTI: Downloading webpage
+2025-01-08 21:22:22,146 - __main__ - INFO - [youtube] V9PVRfjEBTI: Downloading ios player API JSON
+2025-01-08 21:22:22,424 - __main__ - INFO - [youtube] V9PVRfjEBTI: Downloading android player API JSON
+2025-01-08 21:22:22,592 - __main__ - INFO - [youtube] V9PVRfjEBTI: Downloading m3u8 information
+2025-01-08 21:22:23,184 - __main__ - INFO - [info] V9PVRfjEBTI: Downloading 1 format(s): 140
+2025-01-08 21:22:23,383 - __main__ - INFO - [download] Destination: /home/rech/proj/flask-proj/QuickClip-Universal/downloads/Billie Eilish  BIRDS OF A FEATHER Official Music Video_20250108212219_temp.m4a
+2025-01-08 21:22:23,384 - __main__ - INFO - [download]   0.0% of    3.56MiB at  311.31KiB/s ETA 00:11
+2025-01-08 21:22:23,385 - __main__ - INFO - [download]   0.1% of    3.56MiB at  670.80KiB/s ETA 00:05
+2025-01-08 21:22:23,385 - __main__ - INFO - [download]   0.2% of    3.56MiB at    1.30MiB/s ETA 00:02
+2025-01-08 21:22:23,386 - __main__ - INFO - [download]   0.4% of    3.56MiB at    2.44MiB/s ETA 00:01
+2025-01-08 21:22:23,432 - __main__ - INFO - [download]   0.8% of    3.56MiB at  603.01KiB/s ETA 00:06
+2025-01-08 21:22:23,476 - __main__ - INFO - [download]   1.7% of    3.56MiB at  660.98KiB/s ETA 00:05
+2025-01-08 21:22:23,541 - __main__ - INFO - [download]   3.5% of    3.56MiB at  790.81KiB/s ETA 00:04
+2025-01-08 21:22:23,623 - __main__ - INFO - [download]   7.0% of    3.56MiB at    1.03MiB/s ETA 00:03
+2025-01-08 21:22:23,748 - __main__ - INFO - [download]  14.0% of    3.56MiB at    1.36MiB/s ETA 00:02
+2025-01-08 21:22:23,966 - __main__ - INFO - [download]  28.0% of    3.56MiB at    1.71MiB/s ETA 00:01
+2025-01-08 21:22:24,417 - __main__ - INFO - [download]  56.1% of    3.56MiB at    1.93MiB/s ETA 00:00
+2025-01-08 21:22:24,982 - __main__ - INFO - [download] 100.0% of    3.56MiB at    2.22MiB/s ETA 00:00
+2025-01-08 21:22:24,984 - __main__ - INFO - [download] 100% of    3.56MiB in 00:00:01 at 2.02MiB/s
+2025-01-08 21:22:25,102 - __main__ - INFO - [FixupM4a] Correcting container of "/home/rech/proj/flask-proj/QuickClip-Universal/downloads/Billie Eilish  BIRDS OF A FEATHER Official Music Video_20250108212219_temp.m4a"
+2025-01-08 21:22:25,421 - __main__ - INFO - [ExtractAudio] Destination: /home/rech/proj/flask-proj/QuickClip-Universal/downloads/Billie Eilish  BIRDS OF A FEATHER Official Music Video_20250108212219_temp.wav
+2025-01-08 21:22:25,849 - __main__ - INFO - Deleting original file /home/rech/proj/flask-proj/QuickClip-Universal/downloads/Billie Eilish  BIRDS OF A FEATHER Official Music Video_20250108212219_temp.m4a (pass -k to keep)
+2025-01-08 21:22:25,952 - werkzeug - INFO - 127.0.0.1 - - [08/Jan/2025 21:22:25] "POST /download HTTP/1.1" 200 -
+2025-01-08 21:24:06,395 - werkzeug - INFO - 127.0.0.1 - - [08/Jan/2025 21:24:06] "GET /socket.io/?EIO=4&transport=websocket&sid=0c9jMe0E4O8_lBNWAAAC HTTP/1.1" 200 -
+2025-01-08 21:24:06,413 - werkzeug - INFO - 127.0.0.1 - - [08/Jan/2025 21:24:06] "GET / HTTP/1.1" 200 -
+2025-01-08 21:24:06,964 - werkzeug - INFO - 127.0.0.1 - - [08/Jan/2025 21:24:06] "GET /socket.io/?EIO=4&transport=polling&t=PH65Z2m HTTP/1.1" 200 -
+2025-01-08 21:24:06,990 - werkzeug - INFO - 127.0.0.1 - - [08/Jan/2025 21:24:06] "POST /socket.io/?EIO=4&transport=polling&t=PH65Z31&sid=YbcUCuOYyF14vuMDAAAE HTTP/1.1" 200 -
+2025-01-08 21:24:06,997 - werkzeug - INFO - 127.0.0.1 - - [08/Jan/2025 21:24:06] "GET /socket.io/?EIO=4&transport=polling&t=PH65Z34&sid=YbcUCuOYyF14vuMDAAAE HTTP/1.1" 200 -
+2025-01-08 21:24:07,440 - werkzeug - INFO - 127.0.0.1 - - [08/Jan/2025 21:24:07] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-01-08 21:26:21,529 - werkzeug - INFO -  * Detected change in '/home/rech/proj/flask-proj/QuickClip-Universal/app.py', reloading
+2025-01-08 21:26:21,602 - werkzeug - INFO -  * Restarting with stat
+2025-01-08 21:26:43,315 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-01-08 21:26:43,315 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-01-08 21:26:43,316 - werkzeug - INFO -  * Restarting with stat
+2025-01-08 21:26:43,823 - werkzeug - WARNING -  * Debugger is active!
+2025-01-08 21:26:43,824 - werkzeug - INFO -  * Debugger PIN: 817-193-744
+2025-01-08 21:26:43,831 - werkzeug - INFO - 127.0.0.1 - - [08/Jan/2025 21:26:43] "GET /socket.io/?EIO=4&transport=polling&t=PH669Es HTTP/1.1" 200 -
+2025-01-08 21:26:43,850 - werkzeug - INFO - 127.0.0.1 - - [08/Jan/2025 21:26:43] "POST /socket.io/?EIO=4&transport=polling&t=PH669Lx&sid=bd4NPynnCYIXSnc3AAAA HTTP/1.1" 200 -
+2025-01-08 21:26:43,853 - werkzeug - INFO - 127.0.0.1 - - [08/Jan/2025 21:26:43] "GET /socket.io/?EIO=4&transport=polling&t=PH669Lz&sid=bd4NPynnCYIXSnc3AAAA HTTP/1.1" 200 -
+2025-01-08 21:26:48,169 - werkzeug - INFO - 127.0.0.1 - - [08/Jan/2025 21:26:48] "GET /socket.io/?EIO=4&transport=websocket&sid=bd4NPynnCYIXSnc3AAAA HTTP/1.1" 200 -
+2025-01-08 21:26:48,194 - werkzeug - INFO - 127.0.0.1 - - [08/Jan/2025 21:26:48] "GET / HTTP/1.1" 200 -
+2025-01-08 21:26:48,753 - werkzeug - INFO - 127.0.0.1 - - [08/Jan/2025 21:26:48] "GET /socket.io/?EIO=4&transport=polling&t=PH66AYi HTTP/1.1" 200 -
+2025-01-08 21:26:48,779 - werkzeug - INFO - 127.0.0.1 - - [08/Jan/2025 21:26:48] "POST /socket.io/?EIO=4&transport=polling&t=PH66AYz&sid=-FM6miyv9YMzw7opAAAC HTTP/1.1" 200 -
+2025-01-08 21:26:48,786 - werkzeug - INFO - 127.0.0.1 - - [08/Jan/2025 21:26:48] "GET /socket.io/?EIO=4&transport=polling&t=PH66AZ0&sid=-FM6miyv9YMzw7opAAAC HTTP/1.1" 200 -
+2025-01-08 21:26:48,799 - werkzeug - INFO - 127.0.0.1 - - [08/Jan/2025 21:26:48] "GET /socket.io/?EIO=4&transport=polling&t=PH66AZN&sid=-FM6miyv9YMzw7opAAAC HTTP/1.1" 200 -
+2025-01-08 21:26:49,133 - werkzeug - INFO - 127.0.0.1 - - [08/Jan/2025 21:26:49] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-01-08 21:27:23,854 - werkzeug - INFO - 127.0.0.1 - - [08/Jan/2025 21:27:23] "GET /socket.io/?EIO=4&transport=websocket&sid=-FM6miyv9YMzw7opAAAC HTTP/1.1" 200 -
+2025-01-08 21:27:23,867 - werkzeug - INFO - 127.0.0.1 - - [08/Jan/2025 21:27:23] "GET /audio-cutter HTTP/1.1" 200 -

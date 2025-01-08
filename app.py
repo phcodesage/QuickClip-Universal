@@ -13,6 +13,8 @@ import logging
 from flask_socketio import SocketIO, emit
 import re
 from pytube import YouTube
+from pydub import AudioSegment
+import tempfile
 
 app = Flask(__name__, static_folder='static', template_folder='templates')
 CORS(app)
@@ -273,6 +275,86 @@ def extract_video_id(url):
             return parsed_url.path.split('/')[-1]
         return parse_qs(parsed_url.query)['v'][0]
     return url
+
+@app.route('/audio-cutter')
+def audio_cutter():
+    return render_template('audio_cutter.html')
+
+@app.route('/upload-audio', methods=['POST'])
+def upload_audio():
+    try:
+        if 'file' in request.files:
+            file = request.files['file']
+            temp_dir = tempfile.mkdtemp()
+            temp_path = os.path.join(temp_dir, secure_filename(file.filename))
+            file.save(temp_path)
+        else:
+            url = request.form.get('url')
+            if not url:
+                return jsonify({'error': 'No file or URL provided'}), 400
+                
+            temp_dir = tempfile.mkdtemp()
+            temp_path = os.path.join(temp_dir, 'temp_audio.mp3')
+            
+            cmd = [
+                'yt-dlp',
+                '-x',
+                '--audio-format', 'mp3',
+                '-o', temp_path,
+                url
+            ]
+            
+            process = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+            stdout, stderr = process.communicate()
+            
+            if process.returncode != 0:
+                raise Exception(f"Download failed: {stderr}")
+
+        # Convert to mp3 if needed and get duration
+        audio = AudioSegment.from_file(temp_path)
+        duration = len(audio) / 1000  # Convert to seconds
+        
+        return jsonify({
+            'temp_path': temp_path,
+            'duration': duration,
+            'filename': os.path.basename(temp_path)
+        })
+        
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+@app.route('/cut-audio', methods=['POST'])
+def cut_audio():
+    try:
+        data = request.get_json()
+        temp_path = data['temp_path']
+        start_time = float(data['start_time'])
+        end_time = float(data['end_time'])
+        
+        # Load audio and cut
+        audio = AudioSegment.from_file(temp_path)
+        cut_audio = audio[start_time*1000:end_time*1000]
+        
+        # Save to new temp file
+        output_path = os.path.join(DOWNLOAD_FOLDER, 'cut_audio.mp3')
+        cut_audio.export(output_path, format='mp3')
+        
+        response = send_from_directory(DOWNLOAD_FOLDER, 'cut_audio.mp3', as_attachment=True)
+        
+        @response.call_on_close
+        def cleanup():
+            try:
+                if os.path.exists(output_path):
+                    os.remove(output_path)
+                if os.path.exists(temp_path):
+                    os.remove(temp_path)
+            except Exception as e:
+                print(f"Cleanup error: {e}")
+        
+        return response
+        
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
 
 if __name__ == '__main__':
     socketio.run(app, debug=True, port=5000)

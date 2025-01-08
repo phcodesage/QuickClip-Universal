@@ -298,6 +298,80 @@
             color: var(--accent-color);
             font-weight: 600;
         }
+
+        .download-actions {
+            margin-bottom: 20px;
+        }
+
+        .btn-secondary {
+            background-color: var(--primary-dark);
+            border: 2px solid var(--accent-color);
+            color: var(--accent-color);
+            padding: 12px 24px;
+            font-weight: 600;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--accent-color);
+            color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(0, 255, 157, 0.2);
+        }
+
+        .legal-banner {
+            background-color: rgba(0, 0, 0, 0.9);
+            color: var(--text-primary);
+            padding: 15px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            z-index: 1000;
+            display: none;
+        }
+
+        .legal-banner .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .legal-banner a {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+
+        .legal-banner a:hover {
+            text-decoration: underline;
+        }
+
+        .modal-content {
+            background-color: var(--secondary-dark);
+            color: var(--text-primary);
+        }
+
+        .modal-header {
+            border-bottom-color: #404040;
+        }
+
+        .modal-header .btn-close {
+            filter: invert(1) grayscale(100%) brightness(200%);
+        }
+
+        .modal-body h6 {
+            color: var(--accent-color);
+            margin-top: 1.5rem;
+        }
+
+        .modal-body ul {
+            padding-left: 1.2rem;
+        }
+
+        .modal-body li {
+            margin-bottom: 0.5rem;
+        }
     </style>
 </head>
 <body class="bg-light">
@@ -328,6 +402,16 @@
             </div>
         </div>
     </section>
+
+    <div class="legal-banner" id="cookieBanner">
+        <div class="container">
+            <p>We use cookies to improve your experience. By using QuickClip Universal, you agree to our 
+                <a href="#" data-bs-toggle="modal" data-bs-target="#privacyModal">Privacy Policy</a> and 
+                <a href="#" data-bs-toggle="modal" data-bs-target="#termsModal">Terms of Service</a>.
+            </p>
+            <button class="btn btn-sm btn-outline-light" onclick="acceptCookies()">Accept</button>
+        </div>
+    </div>
 
     <!-- Download Options Section -->
     <section class="download-section">
@@ -360,9 +444,15 @@
                             <div class="progress-detail mt-2 text-secondary small"></div>
                         </div>
 
-                        <button type="button" class="btn btn-primary w-100" id="downloadBtn" onclick="startDownload()" disabled>
-                            <i class="fas fa-download me-2"></i>Download
-                        </button>
+                        <div class="download-actions">
+                            <button type="button" class="btn btn-primary w-100 mb-3" id="downloadBtn" onclick="startDownload()" disabled>
+                                <i class="fas fa-download me-2"></i>Download
+                            </button>
+                            
+                            <button type="button" class="btn btn-secondary w-100" id="downloadAnotherBtn" style="display: none;" onclick="resetDownloadState()">
+                                <i class="fas fa-plus me-2"></i>Download Another
+                            </button>
+                        </div>
                         
                         <div class="status-container">
                             <div class="error-message" id="errorMessage"></div>
@@ -414,6 +504,70 @@
             <p>&copy; 2024 QuickClip Universal. All rights reserved.</p>
         </div>
     </footer>
+
+    <!-- Privacy Policy Modal -->
+    <div class="modal fade" id="privacyModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Privacy Policy</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h6>1. Information We Collect</h6>
+                    <p>QuickClip Universal collects minimal information necessary for service operation:</p>
+                    <ul>
+                        <li>YouTube URLs you input for downloading</li>
+                        <li>Technical information required for downloads</li>
+                        <li>Basic usage statistics</li>
+                    </ul>
+
+                    <h6>2. How We Use Your Information</h6>
+                    <p>We use collected information solely for:</p>
+                    <ul>
+                        <li>Processing your download requests</li>
+                        <li>Improving our service</li>
+                        <li>Maintaining service security</li>
+                    </ul>
+
+                    <h6>3. Data Storage</h6>
+                    <p>Downloaded files are temporarily stored and automatically deleted after download completion.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Terms of Service Modal -->
+    <div class="modal fade" id="termsModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Terms of Service</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h6>1. Acceptable Use</h6>
+                    <p>By using QuickClip Universal, you agree to:</p>
+                    <ul>
+                        <li>Download content only for personal, non-commercial use</li>
+                        <li>Respect copyright and intellectual property rights</li>
+                        <li>Not use the service for illegal purposes</li>
+                    </ul>
+
+                    <h6>2. User Responsibilities</h6>
+                    <p>Users are responsible for:</p>
+                    <ul>
+                        <li>Ensuring they have the right to download content</li>
+                        <li>Using downloaded content in accordance with applicable laws</li>
+                        <li>Not misusing or attempting to abuse the service</li>
+                    </ul>
+
+                    <h6>3. Disclaimer</h6>
+                    <p>QuickClip Universal is provided "as is" without warranties of any kind.</p>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
@@ -577,10 +731,12 @@
             downloadCompleted = false;
             const progressContainer = document.querySelector('.download-progress-container');
             const downloadBtn = document.getElementById('downloadBtn');
+            const downloadAnotherBtn = document.getElementById('downloadAnotherBtn');
             const progressStatus = document.querySelector('.progress-status');
             
             progressContainer.style.display = 'block';
             downloadBtn.disabled = true;
+            downloadAnotherBtn.style.display = 'none';
             
             const url = document.getElementById('url').value;
             const format = document.getElementById('format').value;
@@ -611,6 +767,9 @@
                 progressStatus.textContent = 'Download Complete!';
                 progressStatus.classList.add('download-complete');
                 updateStatus('Download complete!', 'success');
+                
+                // Show the Download Another button
+                downloadAnotherBtn.style.display = 'block';
                 
                 const blobUrl = window.URL.createObjectURL(blob);
                 const a = document.createElement('a');
@@ -654,19 +813,54 @@
         });
 
         document.getElementById('clearUrl').addEventListener('click', function() {
-            const urlInput = document.getElementById('url');
-            urlInput.value = '';
-            this.style.display = 'none';
-            document.getElementById('downloadOptions').classList.remove('show');
-            document.querySelector('.format-container').classList.remove('show');
-            document.getElementById('downloadBtn').disabled = true;
-            document.querySelector('.download-progress-container').style.display = 'none';
+            resetDownloadState();
         });
 
         function isValidYouTubeUrl(url) {
             const youtubeRegex = /^(https?:\/\/)?(www\.)?(youtube\.com|youtu\.be)\/.+/;
             return youtubeRegex.test(url);
         }
+
+        function resetDownloadState() {
+            // Reset form and UI elements
+            document.getElementById('url').value = '';
+            document.getElementById('downloadBtn').disabled = true;
+            document.getElementById('downloadAnotherBtn').style.display = 'none';
+            document.querySelector('.download-progress-container').style.display = 'none';
+            document.querySelector('.video-preview-container').style.display = 'none';
+            document.getElementById('downloadOptions').classList.remove('show');
+            document.querySelector('.format-container').classList.remove('show');
+            document.querySelector('.clear-input').style.display = 'none';
+            
+            // Reset progress and status
+            const progressStatus = document.querySelector('.progress-status');
+            const progressBar = document.querySelector('.progress-bar');
+            progressStatus.textContent = 'Processing...';
+            progressStatus.classList.remove('download-complete');
+            progressBar.style.width = '0%';
+            progressBar.setAttribute('aria-valuenow', 0);
+            
+            // Reset download completion flag
+            downloadCompleted = false;
+            
+            // Focus on URL input
+            document.getElementById('url').focus();
+        }
+
+        // Cookie consent handling
+        function checkCookieConsent() {
+            if (!localStorage.getItem('cookieConsent')) {
+                document.getElementById('cookieBanner').style.display = 'block';
+            }
+        }
+
+        function acceptCookies() {
+            localStorage.setItem('cookieConsent', 'accepted');
+            document.getElementById('cookieBanner').style.display = 'none';
+        }
+
+        // Check cookie consent on page load
+        document.addEventListener('DOMContentLoaded', checkCookieConsent);
     </script>
 </body>
 </html>
