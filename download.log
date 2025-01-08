@@ -4351,3 +4351,243 @@
 2025-01-05 23:59:08,175 - werkzeug - INFO - 127.0.0.1 - - [05/Jan/2025 23:59:08] "POST /socket.io/?EIO=4&transport=polling&t=PGtCGc6&sid=-y0i2RlsyIVxtq8wAAAC HTTP/1.1" 200 -
 2025-01-05 23:59:08,180 - werkzeug - INFO - 127.0.0.1 - - [05/Jan/2025 23:59:08] "GET /socket.io/?EIO=4&transport=polling&t=PGtCGc8&sid=-y0i2RlsyIVxtq8wAAAC HTTP/1.1" 200 -
 2025-01-05 23:59:08,346 - werkzeug - INFO - 127.0.0.1 - - [05/Jan/2025 23:59:08] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-01-06 00:09:29,071 - werkzeug - INFO - 127.0.0.1 - - [06/Jan/2025 00:09:29] "GET /socket.io/?EIO=4&transport=websocket&sid=-y0i2RlsyIVxtq8wAAAC HTTP/1.1" 200 -
+2025-01-06 00:09:31,374 - werkzeug - INFO - 127.0.0.1 - - [06/Jan/2025 00:09:31] "GET /socket.io/?EIO=4&transport=polling&t=PGtEegM HTTP/1.1" 200 -
+2025-01-06 00:09:31,438 - werkzeug - INFO - 127.0.0.1 - - [06/Jan/2025 00:09:31] "POST /socket.io/?EIO=4&transport=polling&t=PGtEema&sid=2cS7qulwWdBhJjr3AAAE HTTP/1.1" 200 -
+2025-01-06 00:09:31,438 - werkzeug - INFO - 127.0.0.1 - - [06/Jan/2025 00:09:31] "GET /socket.io/?EIO=4&transport=polling&t=PGtEemc&sid=2cS7qulwWdBhJjr3AAAE HTTP/1.1" 200 -
+2025-01-06 00:22:22,077 - werkzeug - INFO - 127.0.0.1 - - [06/Jan/2025 00:22:22] "GET /socket.io/?EIO=4&transport=websocket&sid=2cS7qulwWdBhJjr3AAAE HTTP/1.1" 200 -
+2025-01-06 00:22:22,703 - werkzeug - INFO - 127.0.0.1 - - [06/Jan/2025 00:22:22] "GET /socket.io/?EIO=4&transport=polling&t=PGtHb3b HTTP/1.1" 200 -
+2025-01-06 00:22:22,721 - werkzeug - INFO - 127.0.0.1 - - [06/Jan/2025 00:22:22] "POST /socket.io/?EIO=4&transport=polling&t=PGtHb3o&sid=g-YEvVyKV7sODBtmAAAG HTTP/1.1" 200 -
+2025-01-06 00:22:22,723 - werkzeug - INFO - 127.0.0.1 - - [06/Jan/2025 00:22:22] "GET /socket.io/?EIO=4&transport=polling&t=PGtHb3q&sid=g-YEvVyKV7sODBtmAAAG HTTP/1.1" 200 -
+2025-01-06 00:34:56,097 - werkzeug - INFO - 127.0.0.1 - - [06/Jan/2025 00:34:56] "GET /socket.io/?EIO=4&transport=websocket&sid=g-YEvVyKV7sODBtmAAAG HTTP/1.1" 200 -
+2025-01-08 21:15:41,724 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-01-08 21:15:41,724 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-01-08 21:15:41,725 - werkzeug - INFO -  * Restarting with stat
+2025-01-08 21:15:42,146 - werkzeug - WARNING -  * Debugger is active!
+2025-01-08 21:15:42,148 - werkzeug - INFO -  * Debugger PIN: 817-193-744
+2025-01-08 21:15:57,665 - werkzeug - INFO - 127.0.0.1 - - [08/Jan/2025 21:15:57] "GET / HTTP/1.1" 200 -
+2025-01-08 21:15:58,670 - werkzeug - INFO - 127.0.0.1 - - [08/Jan/2025 21:15:58] "GET /socket.io/?EIO=4&transport=polling&t=PH63hr3 HTTP/1.1" 200 -
+2025-01-08 21:15:58,692 - werkzeug - INFO - 127.0.0.1 - - [08/Jan/2025 21:15:58] "POST /socket.io/?EIO=4&transport=polling&t=PH63hrL&sid=gTi1tq2Zap6m0-O3AAAA HTTP/1.1" 200 -
+2025-01-08 21:15:58,695 - werkzeug - INFO - 127.0.0.1 - - [08/Jan/2025 21:15:58] "GET /socket.io/?EIO=4&transport=polling&t=PH63hrN&sid=gTi1tq2Zap6m0-O3AAAA HTTP/1.1" 200 -
+2025-01-08 21:15:59,454 - werkzeug - INFO - 127.0.0.1 - - [08/Jan/2025 21:15:59] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-01-08 21:16:27,759 - werkzeug - INFO - 127.0.0.1 - - [08/Jan/2025 21:16:27] "POST /video-info HTTP/1.1" 200 -
+2025-01-08 21:16:37,017 - __main__ - INFO - Starting download request for URL: https://www.youtube.com/watch?v=V9PVRfjEBTI&list=RDV9PVRfjEBTI&start_radio=1 in format: mp4
+2025-01-08 21:16:37,017 - __main__ - INFO - Generated output path: /home/rech/proj/flask-proj/QuickClip-Universal/downloads/Billie Eilish  BIRDS OF A FEATHER Official Music Video_20250108211637.mp4
+2025-01-08 21:16:37,018 - __main__ - INFO - Configuring video download...
+2025-01-08 21:16:37,018 - __main__ - DEBUG - Executing command: yt-dlp -f bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best --merge-output-format mp4 -o /home/rech/proj/flask-proj/QuickClip-Universal/downloads/Billie Eilish  BIRDS OF A FEATHER Official Music Video_20250108211637.mp4 --no-playlist --progress --newline https://www.youtube.com/watch?v=V9PVRfjEBTI&list=RDV9PVRfjEBTI&start_radio=1
+2025-01-08 21:16:37,498 - __main__ - INFO - [youtube:tab] Extracting URL: https://www.youtube.com/watch?v=V9PVRfjEBTI&list=RDV9PVRfjEBTI&start_radio=1
+2025-01-08 21:16:37,498 - __main__ - INFO - [youtube:tab] Downloading just the video V9PVRfjEBTI because of --no-playlist
+2025-01-08 21:16:37,514 - __main__ - INFO - [youtube] Extracting URL: https://www.youtube.com/watch?v=V9PVRfjEBTI
+2025-01-08 21:16:37,515 - __main__ - INFO - [youtube] V9PVRfjEBTI: Downloading webpage
+2025-01-08 21:16:38,766 - __main__ - INFO - [youtube] V9PVRfjEBTI: Downloading ios player API JSON
+2025-01-08 21:16:38,982 - __main__ - INFO - [youtube] V9PVRfjEBTI: Downloading android player API JSON
+2025-01-08 21:16:39,211 - __main__ - INFO - [youtube] V9PVRfjEBTI: Downloading m3u8 information
+2025-01-08 21:16:39,798 - __main__ - INFO - [info] V9PVRfjEBTI: Downloading 1 format(s): 625+140
+2025-01-08 21:16:39,930 - __main__ - INFO - [hlsnative] Downloading m3u8 manifest
+2025-01-08 21:16:40,340 - __main__ - INFO - [hlsnative] Total fragments: 44
+2025-01-08 21:16:40,340 - __main__ - INFO - [download] Destination: /home/rech/proj/flask-proj/QuickClip-Universal/downloads/Billie Eilish  BIRDS OF A FEATHER Official Music Video_20250108211637.f625.mp4
+2025-01-08 21:16:40,791 - __main__ - INFO - [download] 100.0% of ~   712.00B at    474.47B/s ETA Unknown (frag 0/44)
+2025-01-08 21:16:40,793 - __main__ - INFO - [download]   1.1% of ~  61.19KiB at    474.47B/s ETA Unknown (frag 1/44)
+2025-01-08 21:16:40,866 - __main__ - INFO - [download]  11.1% of ~  15.30KiB at    1.29KiB/s ETA Unknown (frag 1/44)
+2025-01-08 21:16:40,867 - __main__ - INFO - [download]   9.9% of ~  37.30KiB at    1.29KiB/s ETA Unknown (frag 1/44)
+2025-01-08 21:16:40,899 - __main__ - INFO - [download]   9.5% of ~  81.30KiB at    1.29KiB/s ETA Unknown (frag 1/44)
+2025-01-08 21:16:40,900 - __main__ - INFO - [download]   9.3% of ~ 169.30KiB at    1.29KiB/s ETA Unknown (frag 1/44)
+2025-01-08 21:16:40,913 - __main__ - INFO - [download]   9.2% of ~ 345.30KiB at    1.29KiB/s ETA Unknown (frag 1/44)
+2025-01-08 21:16:40,948 - __main__ - INFO - [download]   9.1% of ~ 697.30KiB at   32.39KiB/s ETA Unknown (frag 1/44)
+2025-01-08 21:16:41,001 - __main__ - INFO - [download]   9.1% of ~   1.37MiB at   80.70KiB/s ETA Unknown (frag 1/44)
+2025-01-08 21:16:41,069 - __main__ - INFO - [download]   9.1% of ~   2.74MiB at  161.83KiB/s ETA Unknown (frag 1/44)
+2025-01-08 21:16:41,195 - __main__ - INFO - [download]   9.1% of ~   5.49MiB at  292.97KiB/s ETA Unknown (frag 1/44)
+2025-01-08 21:16:41,409 - __main__ - INFO - [download]   9.1% of ~  10.99MiB at  492.55KiB/s ETA 00:10 (frag 1/44)
+2025-01-08 21:16:41,905 - __main__ - INFO - [download]   9.1% of ~  21.99MiB at  737.56KiB/s ETA 00:11 (frag 1/44)
+2025-01-08 21:16:42,977 - __main__ - INFO - [download]   9.1% of ~  43.99MiB at  982.50KiB/s ETA 00:12 (frag 1/44)
+2025-01-08 21:16:44,170 - __main__ - INFO - [download]   6.7% of ~  87.99MiB at    1.21MiB/s ETA 00:15 (frag 1/44)
+2025-01-08 21:16:44,847 - __main__ - INFO - [download]   5.8% of ~ 129.04MiB at    1.40MiB/s ETA 00:20 (frag 1/44)
+2025-01-08 21:16:44,980 - __main__ - INFO - [download]   4.7% of ~ 163.43MiB at    1.54MiB/s ETA 00:27 (frag 1/44)
+2025-01-08 21:16:44,982 - __main__ - INFO - [download]   2.3% of ~ 340.52MiB at    1.54MiB/s ETA 00:27 (frag 2/44)
+2025-01-08 21:16:46,064 - __main__ - INFO - [download]   6.8% of ~ 113.51MiB at    1.38MiB/s ETA 00:35 (frag 2/44)
+2025-01-08 21:16:46,070 - __main__ - INFO - [download]   6.8% of ~ 113.53MiB at    1.38MiB/s ETA 00:35 (frag 2/44)
+2025-01-08 21:16:46,071 - __main__ - INFO - [download]   6.8% of ~ 113.56MiB at    1.38MiB/s ETA 00:35 (frag 2/44)
+2025-01-08 21:16:46,073 - __main__ - INFO - [download]   6.8% of ~ 113.61MiB at    1.38MiB/s ETA 00:35 (frag 2/44)
+2025-01-08 21:16:46,074 - __main__ - INFO - [download]   6.8% of ~ 113.73MiB at    1.38MiB/s ETA 00:35 (frag 2/44)
+2025-01-08 21:16:46,085 - __main__ - INFO - [download]   6.8% of ~ 113.96MiB at    1.38MiB/s ETA 00:35 (frag 2/44)
+2025-01-08 21:16:46,109 - __main__ - INFO - [download]   6.9% of ~ 114.42MiB at    1.38MiB/s ETA 00:35 (frag 2/44)
+2025-01-08 21:16:46,159 - __main__ - INFO - [download]   6.9% of ~ 115.33MiB at    1.28MiB/s ETA 00:41 (frag 2/44)
+2025-01-08 21:16:46,230 - __main__ - INFO - [download]   7.0% of ~ 117.17MiB at    1.24MiB/s ETA 00:46 (frag 2/44)
+2025-01-08 21:16:46,400 - __main__ - INFO - [download]   7.2% of ~ 120.83MiB at    1.26MiB/s ETA 00:50 (frag 2/44)
+2025-01-08 21:16:46,759 - __main__ - INFO - [download]   7.6% of ~ 128.17MiB at    1.33MiB/s ETA 00:53 (frag 2/44)
+2025-01-08 21:16:47,644 - __main__ - INFO - [download]   8.2% of ~ 142.83MiB at    1.39MiB/s ETA 00:56 (frag 2/44)
+2025-01-08 21:16:48,551 - __main__ - INFO - [download]   8.1% of ~ 172.17MiB at    1.73MiB/s ETA 00:57 (frag 2/44)
+2025-01-08 21:16:49,946 - __main__ - INFO - [download]   8.0% of ~ 205.32MiB at    1.83MiB/s ETA 01:00 (frag 2/44)
+2025-01-08 21:16:50,456 - __main__ - INFO - [download]   7.1% of ~ 241.86MiB at    1.87MiB/s ETA 01:06 (frag 2/44)
+2025-01-08 21:16:50,458 - __main__ - INFO - [download]   4.4% of ~ 392.07MiB at    1.87MiB/s ETA 01:06 (frag 3/44)
+2025-01-08 21:16:51,258 - __main__ - INFO - [download]   9.1% of ~ 189.59MiB at    1.67MiB/s ETA 01:14 (frag 3/44)
+2025-01-08 21:16:51,260 - __main__ - INFO - [download]   9.1% of ~ 189.60MiB at    1.67MiB/s ETA 01:14 (frag 3/44)
+2025-01-08 21:16:51,261 - __main__ - INFO - [download]   9.1% of ~ 189.63MiB at    1.67MiB/s ETA 01:14 (frag 3/44)
+2025-01-08 21:16:51,262 - __main__ - INFO - [download]   9.1% of ~ 189.67MiB at    1.67MiB/s ETA 01:14 (frag 3/44)
+2025-01-08 21:16:51,263 - __main__ - INFO - [download]   9.1% of ~ 189.75MiB at    1.67MiB/s ETA 01:14 (frag 3/44)
+2025-01-08 21:16:51,267 - __main__ - INFO - [download]   9.1% of ~ 189.93MiB at    1.67MiB/s ETA 01:14 (frag 3/44)
+2025-01-08 21:16:51,304 - __main__ - INFO - [download]   9.1% of ~ 190.27MiB at    1.67MiB/s ETA 01:14 (frag 3/44)
+2025-01-08 21:16:51,339 - __main__ - INFO - [download]   9.2% of ~ 190.96MiB at    1.54MiB/s ETA 01:20 (frag 3/44)
+2025-01-08 21:16:51,447 - __main__ - INFO - [download]   9.2% of ~ 192.33MiB at    1.47MiB/s ETA 01:26 (frag 3/44)
+2025-01-08 21:16:51,685 - __main__ - INFO - [download]   9.3% of ~ 195.08MiB at    1.33MiB/s ETA 01:35 (frag 3/44)
+2025-01-08 21:16:52,123 - __main__ - INFO - [download]   9.6% of ~ 200.58MiB at    1.31MiB/s ETA 01:39 (frag 3/44)
+2025-01-08 21:16:52,801 - __main__ - INFO - [download]  10.0% of ~ 211.58MiB at    1.41MiB/s ETA 01:41 (frag 3/44)
+2025-01-08 21:16:54,389 - __main__ - INFO - [download]  10.4% of ~ 233.58MiB at    1.65MiB/s ETA 01:40 (frag 3/44)
+2025-01-08 21:16:55,195 - __main__ - INFO - [download]   9.5% of ~ 266.06MiB at    1.67MiB/s ETA 01:44 (frag 3/44)
+2025-01-08 21:16:55,198 - __main__ - INFO - [download]   6.9% of ~ 368.68MiB at    1.67MiB/s ETA 01:44 (frag 4/44)
+2025-01-08 21:16:56,986 - __main__ - INFO - [download]  11.4% of ~ 223.31MiB at    1.31MiB/s ETA 02:17 (frag 4/44)
+2025-01-08 21:16:56,987 - __main__ - INFO - [download]  11.4% of ~ 223.32MiB at    1.31MiB/s ETA 02:17 (frag 4/44)
+2025-01-08 21:16:56,988 - __main__ - INFO - [download]  11.4% of ~ 223.33MiB at    1.31MiB/s ETA 02:17 (frag 4/44)
+2025-01-08 21:16:56,989 - __main__ - INFO - [download]  11.4% of ~ 223.37MiB at    1.31MiB/s ETA 02:17 (frag 4/44)
+2025-01-08 21:16:57,009 - __main__ - INFO - [download]  11.4% of ~ 223.44MiB at    1.31MiB/s ETA 02:17 (frag 4/44)
+2025-01-08 21:16:57,054 - __main__ - INFO - [download]  11.4% of ~ 223.57MiB at    1.06MiB/s ETA 02:45 (frag 4/44)
+2025-01-08 21:16:57,101 - __main__ - INFO - [download]  11.4% of ~ 223.85MiB at    1.06MiB/s ETA 02:45 (frag 4/44)
+2025-01-08 21:16:57,259 - __main__ - INFO - [download]  11.4% of ~ 224.40MiB at  911.06KiB/s ETA 03:08 (frag 4/44)
+2025-01-08 21:16:57,464 - __main__ - INFO - [download]  11.5% of ~ 225.50MiB at  705.32KiB/s ETA 04:20 (frag 4/44)
+2025-01-08 21:16:58,123 - __main__ - INFO - [download]  11.6% of ~ 227.70MiB at  598.54KiB/s ETA 04:53 (frag 4/44)
+2025-01-08 21:16:58,916 - __main__ - INFO - [download]  11.7% of ~ 232.10MiB at  698.44KiB/s ETA 04:46 (frag 4/44)
+2025-01-08 21:16:59,957 - __main__ - INFO - [download]  11.8% of ~ 238.77MiB at  769.42KiB/s ETA 04:41 (frag 4/44)
+2025-01-08 21:17:00,924 - __main__ - INFO - [download]  11.7% of ~ 247.19MiB at  827.56KiB/s ETA 04:36 (frag 4/44)
+2025-01-08 21:17:02,019 - __main__ - INFO - [download]  11.7% of ~ 255.28MiB at  857.86KiB/s ETA 04:33 (frag 4/44)
+2025-01-08 21:17:02,760 - __main__ - INFO - [download]  11.7% of ~ 263.65MiB at  900.50KiB/s ETA 04:30 (frag 4/44)
+2025-01-08 21:17:04,273 - __main__ - INFO - [download]  11.8% of ~ 271.29MiB at  908.20KiB/s ETA 04:29 (frag 4/44)
+2025-01-08 21:17:05,328 - __main__ - INFO - [download]  11.6% of ~ 281.59MiB at  868.41KiB/s ETA 04:35 (frag 4/44)
+2025-01-08 21:17:05,867 - __main__ - INFO - [download]  11.6% of ~ 288.40MiB at  898.49KiB/s ETA 04:34 (frag 4/44)
+2025-01-08 21:17:06,825 - __main__ - INFO - [download]  11.8% of ~ 294.85MiB at  974.09KiB/s ETA 04:30 (frag 4/44)
+2025-01-08 21:17:07,607 - __main__ - INFO - [download]  11.8% of ~ 306.82MiB at    1.13MiB/s ETA 04:20 (frag 4/44)
+2025-01-08 21:17:08,905 - __main__ - INFO - [download]  11.9% of ~ 319.31MiB at    1.26MiB/s ETA 04:12 (frag 4/44)
+2025-01-08 21:17:09,844 - __main__ - INFO - [download]  11.8% of ~ 335.29MiB at    1.31MiB/s ETA 04:08 (frag 4/44)
+2025-01-08 21:17:09,882 - __main__ - INFO - [download]  11.4% of ~ 347.60MiB at    1.31MiB/s ETA 04:08 (frag 4/44)
+2025-01-08 21:17:09,887 - __main__ - INFO - [download]   8.4% of ~ 473.26MiB at    1.31MiB/s ETA 04:08 (frag 5/44)
+2025-01-08 21:17:10,723 - __main__ - INFO - [download]  13.6% of ~ 290.24MiB at    1.16MiB/s ETA 04:14 (frag 5/44)
+2025-01-08 21:17:10,730 - __main__ - INFO - [download]  13.6% of ~ 290.24MiB at    1.16MiB/s ETA 04:14 (frag 5/44)
+2025-01-08 21:17:10,731 - __main__ - INFO - [download]  13.6% of ~ 290.26MiB at    1.16MiB/s ETA 04:14 (frag 5/44)
+2025-01-08 21:17:10,732 - __main__ - INFO - [download]  13.6% of ~ 290.29MiB at    1.16MiB/s ETA 04:14 (frag 5/44)
+2025-01-08 21:17:10,736 - __main__ - INFO - [download]  13.6% of ~ 290.35MiB at    1.16MiB/s ETA 04:14 (frag 5/44)
+2025-01-08 21:17:10,774 - __main__ - INFO - [download]  13.6% of ~ 290.46MiB at    1.06MiB/s ETA 04:19 (frag 5/44)
+2025-01-08 21:17:10,818 - __main__ - INFO - [download]  13.7% of ~ 290.69MiB at    1.06MiB/s ETA 04:19 (frag 5/44)
+2025-01-08 21:17:10,925 - __main__ - INFO - [download]  13.7% of ~ 291.15MiB at 1022.02KiB/s ETA 04:22 (frag 5/44)
+2025-01-08 21:17:11,184 - __main__ - INFO - [download]  13.7% of ~ 292.06MiB at  981.68KiB/s ETA 04:25 (frag 5/44)
+2025-01-08 21:17:11,701 - __main__ - INFO - [download]  13.8% of ~ 293.90MiB at  959.16KiB/s ETA 04:27 (frag 5/44)
+2025-01-08 21:17:12,344 - __main__ - INFO - [download]  14.0% of ~ 297.56MiB at  922.63KiB/s ETA 04:32 (frag 5/44)
+2025-01-08 21:17:13,243 - __main__ - INFO - [download]  14.1% of ~ 304.66MiB at    1.04MiB/s ETA 04:23 (frag 5/44)
+2025-01-08 21:17:14,412 - __main__ - INFO - [download]  14.2% of ~ 315.70MiB at    1.19MiB/s ETA 04:15 (frag 5/44)
+2025-01-08 21:17:15,594 - __main__ - INFO - [download]  14.1% of ~ 327.97MiB at    1.23MiB/s ETA 04:11 (frag 5/44)
+2025-01-08 21:17:16,346 - __main__ - INFO - [download]  14.0% of ~ 338.46MiB at    1.27MiB/s ETA 04:07 (frag 5/44)
+2025-01-08 21:17:17,373 - __main__ - INFO - [download]  14.1% of ~ 347.35MiB at    1.32MiB/s ETA 04:03 (frag 5/44)
+2025-01-08 21:17:17,608 - __main__ - INFO - [download]  13.8% of ~ 359.17MiB at    1.41MiB/s ETA 03:58 (frag 5/44)
+2025-01-08 21:17:17,611 - __main__ - INFO - [download]  11.4% of ~ 434.29MiB at    1.41MiB/s ETA 03:58 (frag 6/44)
+2025-01-08 21:17:18,980 - __main__ - INFO - [download]  15.9% of ~ 310.51MiB at    1.22MiB/s ETA 04:08 (frag 6/44)
+2025-01-08 21:17:18,996 - __main__ - INFO - [download]  15.9% of ~ 310.52MiB at    1.22MiB/s ETA 04:08 (frag 6/44)
+2025-01-08 21:17:18,997 - __main__ - INFO - [download]  15.9% of ~ 310.53MiB at    1.22MiB/s ETA 04:08 (frag 6/44)
+2025-01-08 21:17:18,999 - __main__ - INFO - [download]  15.9% of ~ 310.56MiB at    1.22MiB/s ETA 04:08 (frag 6/44)
+2025-01-08 21:17:19,019 - __main__ - INFO - [download]  15.9% of ~ 310.61MiB at    1.22MiB/s ETA 04:08 (frag 6/44)
+2025-01-08 21:17:19,059 - __main__ - INFO - [download]  15.9% of ~ 310.70MiB at    1.08MiB/s ETA 04:17 (frag 6/44)
+2025-01-08 21:17:19,068 - __main__ - INFO - [download]  15.9% of ~ 310.90MiB at    1.08MiB/s ETA 04:17 (frag 6/44)
+2025-01-08 21:17:19,140 - __main__ - INFO - [download]  15.9% of ~ 311.29MiB at    1.00MiB/s ETA 04:23 (frag 6/44)
+2025-01-08 21:17:19,464 - __main__ - INFO - [download]  16.0% of ~ 312.08MiB at  854.91KiB/s ETA 04:56 (frag 6/44)
+2025-01-08 21:17:19,882 - __main__ - INFO - [download]  16.1% of ~ 313.65MiB at  772.50KiB/s ETA 05:13 (frag 6/44)
+2025-01-08 21:17:20,453 - __main__ - INFO - [download]  16.2% of ~ 316.79MiB at  756.60KiB/s ETA 05:19 (frag 6/44)
+2025-01-08 21:17:21,623 - __main__ - INFO - [download]  16.5% of ~ 323.08MiB at  965.46KiB/s ETA 05:06 (frag 6/44)
+2025-01-08 21:17:22,811 - __main__ - INFO - [download]  16.4% of ~ 334.09MiB at    1.10MiB/s ETA 04:55 (frag 6/44)
+2025-01-08 21:17:25,363 - __main__ - INFO - [download]  16.3% of ~ 343.50MiB at  936.64KiB/s ETA 05:24 (frag 6/44)
+2025-01-08 21:17:25,891 - __main__ - INFO - [download]  16.1% of ~ 351.42MiB at 1022.12KiB/s ETA 05:16 (frag 6/44)
+2025-01-08 21:17:25,964 - __main__ - INFO - [download]  15.9% of ~ 355.38MiB at    1.04MiB/s ETA 05:10 (frag 6/44)
+2025-01-08 21:17:25,968 - __main__ - INFO - [download]  14.1% of ~ 401.02MiB at    1.04MiB/s ETA 05:10 (frag 7/44)
+2025-01-08 21:17:27,790 - __main__ - INFO - [download]  18.2% of ~ 311.30MiB at  836.16KiB/s ETA 06:08 (frag 7/44)
+2025-01-08 21:17:27,791 - __main__ - INFO - [download]  18.2% of ~ 311.30MiB at  836.16KiB/s ETA 06:08 (frag 7/44)
+2025-01-08 21:17:27,792 - __main__ - INFO - [download]  18.2% of ~ 311.31MiB at  836.16KiB/s ETA 06:08 (frag 7/44)
+2025-01-08 21:17:27,793 - __main__ - INFO - [download]  18.2% of ~ 311.34MiB at  836.16KiB/s ETA 06:08 (frag 7/44)
+2025-01-08 21:17:27,801 - __main__ - INFO - [download]  18.2% of ~ 311.38MiB at  836.16KiB/s ETA 06:08 (frag 7/44)
+2025-01-08 21:17:27,833 - __main__ - INFO - [download]  18.2% of ~ 311.46MiB at  836.16KiB/s ETA 06:08 (frag 7/44)
+2025-01-08 21:17:27,883 - __main__ - INFO - [download]  18.2% of ~ 311.64MiB at  684.80KiB/s ETA 06:50 (frag 7/44)
+2025-01-08 21:17:27,943 - __main__ - INFO - [download]  18.2% of ~ 311.98MiB at  591.41KiB/s ETA 07:19 (frag 7/44)
+2025-01-08 21:17:28,214 - __main__ - INFO - [download]  18.3% of ~ 312.67MiB at  542.33KiB/s ETA 07:36 (frag 7/44)
+2025-01-08 21:17:28,761 - __main__ - INFO - [download]  18.3% of ~ 314.04MiB at  493.23KiB/s ETA 08:00 (frag 7/44)
+2025-01-08 21:17:29,848 - __main__ - INFO - [download]  18.5% of ~ 316.79MiB at  630.83KiB/s ETA 07:40 (frag 7/44)
+2025-01-08 21:17:30,358 - __main__ - INFO - [download]  18.4% of ~ 321.82MiB at  771.05KiB/s ETA 07:18 (frag 7/44)
+2025-01-08 21:17:31,492 - __main__ - INFO - [download]  18.7% of ~ 326.45MiB at  922.49KiB/s ETA 06:56 (frag 7/44)
+2025-01-08 21:17:32,750 - __main__ - INFO - [download]  18.6% of ~ 335.51MiB at    1.04MiB/s ETA 06:34 (frag 7/44)
+2025-01-08 21:17:33,482 - __main__ - INFO - [download]  18.5% of ~ 343.50MiB at    1.12MiB/s ETA 06:16 (frag 7/44)
+2025-01-08 21:17:34,840 - __main__ - INFO - [download]  18.6% of ~ 349.85MiB at    1.18MiB/s ETA 06:00 (frag 7/44)
+2025-01-08 21:17:35,753 - __main__ - INFO - [download]  18.5% of ~ 358.53MiB at    1.19MiB/s ETA 05:48 (frag 7/44)
+2025-01-08 21:17:36,477 - __main__ - INFO - [download]  18.5% of ~ 364.91MiB at    1.23MiB/s ETA 05:36 (frag 7/44)
+2025-01-08 21:17:37,475 - __main__ - INFO - [download]  18.7% of ~ 371.91MiB at    1.34MiB/s ETA 05:21 (frag 7/44)
+2025-01-08 21:17:38,396 - __main__ - INFO - [download]  18.6% of ~ 381.57MiB at    1.47MiB/s ETA 05:06 (frag 7/44)
+2025-01-08 21:17:38,400 - __main__ - INFO - [download]  15.1% of ~ 470.12MiB at    1.47MiB/s ETA 05:06 (frag 8/44)
+2025-01-08 21:17:40,679 - __main__ - INFO - [download]  20.5% of ~ 347.29MiB at    1.03MiB/s ETA 18:00:58 (frag 8/44)
+2025-01-08 21:17:40,700 - __main__ - INFO - [download]  20.5% of ~ 347.30MiB at    1.03MiB/s ETA 18:00:58 (frag 8/44)
+2025-01-08 21:17:40,702 - __main__ - INFO - [download]  20.5% of ~ 347.31MiB at    1.03MiB/s ETA 18:00:58 (frag 8/44)
+2025-01-08 21:17:40,703 - __main__ - INFO - [download]  20.5% of ~ 347.33MiB at    1.03MiB/s ETA 18:00:58 (frag 8/44)
+2025-01-08 21:17:40,704 - __main__ - INFO - [download]  20.5% of ~ 347.37MiB at    1.03MiB/s ETA 18:00:58 (frag 8/44)
+2025-01-08 21:17:40,712 - __main__ - INFO - [download]  20.5% of ~ 347.44MiB at    1.03MiB/s ETA 18:00:58 (frag 8/44)
+2025-01-08 21:17:40,748 - __main__ - INFO - [download]  20.5% of ~ 347.60MiB at  753.59KiB/s ETA 16:21:36 (frag 8/44)
+2025-01-08 21:17:40,836 - __main__ - INFO - [download]  20.5% of ~ 347.90MiB at  558.87KiB/s ETA 14:47:58 (frag 8/44)
+2025-01-08 21:17:40,929 - __main__ - INFO - [download]  20.5% of ~ 348.51MiB at  451.74KiB/s ETA 13:21:30 (frag 8/44)
+2025-01-08 21:17:41,172 - __main__ - INFO - [download]  20.6% of ~ 349.73MiB at  426.79KiB/s ETA 12:02:38 (frag 8/44)
+2025-01-08 21:17:41,569 - __main__ - INFO - [download]  20.7% of ~ 352.18MiB at  988.69KiB/s ETA 10:50:35 (frag 8/44)
+2025-01-08 21:17:42,461 - __main__ - INFO - [download]  21.0% of ~ 357.07MiB at    1.35MiB/s ETA 09:45:44 (frag 8/44)
+2025-01-08 21:17:43,609 - __main__ - INFO - [download]  21.1% of ~ 366.85MiB at    1.58MiB/s ETA 08:47:23 (frag 8/44)
+2025-01-08 21:17:44,832 - __main__ - INFO - [download]  21.0% of ~ 377.81MiB at    1.64MiB/s ETA 07:54:56 (frag 8/44)
+2025-01-08 21:17:45,960 - __main__ - INFO - [download]  20.9% of ~ 387.36MiB at    1.60MiB/s ETA 07:07:46 (frag 8/44)
+2025-01-08 21:17:47,047 - __main__ - INFO - [download]  20.7% of ~ 395.16MiB at    1.48MiB/s ETA 06:25:26 (frag 8/44)
+2025-01-08 21:17:47,056 - __main__ - INFO - [download]  18.1% of ~ 453.03MiB at    1.48MiB/s ETA 06:25:26 (frag 9/44)
+2025-01-08 21:17:47,878 - __main__ - INFO - [download]  22.7% of ~ 360.15MiB at    1.19MiB/s ETA 05:47:46 (frag 9/44)
+2025-01-08 21:17:47,882 - __main__ - INFO - [download]  22.7% of ~ 360.15MiB at    1.19MiB/s ETA 05:47:46 (frag 9/44)
+2025-01-08 21:17:47,882 - __main__ - INFO - [download]  22.7% of ~ 360.16MiB at    1.19MiB/s ETA 05:47:46 (frag 9/44)
+2025-01-08 21:17:47,883 - __main__ - INFO - [download]  22.7% of ~ 360.18MiB at    1.19MiB/s ETA 05:47:46 (frag 9/44)
+2025-01-08 21:17:47,909 - __main__ - INFO - [download]  22.7% of ~ 360.21MiB at    1.19MiB/s ETA 05:47:46 (frag 9/44)
+2025-01-08 21:17:47,916 - __main__ - INFO - [download]  22.7% of ~ 360.28MiB at    1.19MiB/s ETA 05:47:46 (frag 9/44)
+2025-01-08 21:17:47,950 - __main__ - INFO - [download]  22.7% of ~ 360.42MiB at    1.01MiB/s ETA 05:13:47 (frag 9/44)
+2025-01-08 21:17:47,990 - __main__ - INFO - [download]  22.8% of ~ 360.69MiB at    1.01MiB/s ETA 05:13:47 (frag 9/44)
+2025-01-08 21:17:48,097 - __main__ - INFO - [download]  22.8% of ~ 361.24MiB at  941.17KiB/s ETA 04:43:04 (frag 9/44)
+2025-01-08 21:17:48,316 - __main__ - INFO - [download]  22.9% of ~ 362.34MiB at  922.52KiB/s ETA 04:15:18 (frag 9/44)
+2025-01-08 21:17:48,735 - __main__ - INFO - [download]  23.0% of ~ 364.54MiB at  980.35KiB/s ETA 03:50:12 (frag 9/44)
+2025-01-08 21:17:50,577 - __main__ - INFO - [download]  23.3% of ~ 368.94MiB at    1.11MiB/s ETA 03:27:30 (frag 9/44)
+2025-01-08 21:17:52,028 - __main__ - INFO - [download]  23.0% of ~ 377.74MiB at    1.00MiB/s ETA 03:07:23 (frag 9/44)
+2025-01-08 21:17:53,902 - __main__ - INFO - [download]  22.9% of ~ 382.52MiB at  842.81KiB/s ETA 02:49:53 (frag 9/44)
+2025-01-08 21:17:54,310 - __main__ - INFO - [download]  22.8% of ~ 385.81MiB at  744.46KiB/s ETA 02:33:53 (frag 9/44)
+2025-01-08 21:17:58,478 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-01-08 21:17:58,478 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-01-08 21:17:58,479 - werkzeug - INFO -  * Restarting with stat
+2025-01-08 21:17:58,898 - werkzeug - WARNING -  * Debugger is active!
+2025-01-08 21:17:58,898 - werkzeug - INFO -  * Debugger PIN: 817-193-744
+2025-01-08 21:17:59,099 - werkzeug - INFO - 127.0.0.1 - - [08/Jan/2025 21:17:59] "GET / HTTP/1.1" 200 -
+2025-01-08 21:17:59,630 - werkzeug - INFO - 127.0.0.1 - - [08/Jan/2025 21:17:59] "GET /socket.io/?EIO=4&transport=polling&t=PH649N8 HTTP/1.1" 200 -
+2025-01-08 21:17:59,656 - werkzeug - INFO - 127.0.0.1 - - [08/Jan/2025 21:17:59] "POST /socket.io/?EIO=4&transport=polling&t=PH649NM&sid=F1WxEH47oK9v6-axAAAA HTTP/1.1" 200 -
+2025-01-08 21:17:59,658 - werkzeug - INFO - 127.0.0.1 - - [08/Jan/2025 21:17:59] "GET /socket.io/?EIO=4&transport=polling&t=PH649NO&sid=F1WxEH47oK9v6-axAAAA HTTP/1.1" 200 -
+2025-01-08 21:17:59,674 - werkzeug - INFO - 127.0.0.1 - - [08/Jan/2025 21:17:59] "GET /socket.io/?EIO=4&transport=polling&t=PH649No&sid=F1WxEH47oK9v6-axAAAA HTTP/1.1" 200 -
+2025-01-08 21:18:00,008 - werkzeug - INFO - 127.0.0.1 - - [08/Jan/2025 21:18:00] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-01-08 21:18:11,040 - werkzeug - INFO - 127.0.0.1 - - [08/Jan/2025 21:18:11] "POST /video-info HTTP/1.1" 200 -
+2025-01-08 21:18:15,696 - __main__ - INFO - Starting download request for URL: https://www.youtube.com/watch?v=V9PVRfjEBTI&list=RDV9PVRfjEBTI&start_radio=1 in format: wav
+2025-01-08 21:18:15,697 - __main__ - INFO - Generated output path: /home/rech/proj/flask-proj/QuickClip-Universal/downloads/Billie Eilish  BIRDS OF A FEATHER Official Music Video_20250108211815.wav
+2025-01-08 21:18:15,697 - __main__ - INFO - Configuring audio download...
+2025-01-08 21:18:15,697 - __main__ - DEBUG - Executing command: yt-dlp -f bestaudio -x --audio-format wav -o /home/rech/proj/flask-proj/QuickClip-Universal/downloads/Billie Eilish  BIRDS OF A FEATHER Official Music Video_20250108211815_temp.%(ext)s --no-playlist --progress --newline https://www.youtube.com/watch?v=V9PVRfjEBTI&list=RDV9PVRfjEBTI&start_radio=1
+2025-01-08 21:18:16,171 - __main__ - INFO - [youtube:tab] Extracting URL: https://www.youtube.com/watch?v=V9PVRfjEBTI&list=RDV9PVRfjEBTI&start_radio=1
+2025-01-08 21:18:16,171 - __main__ - INFO - [youtube:tab] Downloading just the video V9PVRfjEBTI because of --no-playlist
+2025-01-08 21:18:16,188 - __main__ - INFO - [youtube] Extracting URL: https://www.youtube.com/watch?v=V9PVRfjEBTI
+2025-01-08 21:18:16,188 - __main__ - INFO - [youtube] V9PVRfjEBTI: Downloading webpage
+2025-01-08 21:18:17,683 - __main__ - INFO - [youtube] V9PVRfjEBTI: Downloading ios player API JSON
+2025-01-08 21:18:17,891 - __main__ - INFO - [youtube] V9PVRfjEBTI: Downloading android player API JSON
+2025-01-08 21:18:18,048 - __main__ - INFO - [youtube] V9PVRfjEBTI: Downloading m3u8 information
+2025-01-08 21:18:18,532 - __main__ - INFO - [info] V9PVRfjEBTI: Downloading 1 format(s): 140
+2025-01-08 21:18:18,914 - __main__ - INFO - [download] Destination: /home/rech/proj/flask-proj/QuickClip-Universal/downloads/Billie Eilish  BIRDS OF A FEATHER Official Music Video_20250108211815_temp.m4a
+2025-01-08 21:18:18,916 - __main__ - INFO - [download]   0.0% of    3.56MiB at   55.27KiB/s ETA 01:06
+2025-01-08 21:18:18,916 - __main__ - INFO - [download]   0.1% of    3.56MiB at  152.59KiB/s ETA 00:23
+2025-01-08 21:18:18,917 - __main__ - INFO - [download]   0.2% of    3.56MiB at  344.63KiB/s ETA 00:10
+2025-01-08 21:18:18,918 - __main__ - INFO - [download]   0.4% of    3.56MiB at  714.11KiB/s ETA 00:05
+2025-01-08 21:18:19,001 - __main__ - INFO - [download]   0.8% of    3.56MiB at  298.71KiB/s ETA 00:12
+2025-01-08 21:18:19,044 - __main__ - INFO - [download]   1.7% of    3.56MiB at  428.80KiB/s ETA 00:08
+2025-01-08 21:18:19,113 - __main__ - INFO - [download]   3.5% of    3.56MiB at  588.17KiB/s ETA 00:05
+2025-01-08 21:18:19,192 - __main__ - INFO - [download]   7.0% of    3.56MiB at  864.57KiB/s ETA 00:03
+2025-01-08 21:18:19,332 - __main__ - INFO - [download]  14.0% of    3.56MiB at    1.15MiB/s ETA 00:02
+2025-01-08 21:18:19,680 - __main__ - INFO - [download]  28.0% of    3.56MiB at    1.28MiB/s ETA 00:02
+2025-01-08 21:18:20,265 - __main__ - INFO - [download]  56.1% of    3.56MiB at    1.46MiB/s ETA 00:01
+2025-01-08 21:18:21,547 - __main__ - INFO - [download] 100.0% of    3.56MiB at    1.34MiB/s ETA 00:00
+2025-01-08 21:18:21,548 - __main__ - INFO - [download] 100% of    3.56MiB in 00:00:02 at 1.19MiB/s
+2025-01-08 21:18:21,666 - __main__ - INFO - [FixupM4a] Correcting container of "/home/rech/proj/flask-proj/QuickClip-Universal/downloads/Billie Eilish  BIRDS OF A FEATHER Official Music Video_20250108211815_temp.m4a"
+2025-01-08 21:18:21,999 - __main__ - INFO - [ExtractAudio] Destination: /home/rech/proj/flask-proj/QuickClip-Universal/downloads/Billie Eilish  BIRDS OF A FEATHER Official Music Video_20250108211815_temp.wav
+2025-01-08 21:18:22,436 - __main__ - INFO - Deleting original file /home/rech/proj/flask-proj/QuickClip-Universal/downloads/Billie Eilish  BIRDS OF A FEATHER Official Music Video_20250108211815_temp.m4a (pass -k to keep)
+2025-01-08 21:18:22,546 - werkzeug - INFO - 127.0.0.1 - - [08/Jan/2025 21:18:22] "POST /download HTTP/1.1" 200 -

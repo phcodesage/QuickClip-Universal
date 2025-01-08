@@ -427,9 +427,13 @@
             console.log('Connected to server');
         });
 
+        let downloadCompleted = false;
+
         socket.on('download_progress', (data) => {
-            updateProgress(data.progress);
-            updateProgressDetail(data.status);
+            if (!downloadCompleted) {
+                updateProgress(data.progress);
+                updateProgressDetail(data.status);
+            }
         });
 
         socket.on('download_status', (data) => {
@@ -481,10 +485,10 @@
             progressBar.setAttribute('aria-valuenow', percent);
             progressPercentage.textContent = `${Math.round(percent)}%`;
             
-            if (percent >= 100) {
+            // Only update completion status when the file is actually downloaded
+            if (percent >= 100 && !downloadCompleted) {
                 progressBar.classList.remove('progress-bar-animated');
-                progressStatus.textContent = 'Download Complete!';
-                progressStatus.classList.add('download-complete');
+                progressStatus.textContent = 'Processing...';
             } else {
                 progressBar.classList.add('progress-bar-animated');
                 progressStatus.classList.remove('download-complete');
@@ -570,8 +574,10 @@
         }
 
         function startDownload() {
+            downloadCompleted = false;
             const progressContainer = document.querySelector('.download-progress-container');
             const downloadBtn = document.getElementById('downloadBtn');
+            const progressStatus = document.querySelector('.progress-status');
             
             progressContainer.style.display = 'block';
             downloadBtn.disabled = true;
@@ -601,6 +607,9 @@
                 }
                 return response.blob();
             }).then(blob => {
+                downloadCompleted = true;
+                progressStatus.textContent = 'Download Complete!';
+                progressStatus.classList.add('download-complete');
                 updateStatus('Download complete!', 'success');
                 
                 const blobUrl = window.URL.createObjectURL(blob);
@@ -612,6 +621,7 @@
                 a.remove();
                 window.URL.revokeObjectURL(blobUrl);
             }).catch(error => {
+                downloadCompleted = true;
                 updateStatus(error.message, 'error');
             }).finally(() => {
                 downloadBtn.disabled = false;
