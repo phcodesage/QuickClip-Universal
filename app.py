@@ -2,7 +2,7 @@ from flask import Flask, request, send_from_directory, render_template, jsonify,
 from flask_cors import CORS
 import os
 import json
-from werkzeug.utils import safe_join
+from werkzeug.utils import safe_join, secure_filename
 from datetime import datetime
 import traceback
 import sys
