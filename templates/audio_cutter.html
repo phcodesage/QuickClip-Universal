@@ -92,7 +92,7 @@
             font-weight: 800;
             margin-bottom: 20px;
             background: linear-gradient(45deg, var(--accent-color), #00c3ff);
-            -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
@@ -187,7 +187,7 @@
 </head>
 <body style="background-color: var(--primary-dark); color: var(--text-primary);">
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg">
+    <nav class="navbar navbar-expand-lg sticky-top">
         <div class="container">
             <a class="navbar-brand" href="/">QuickClip Universal</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -311,6 +311,9 @@
         // Handle YouTube URL
         async function handleYouTubeURL(url) {
             try {
+                document.querySelector('.waveform-container').style.display = 'block';
+                initWaveSurfer();
+                
                 const formData = new FormData();
                 formData.append('url', url);
 
@@ -324,12 +327,11 @@
                 const data = await response.json();
                 tempFilePath = data.temp_path;
                 
-                document.querySelector('.waveform-container').style.display = 'block';
-                
-                initWaveSurfer();
-                wavesurfer.load('/temp/' + data.filename);
+                // Load the audio into wavesurfer
+                wavesurfer.load(tempFilePath);
                 
                 wavesurfer.on('ready', () => {
+                    document.getElementById('startTime').value = '0';
                     document.getElementById('endTime').value = wavesurfer.getDuration().toFixed(2);
                 });
             } catch (error) {
@@ -372,9 +374,11 @@
         }
 
         // Event Listeners
-        document.getElementById('url').addEventListener('change', function() {
-            if (this.value.trim()) {
-                handleYouTubeURL(this.value.trim());
+        document.getElementById('url').addEventListener('input', function() {
+            const url = this.value.trim();
+            if (url && isValidYouTubeUrl(url)) {
+                handleYouTubeURL(url);
+                document.querySelector('.upload-container').style.display = 'none';
             }
         });
 
@@ -416,6 +420,12 @@
                 alert('Please drop an audio file');
             }
         });
+
+        // Add YouTube URL validation function
+        function isValidYouTubeUrl(url) {
+            const youtubeRegex = /^(https?:\/\/)?(www\.)?(youtube\.com|youtu\.be)\/.+/;
+            return youtubeRegex.test(url);
+        }
     </script>
 </body>
 </html> 

@@ -4813,3 +4813,86 @@
 2025-01-09 18:16:16,242 - werkzeug - INFO - 127.0.0.1 - - [09/Jan/2025 18:16:16] "GET /socket.io/?EIO=4&transport=polling&t=PHAa99m HTTP/1.1" 200 -
 2025-01-09 18:16:16,299 - werkzeug - INFO - 127.0.0.1 - - [09/Jan/2025 18:16:16] "POST /socket.io/?EIO=4&transport=polling&t=PHAa9AY&sid=2aLgXybjBvrnUfsNAAAQ HTTP/1.1" 200 -
 2025-01-09 18:16:16,301 - werkzeug - INFO - 127.0.0.1 - - [09/Jan/2025 18:16:16] "GET /socket.io/?EIO=4&transport=polling&t=PHAa9AY.0&sid=2aLgXybjBvrnUfsNAAAQ HTTP/1.1" 200 -
+2025-01-09 18:17:46,988 - werkzeug - INFO - 127.0.0.1 - - [09/Jan/2025 18:17:46] "GET /socket.io/?EIO=4&transport=websocket&sid=2aLgXybjBvrnUfsNAAAQ HTTP/1.1" 200 -
+2025-01-09 18:17:47,003 - werkzeug - INFO - 127.0.0.1 - - [09/Jan/2025 18:17:47] "GET /audio-cutter HTTP/1.1" 200 -
+2025-01-09 18:17:51,860 - werkzeug - INFO - 127.0.0.1 - - [09/Jan/2025 18:17:51] "GET / HTTP/1.1" 200 -
+2025-01-09 18:17:52,043 - werkzeug - INFO - 127.0.0.1 - - [09/Jan/2025 18:17:52] "GET /socket.io/?EIO=4&transport=polling&t=PHAaWYf HTTP/1.1" 200 -
+2025-01-09 18:17:52,107 - werkzeug - INFO - 127.0.0.1 - - [09/Jan/2025 18:17:52] "POST /socket.io/?EIO=4&transport=polling&t=PHAaWZe&sid=0sgXh2WrSSa2v_TyAAAS HTTP/1.1" 200 -
+2025-01-09 18:17:52,112 - werkzeug - INFO - 127.0.0.1 - - [09/Jan/2025 18:17:52] "GET /socket.io/?EIO=4&transport=polling&t=PHAaWZf&sid=0sgXh2WrSSa2v_TyAAAS HTTP/1.1" 200 -
+2025-01-09 18:22:44,707 - werkzeug - INFO - 127.0.0.1 - - [09/Jan/2025 18:22:44] "GET /socket.io/?EIO=4&transport=websocket&sid=0sgXh2WrSSa2v_TyAAAS HTTP/1.1" 200 -
+2025-01-09 18:22:44,721 - werkzeug - INFO - 127.0.0.1 - - [09/Jan/2025 18:22:44] "GET /audio-cutter HTTP/1.1" 200 -
+2025-01-09 18:22:46,509 - werkzeug - INFO - 127.0.0.1 - - [09/Jan/2025 18:22:46] "GET / HTTP/1.1" 200 -
+2025-01-09 18:22:46,724 - werkzeug - INFO - 127.0.0.1 - - [09/Jan/2025 18:22:46] "GET /socket.io/?EIO=4&transport=polling&t=PHAbeV1 HTTP/1.1" 200 -
+2025-01-09 18:22:46,752 - werkzeug - INFO - 127.0.0.1 - - [09/Jan/2025 18:22:46] "POST /socket.io/?EIO=4&transport=polling&t=PHAbeVQ&sid=u-a4DhrPI_P9eR4VAAAU HTTP/1.1" 200 -
+2025-01-09 18:22:46,753 - werkzeug - INFO - 127.0.0.1 - - [09/Jan/2025 18:22:46] "GET /socket.io/?EIO=4&transport=polling&t=PHAbeVR&sid=u-a4DhrPI_P9eR4VAAAU HTTP/1.1" 200 -
+2025-01-09 18:23:40,187 - werkzeug - INFO - 127.0.0.1 - - [09/Jan/2025 18:23:40] "GET /socket.io/?EIO=4&transport=websocket&sid=u-a4DhrPI_P9eR4VAAAU HTTP/1.1" 200 -
+2025-01-09 18:23:40,204 - werkzeug - INFO - 127.0.0.1 - - [09/Jan/2025 18:23:40] "GET / HTTP/1.1" 200 -
+2025-01-09 18:23:40,473 - werkzeug - INFO - 127.0.0.1 - - [09/Jan/2025 18:23:40] "GET /socket.io/?EIO=4&transport=polling&t=PHAbrct HTTP/1.1" 200 -
+2025-01-09 18:23:40,493 - werkzeug - INFO - 127.0.0.1 - - [09/Jan/2025 18:23:40] "POST /socket.io/?EIO=4&transport=polling&t=PHAbrd1&sid=A34vs9aNUd0vvBfEAAAW HTTP/1.1" 200 -
+2025-01-09 18:23:40,493 - werkzeug - INFO - 127.0.0.1 - - [09/Jan/2025 18:23:40] "GET /socket.io/?EIO=4&transport=polling&t=PHAbrd4&sid=A34vs9aNUd0vvBfEAAAW HTTP/1.1" 200 -
+2025-01-09 18:23:40,501 - werkzeug - INFO - 127.0.0.1 - - [09/Jan/2025 18:23:40] "GET /socket.io/?EIO=4&transport=polling&t=PHAbrdI&sid=A34vs9aNUd0vvBfEAAAW HTTP/1.1" 200 -
+2025-01-09 18:23:40,719 - werkzeug - INFO - 127.0.0.1 - - [09/Jan/2025 18:23:40] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-01-09 18:23:54,700 - werkzeug - INFO - 127.0.0.1 - - [09/Jan/2025 18:23:54] "GET /socket.io/?EIO=4&transport=websocket&sid=A34vs9aNUd0vvBfEAAAW HTTP/1.1" 200 -
+2025-01-09 18:23:54,716 - werkzeug - INFO - 127.0.0.1 - - [09/Jan/2025 18:23:54] "GET /audio-cutter HTTP/1.1" 200 -
+2025-01-09 18:23:56,923 - werkzeug - INFO - 127.0.0.1 - - [09/Jan/2025 18:23:56] "GET / HTTP/1.1" 200 -
+2025-01-09 18:23:57,118 - werkzeug - INFO - 127.0.0.1 - - [09/Jan/2025 18:23:57] "GET /socket.io/?EIO=4&transport=polling&t=PHAbvgy HTTP/1.1" 200 -
+2025-01-09 18:23:57,168 - werkzeug - INFO - 127.0.0.1 - - [09/Jan/2025 18:23:57] "POST /socket.io/?EIO=4&transport=polling&t=PHAbvhk&sid=IEwACr5Uy9_XThiNAAAY HTTP/1.1" 200 -
+2025-01-09 18:23:57,173 - werkzeug - INFO - 127.0.0.1 - - [09/Jan/2025 18:23:57] "GET /socket.io/?EIO=4&transport=polling&t=PHAbvhl&sid=IEwACr5Uy9_XThiNAAAY HTTP/1.1" 200 -
+2025-01-09 18:23:57,180 - werkzeug - INFO - 127.0.0.1 - - [09/Jan/2025 18:23:57] "GET /socket.io/?EIO=4&transport=polling&t=PHAbvht&sid=IEwACr5Uy9_XThiNAAAY HTTP/1.1" 200 -
+2025-01-09 18:25:31,425 - werkzeug - INFO - 127.0.0.1 - - [09/Jan/2025 18:25:31] "GET /socket.io/?EIO=4&transport=websocket&sid=IEwACr5Uy9_XThiNAAAY HTTP/1.1" 200 -
+2025-01-09 18:25:31,435 - werkzeug - INFO - 127.0.0.1 - - [09/Jan/2025 18:25:31] "GET /audio-cutter HTTP/1.1" 200 -
+2025-01-09 18:25:32,150 - werkzeug - INFO - 127.0.0.1 - - [09/Jan/2025 18:25:32] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-01-09 18:25:34,892 - werkzeug - INFO - 127.0.0.1 - - [09/Jan/2025 18:25:34] "GET / HTTP/1.1" 200 -
+2025-01-09 18:25:35,093 - werkzeug - INFO - 127.0.0.1 - - [09/Jan/2025 18:25:35] "GET /socket.io/?EIO=4&transport=polling&t=PHAcHbp HTTP/1.1" 200 -
+2025-01-09 18:25:35,141 - werkzeug - INFO - 127.0.0.1 - - [09/Jan/2025 18:25:35] "POST /socket.io/?EIO=4&transport=polling&t=PHAcHcU&sid=PlM7-3Z-4hO4zhjlAAAa HTTP/1.1" 200 -
+2025-01-09 18:25:35,142 - werkzeug - INFO - 127.0.0.1 - - [09/Jan/2025 18:25:35] "GET /socket.io/?EIO=4&transport=polling&t=PHAcHcU.0&sid=PlM7-3Z-4hO4zhjlAAAa HTTP/1.1" 200 -
+2025-01-09 18:26:39,475 - werkzeug - INFO - 127.0.0.1 - - [09/Jan/2025 18:26:39] "GET /socket.io/?EIO=4&transport=websocket&sid=PlM7-3Z-4hO4zhjlAAAa HTTP/1.1" 200 -
+2025-01-09 18:26:39,485 - werkzeug - INFO - 127.0.0.1 - - [09/Jan/2025 18:26:39] "GET /audio-cutter HTTP/1.1" 200 -
+2025-01-09 18:35:56,140 - werkzeug - INFO - 127.0.0.1 - - [09/Jan/2025 18:35:56] "GET /audio-cutter HTTP/1.1" 200 -
+2025-01-09 18:35:57,198 - werkzeug - INFO - 127.0.0.1 - - [09/Jan/2025 18:35:57] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-01-09 18:35:57,436 - werkzeug - INFO - 127.0.0.1 - - [09/Jan/2025 18:35:57] "GET / HTTP/1.1" 200 -
+2025-01-09 18:35:57,649 - werkzeug - INFO - 127.0.0.1 - - [09/Jan/2025 18:35:57] "GET /socket.io/?EIO=4&transport=polling&t=PHAefbF HTTP/1.1" 200 -
+2025-01-09 18:35:57,665 - werkzeug - INFO - 127.0.0.1 - - [09/Jan/2025 18:35:57] "POST /socket.io/?EIO=4&transport=polling&t=PHAefbN&sid=VQvMSOdrUMUaXeS3AAAc HTTP/1.1" 200 -
+2025-01-09 18:35:57,665 - werkzeug - INFO - 127.0.0.1 - - [09/Jan/2025 18:35:57] "GET /socket.io/?EIO=4&transport=polling&t=PHAefbP&sid=VQvMSOdrUMUaXeS3AAAc HTTP/1.1" 200 -
+2025-01-09 18:35:57,674 - werkzeug - INFO - 127.0.0.1 - - [09/Jan/2025 18:35:57] "GET /socket.io/?EIO=4&transport=polling&t=PHAefbd&sid=VQvMSOdrUMUaXeS3AAAc HTTP/1.1" 200 -
+2025-01-09 18:35:58,203 - werkzeug - INFO - 127.0.0.1 - - [09/Jan/2025 18:35:58] "GET /socket.io/?EIO=4&transport=websocket&sid=VQvMSOdrUMUaXeS3AAAc HTTP/1.1" 200 -
+2025-01-09 18:35:58,216 - werkzeug - INFO - 127.0.0.1 - - [09/Jan/2025 18:35:58] "GET /audio-cutter HTTP/1.1" 200 -
+2025-01-09 18:37:44,220 - werkzeug - INFO - 127.0.0.1 - - [09/Jan/2025 18:37:44] "GET / HTTP/1.1" 200 -
+2025-01-09 18:37:44,413 - werkzeug - INFO - 127.0.0.1 - - [09/Jan/2025 18:37:44] "GET /socket.io/?EIO=4&transport=polling&t=PHAf3fQ HTTP/1.1" 200 -
+2025-01-09 18:37:44,439 - werkzeug - INFO - 127.0.0.1 - - [09/Jan/2025 18:37:44] "POST /socket.io/?EIO=4&transport=polling&t=PHAf3fk&sid=aPeLHKbuWnhcICMKAAAe HTTP/1.1" 200 -
+2025-01-09 18:37:44,440 - werkzeug - INFO - 127.0.0.1 - - [09/Jan/2025 18:37:44] "GET /socket.io/?EIO=4&transport=polling&t=PHAf3fl&sid=aPeLHKbuWnhcICMKAAAe HTTP/1.1" 200 -
+2025-01-09 18:37:46,158 - werkzeug - INFO - 127.0.0.1 - - [09/Jan/2025 18:37:46] "GET /socket.io/?EIO=4&transport=websocket&sid=aPeLHKbuWnhcICMKAAAe HTTP/1.1" 200 -
+2025-01-09 18:37:46,174 - werkzeug - INFO - 127.0.0.1 - - [09/Jan/2025 18:37:46] "GET /audio-cutter HTTP/1.1" 200 -
+2025-01-09 18:39:19,764 - werkzeug - INFO - 127.0.0.1 - - [09/Jan/2025 18:39:19] "GET / HTTP/1.1" 200 -
+2025-01-09 18:39:19,959 - werkzeug - INFO - 127.0.0.1 - - [09/Jan/2025 18:39:19] "GET /socket.io/?EIO=4&transport=polling&t=PHAfQ-J HTTP/1.1" 200 -
+2025-01-09 18:39:19,978 - werkzeug - INFO - 127.0.0.1 - - [09/Jan/2025 18:39:19] "POST /socket.io/?EIO=4&transport=polling&t=PHAfQ-X&sid=KGxQwHvM6n47KqL3AAAg HTTP/1.1" 200 -
+2025-01-09 18:39:19,978 - werkzeug - INFO - 127.0.0.1 - - [09/Jan/2025 18:39:19] "GET /socket.io/?EIO=4&transport=polling&t=PHAfQ-Y&sid=KGxQwHvM6n47KqL3AAAg HTTP/1.1" 200 -
+2025-01-09 18:39:22,444 - werkzeug - INFO - 127.0.0.1 - - [09/Jan/2025 18:39:22] "GET /socket.io/?EIO=4&transport=websocket&sid=KGxQwHvM6n47KqL3AAAg HTTP/1.1" 200 -
+2025-01-09 18:39:22,460 - werkzeug - INFO - 127.0.0.1 - - [09/Jan/2025 18:39:22] "GET /audio-cutter HTTP/1.1" 200 -
+2025-01-09 18:41:16,451 - werkzeug - INFO -  * Detected change in '/home/rech/proj/flask-proj/QuickClip-Universal/app.py', reloading
+2025-01-09 18:41:16,485 - werkzeug - INFO -  * Restarting with stat
+2025-01-09 18:41:16,659 - werkzeug - WARNING -  * Debugger is active!
+2025-01-09 18:41:16,659 - werkzeug - INFO -  * Debugger PIN: 791-591-545
+2025-01-09 18:41:21,522 - werkzeug - INFO - 127.0.0.1 - - [09/Jan/2025 18:41:21] "GET /audio-cutter HTTP/1.1" 200 -
+2025-01-09 18:41:23,743 - werkzeug - INFO - 127.0.0.1 - - [09/Jan/2025 18:41:23] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-01-09 18:41:36,161 - werkzeug - INFO - 127.0.0.1 - - [09/Jan/2025 18:41:36] "[35m[1mPOST /cut-audio HTTP/1.1[0m" 500 -
+2025-01-09 19:00:07,271 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-01-09 19:00:07,271 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-01-09 19:00:07,271 - werkzeug - INFO -  * Restarting with stat
+2025-01-09 19:00:07,435 - werkzeug - WARNING -  * Debugger is active!
+2025-01-09 19:00:07,435 - werkzeug - INFO -  * Debugger PIN: 791-591-545
+2025-01-09 19:00:07,568 - werkzeug - INFO - 127.0.0.1 - - [09/Jan/2025 19:00:07] "GET / HTTP/1.1" 200 -
+2025-01-09 19:00:07,769 - werkzeug - INFO - 127.0.0.1 - - [09/Jan/2025 19:00:07] "GET /socket.io/?EIO=4&transport=polling&t=PHAkBdN HTTP/1.1" 200 -
+2025-01-09 19:00:07,793 - werkzeug - INFO - 127.0.0.1 - - [09/Jan/2025 19:00:07] "POST /socket.io/?EIO=4&transport=polling&t=PHAkBdd&sid=LeA6guswbAgwsLzpAAAA HTTP/1.1" 200 -
+2025-01-09 19:00:07,794 - werkzeug - INFO - 127.0.0.1 - - [09/Jan/2025 19:00:07] "GET /socket.io/?EIO=4&transport=polling&t=PHAkBdd.0&sid=LeA6guswbAgwsLzpAAAA HTTP/1.1" 200 -
+2025-01-09 19:00:07,795 - werkzeug - INFO - 127.0.0.1 - - [09/Jan/2025 19:00:07] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-01-09 19:00:18,461 - werkzeug - INFO - 127.0.0.1 - - [09/Jan/2025 19:00:18] "GET /socket.io/?EIO=4&transport=websocket&sid=LeA6guswbAgwsLzpAAAA HTTP/1.1" 200 -
+2025-01-09 19:00:18,477 - werkzeug - INFO - 127.0.0.1 - - [09/Jan/2025 19:00:18] "GET / HTTP/1.1" 200 -
+2025-01-09 19:00:18,603 - werkzeug - INFO - 127.0.0.1 - - [09/Jan/2025 19:00:18] "GET /socket.io/?EIO=4&transport=polling&t=PHAkEGf HTTP/1.1" 200 -
+2025-01-09 19:00:18,610 - werkzeug - INFO - 127.0.0.1 - - [09/Jan/2025 19:00:18] "POST /socket.io/?EIO=4&transport=polling&t=PHAkEGi&sid=eIVXFopGDO2EU-OGAAAC HTTP/1.1" 200 -
+2025-01-09 19:00:18,613 - werkzeug - INFO - 127.0.0.1 - - [09/Jan/2025 19:00:18] "GET /socket.io/?EIO=4&transport=polling&t=PHAkEGi.0&sid=eIVXFopGDO2EU-OGAAAC HTTP/1.1" 200 -
+2025-01-09 19:00:19,225 - werkzeug - INFO - 127.0.0.1 - - [09/Jan/2025 19:00:19] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-01-09 19:00:19,325 - werkzeug - INFO - 127.0.0.1 - - [09/Jan/2025 19:00:19] "GET /socket.io/?EIO=4&transport=websocket&sid=eIVXFopGDO2EU-OGAAAC HTTP/1.1" 200 -
+2025-01-09 19:00:19,344 - werkzeug - INFO - 127.0.0.1 - - [09/Jan/2025 19:00:19] "GET /audio-cutter HTTP/1.1" 200 -
+2025-01-09 19:00:24,006 - werkzeug - INFO - 127.0.0.1 - - [09/Jan/2025 19:00:24] "[35m[1mPOST /cut-audio HTTP/1.1[0m" 500 -

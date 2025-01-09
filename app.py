@@ -1,4 +1,4 @@
-from flask import Flask, request, send_from_directory, render_template, jsonify, abort, Response
+from flask import Flask, request, send_from_directory, render_template, jsonify, abort, Response, send_file
 from flask_cors import CORS
 import os
 import json
@@ -296,10 +296,12 @@ def upload_audio():
             temp_dir = tempfile.mkdtemp()
             temp_path = os.path.join(temp_dir, 'temp_audio.mp3')
             
+            # Use yt-dlp to download audio
             cmd = [
                 'yt-dlp',
-                '-x',
-                '--audio-format', 'mp3',
+                '-x',  # Extract audio
+                '--audio-format', 'mp3',  # Convert to MP3
+                '--audio-quality', '0',  # Best quality
                 '-o', temp_path,
                 url
             ]
@@ -314,8 +316,13 @@ def upload_audio():
         audio = AudioSegment.from_file(temp_path)
         duration = len(audio) / 1000  # Convert to seconds
         
+        # Create a route to serve the temp file
+        @app.route(f'/temp/{os.path.basename(temp_path)}')
+        def serve_temp_file():
+            return send_file(temp_path)
+        
         return jsonify({
-            'temp_path': temp_path,
+            'temp_path': f'/temp/{os.path.basename(temp_path)}',
             'duration': duration,
             'filename': os.path.basename(temp_path)
         })
