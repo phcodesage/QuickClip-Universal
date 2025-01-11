@@ -91,8 +91,7 @@
             font-weight: 800;
             margin-bottom: 20px;
             background: linear-gradient(45deg, var(--accent-color), #00c3ff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .hero-subtitle {
@@ -269,6 +268,23 @@
         let wavesurfer;
         let tempFilePath;
 
+        // Initialize WaveSurfer
+        function initWaveSurfer() {
+            if (wavesurfer) {
+                wavesurfer.destroy();
+            }
+            
+            wavesurfer = WaveSurfer.create({
+                container: '#waveform',
+                waveColor: '#404040',
+                progressColor: 'var(--accent-color)',
+                cursorColor: '#00c3ff',
+                height: 100,
+                normalize: true,
+                backend: 'WebAudio'
+            });
+        }
+
         function handleFile(file) {
             if (!file.type.startsWith('audio/')) {
                 alert('Please select an audio file');
@@ -279,7 +295,8 @@
             formData.append('file', file);
 
             // Show loading state
-            document.querySelector('.upload-container').style.opacity = '0.5';
+            const uploadContainer = document.querySelector('.upload-container');
+            uploadContainer.style.opacity = '0.5';
 
             fetch('/upload-audio', {
                 method: 'POST',
@@ -291,7 +308,7 @@
                 
                 tempFilePath = data.temp_path;
                 document.querySelector('.waveform-container').style.display = 'block';
-                document.querySelector('.upload-container').style.display = 'none';
+                uploadContainer.style.display = 'none';
                 
                 initWaveSurfer();
                 wavesurfer.load(`/temp/${tempFilePath}`);
@@ -303,12 +320,102 @@
             })
             .catch(error => {
                 alert('Error: ' + error.message);
-                document.querySelector('.upload-container').style.opacity = '1';
+                uploadContainer.style.opacity = '1';
             });
         }
 
-        // Keep the rest of your existing JavaScript for wavesurfer initialization,
-        // drag and drop handling, and cut functionality
+        // Cut audio
+        async function cutAudio() {
+            if (!tempFilePath) {
+                alert('Please load an audio file first');
+                return;
+            }
+
+            const startTime = parseFloat(document.getElementById('startTime').value) || 0;
+            const endTime = parseFloat(document.getElementById('endTime').value) || wavesurfer.getDuration();
+
+            try {
+                // Show loading state
+                const cutBtn = document.getElementById('cutBtn');
+                cutBtn.disabled = true;
+                cutBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Processing...';
+
+                const response = await fetch('/cut-audio', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        temp_path: tempFilePath,
+                        start_time: startTime,
+                        end_time: endTime
+                    })
+                });
+
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    throw new Error(errorData.error || 'Failed to cut audio');
+                }
+                
+                const blob = await response.blob();
+                const url = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'cut_audio.mp3';
+                document.body.appendChild(a);
+                a.click();
+                a.remove();
+                window.URL.revokeObjectURL(url);
+            } catch (error) {
+                alert('Error cutting audio: ' + error.message);
+            } finally {
+                // Reset button state
+                const cutBtn = document.getElementById('cutBtn');
+                cutBtn.disabled = false;
+                cutBtn.innerHTML = '<i class="fas fa-cut me-2"></i>Cut Audio';
+            }
+        }
+
+        // Event Listeners
+        document.getElementById('fileInput').addEventListener('change', function(e) {
+            if (e.target.files[0]) {
+                handleFile(e.target.files[0]);
+            }
+        });
+
+        document.getElementById('cutBtn').addEventListener('click', cutAudio);
+
+        // Playback controls
+        document.getElementById('playBtn').addEventListener('click', () => wavesurfer.play());
+        document.getElementById('pauseBtn').addEventListener('click', () => wavesurfer.pause());
+        document.getElementById('stopBtn').addEventListener('click', () => {
+            wavesurfer.stop();
+            wavesurfer.seekTo(0);
+        });
+
+        // Drag and drop handling
+        const dropZone = document.getElementById('dropZone');
+
+        dropZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dropZone.style.backgroundColor = 'rgba(0, 255, 157, 0.1)';
+        });
+
+        dropZone.addEventListener('dragleave', (e) => {
+            e.preventDefault();
+            dropZone.style.backgroundColor = 'transparent';
+        });
+
+        dropZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropZone.style.backgroundColor = 'transparent';
+            const file = e.dataTransfer.files[0];
+            if (file && file.type.startsWith('audio/')) {
+                handleFile(file);
+            } else {
+                alert('Please drop an audio file');
+            }
+        });
     </script>
 </body>
 </html> 
