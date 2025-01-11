@@ -15,6 +15,7 @@ import re
 from pytube import YouTube
 from pydub import AudioSegment
 import tempfile
+import uuid
 
 app = Flask(__name__, static_folder='static', template_folder='templates')
 CORS(app)
@@ -315,14 +316,15 @@ def upload_audio():
         # Convert to mp3 if needed and get duration
         audio = AudioSegment.from_file(temp_path)
         duration = len(audio) / 1000  # Convert to seconds
-        
-        # Create a route to serve the temp file
-        @app.route(f'/temp/{os.path.basename(temp_path)}')
-        def serve_temp_file():
-            return send_file(temp_path)
+
+        # Save the temp_path for later use
+        if not hasattr(app, 'temp_files'):
+            app.temp_files = {}
+        file_id = str(uuid.uuid4())
+        app.temp_files[file_id] = temp_path
         
         return jsonify({
-            'temp_path': f'/temp/{os.path.basename(temp_path)}',
+            'temp_path': file_id,  # Return the file ID instead of the path
             'duration': duration,
             'filename': os.path.basename(temp_path)
         })
@@ -330,13 +332,34 @@ def upload_audio():
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
+# Add this new route to serve temp files
+@app.route('/temp/<file_id>')
+def serve_temp_file(file_id):
+    if hasattr(app, 'temp_files') and file_id in app.temp_files:
+        try:
+            return send_file(
+                app.temp_files[file_id],
+                mimetype='audio/mpeg',
+                as_attachment=False,
+                download_name='temp_audio.mp3'
+            )
+        except Exception as e:
+            print(f"Error serving temp file: {str(e)}")
+            return str(e), 500
+    return 'File not found', 404
+
 @app.route('/cut-audio', methods=['POST'])
 def cut_audio():
     try:
         data = request.get_json()
-        temp_path = data['temp_path']
+        file_id = data['temp_path']
         start_time = float(data['start_time'])
         end_time = float(data['end_time'])
+        
+        if not hasattr(app, 'temp_files') or file_id not in app.temp_files:
+            return jsonify({'error': 'Audio file not found'}), 404
+            
+        temp_path = app.temp_files[file_id]
         
         # Load audio and cut
         audio = AudioSegment.from_file(temp_path)
@@ -353,14 +376,13 @@ def cut_audio():
             try:
                 if os.path.exists(output_path):
                     os.remove(output_path)
-                if os.path.exists(temp_path):
-                    os.remove(temp_path)
             except Exception as e:
                 print(f"Cleanup error: {e}")
         
         return response
         
     except Exception as e:
+        print(f"Error in cut_audio: {str(e)}")
         return jsonify({'error': str(e)}), 500
 
 if __name__ == '__main__':

@@ -221,7 +221,12 @@
                 <div class="col-md-8">
                     <!-- URL Input -->
                     <div class="url-input-container mb-4">
-                        <input type="text" class="form-control" id="url" placeholder="Paste YouTube URL or upload audio file">
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="url" placeholder="Paste YouTube URL">
+                            <button class="btn btn-primary" id="loadUrlBtn">
+                                <i class="fas fa-download me-2"></i>Load Audio
+                            </button>
+                        </div>
                     </div>
 
                     <!-- Upload Container -->
@@ -327,8 +332,7 @@
                 const data = await response.json();
                 tempFilePath = data.temp_path;
                 
-                // Load the audio into wavesurfer
-                wavesurfer.load(tempFilePath);
+                wavesurfer.load(`/temp/${tempFilePath}`);
                 
                 wavesurfer.on('ready', () => {
                     document.getElementById('startTime').value = '0';
@@ -336,15 +340,30 @@
                 });
             } catch (error) {
                 alert('Error processing YouTube URL: ' + error.message);
+            } finally {
+                // Reset load button
+                const loadBtn = document.getElementById('loadUrlBtn');
+                loadBtn.disabled = false;
+                loadBtn.innerHTML = '<i class="fas fa-download me-2"></i>Load Audio';
             }
         }
 
         // Cut audio
         async function cutAudio() {
+            if (!tempFilePath) {
+                alert('Please load an audio file first');
+                return;
+            }
+
             const startTime = parseFloat(document.getElementById('startTime').value) || 0;
             const endTime = parseFloat(document.getElementById('endTime').value) || wavesurfer.getDuration();
 
             try {
+                // Show loading state
+                const cutBtn = document.getElementById('cutBtn');
+                cutBtn.disabled = true;
+                cutBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Processing...';
+
                 const response = await fetch('/cut-audio', {
                     method: 'POST',
                     headers: {
@@ -357,7 +376,10 @@
                     })
                 });
 
-                if (!response.ok) throw new Error('Cutting failed');
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    throw new Error(errorData.error || 'Failed to cut audio');
+                }
                 
                 const blob = await response.blob();
                 const url = window.URL.createObjectURL(blob);
@@ -370,13 +392,25 @@
                 window.URL.revokeObjectURL(url);
             } catch (error) {
                 alert('Error cutting audio: ' + error.message);
+            } finally {
+                // Reset button state
+                const cutBtn = document.getElementById('cutBtn');
+                cutBtn.disabled = false;
+                cutBtn.innerHTML = '<i class="fas fa-cut me-2"></i>Cut Audio';
             }
         }
 
         // Event Listeners
         document.getElementById('url').addEventListener('input', function() {
             const url = this.value.trim();
+            document.getElementById('loadUrlBtn').disabled = !isValidYouTubeUrl(url);
+        });
+
+        document.getElementById('loadUrlBtn').addEventListener('click', function() {
+            const url = document.getElementById('url').value.trim();
             if (url && isValidYouTubeUrl(url)) {
+                this.disabled = true;
+                this.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Loading...';
                 handleYouTubeURL(url);
                 document.querySelector('.upload-container').style.display = 'none';
             }
