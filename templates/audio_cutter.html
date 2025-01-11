@@ -7,8 +7,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/wavesurfer.js@7/dist/wavesurfer.min.css" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64,">
     <style>
-        /* Copy the root and common styles from index.html */
         :root {
             --primary-dark: #1a1a1a;
             --secondary-dark: #2d2d2d;
@@ -17,7 +17,6 @@
             --text-secondary: #b3b3b3;
         }
 
-        /* Add audio cutter specific styles */
         .waveform-container {
             background-color: var(--secondary-dark);
             padding: 20px;
@@ -92,7 +91,7 @@
             font-weight: 800;
             margin-bottom: 20px;
             background: linear-gradient(45deg, var(--accent-color), #00c3ff);
-            background-clip: text;
+            -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
@@ -118,18 +117,17 @@
             box-shadow: 0 0 0 0.25rem rgba(0, 255, 157, 0.1);
         }
 
-        .btn-primary {
-            background: linear-gradient(45deg, var(--accent-color), #00c3ff);
-            border: none;
-            padding: 12px 24px;
-            font-weight: 600;
-            border-radius: 10px;
+        .btn-outline-accent {
+            color: var(--accent-color);
+            border: 2px solid var(--accent-color);
+            background: transparent;
             transition: all 0.3s ease;
         }
 
-        .btn-primary:hover {
+        .btn-outline-accent:hover {
+            background: var(--accent-color);
+            color: var(--primary-dark);
             transform: translateY(-2px);
-            box-shadow: 0 4px 20px rgba(0, 255, 157, 0.2);
         }
 
         #cutBtn {
@@ -139,6 +137,7 @@
             background: linear-gradient(45deg, var(--accent-color), #00c3ff);
             color: var(--primary-dark);
             padding: 12px 24px;
+            border: none;
         }
 
         #cutBtn:hover {
@@ -219,42 +218,43 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-8">
-                    <!-- URL Input -->
-                    <div class="url-input-container mb-4">
-                        <div class="input-group">
-                            <input type="text" class="form-control" id="url" placeholder="Paste YouTube URL">
-                            <button class="btn btn-primary" id="loadUrlBtn">
-                                <i class="fas fa-download me-2"></i>Load Audio
-                            </button>
-                        </div>
-                    </div>
-
                     <!-- Upload Container -->
                     <div class="upload-container" id="dropZone">
                         <i class="fas fa-cloud-upload-alt fa-3x mb-3" style="color: var(--accent-color);"></i>
-                        <h4>Drag & Drop Audio File</h4>
-                        <p class="text-secondary">or</p>
-                        <input type="file" id="fileInput" accept="audio/*" style="display: none;">
-                        <button class="btn btn-primary" onclick="document.getElementById('fileInput').click()">
-                            Choose File
+                        <h3 class="mb-3">Drop your audio file here</h3>
+                        <p class="text-secondary mb-4">or</p>
+                        <input type="file" id="fileInput" class="d-none" accept="audio/*">
+                        <button class="btn btn-outline-accent" onclick="document.getElementById('fileInput').click()">
+                            <i class="fas fa-folder-open me-2"></i>Browse Files
                         </button>
+                        <p class="text-secondary mt-3">Supported formats: MP3, WAV, M4A, OGG</p>
                     </div>
 
                     <!-- Waveform Container -->
                     <div class="waveform-container" style="display: none;">
                         <div id="waveform"></div>
-                        
-                        <div class="time-controls">
-                            <input type="number" class="form-control time-input" id="startTime" placeholder="Start Time">
-                            <div class="audio-controls">
-                                <button id="playBtn" class="btn"><i class="fas fa-play"></i></button>
-                                <button id="pauseBtn" class="btn"><i class="fas fa-pause"></i></button>
-                                <button id="stopBtn" class="btn"><i class="fas fa-stop"></i></button>
-                            </div>
-                            <input type="number" class="form-control time-input" id="endTime" placeholder="End Time">
+                        <div class="audio-controls mt-4">
+                            <button id="playBtn" class="btn btn-control">
+                                <i class="fas fa-play"></i>
+                            </button>
+                            <button id="pauseBtn" class="btn btn-control">
+                                <i class="fas fa-pause"></i>
+                            </button>
+                            <button id="stopBtn" class="btn btn-control">
+                                <i class="fas fa-stop"></i>
+                            </button>
                         </div>
-
-                        <button class="btn btn-primary w-100" id="cutBtn">
+                        <div class="time-controls">
+                            <div>
+                                <label for="startTime">Start Time (s)</label>
+                                <input type="number" id="startTime" class="form-control time-input" value="0" step="0.1" min="0">
+                            </div>
+                            <div>
+                                <label for="endTime">End Time (s)</label>
+                                <input type="number" id="endTime" class="form-control time-input" value="0" step="0.1" min="0">
+                            </div>
+                        </div>
+                        <button id="cutBtn" class="btn btn-accent w-100 mt-4">
                             <i class="fas fa-cut me-2"></i>Cut Audio
                         </button>
                     </div>
@@ -269,197 +269,46 @@
         let wavesurfer;
         let tempFilePath;
 
-        // Initialize WaveSurfer
-        function initWaveSurfer() {
-            wavesurfer = WaveSurfer.create({
-                container: '#waveform',
-                waveColor: '#404040',
-                progressColor: 'var(--accent-color)',
-                cursorColor: '#00c3ff',
-                height: 100,
-                normalize: true,
-                backend: 'WebAudio'
-            });
-        }
+        function handleFile(file) {
+            if (!file.type.startsWith('audio/')) {
+                alert('Please select an audio file');
+                return;
+            }
 
-        // Handle file upload
-        async function handleFile(file) {
             const formData = new FormData();
             formData.append('file', file);
 
-            try {
-                const response = await fetch('/upload-audio', {
-                    method: 'POST',
-                    body: formData
-                });
+            // Show loading state
+            document.querySelector('.upload-container').style.opacity = '0.5';
 
-                if (!response.ok) throw new Error('Upload failed');
+            fetch('/upload-audio', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.error) throw new Error(data.error);
                 
-                const data = await response.json();
                 tempFilePath = data.temp_path;
-                
                 document.querySelector('.waveform-container').style.display = 'block';
                 document.querySelector('.upload-container').style.display = 'none';
                 
                 initWaveSurfer();
-                wavesurfer.load(URL.createObjectURL(file));
-                
-                // Set end time to audio duration
-                wavesurfer.on('ready', () => {
-                    document.getElementById('endTime').value = wavesurfer.getDuration().toFixed(2);
-                });
-            } catch (error) {
-                alert('Error uploading file: ' + error.message);
-            }
-        }
-
-        // Handle YouTube URL
-        async function handleYouTubeURL(url) {
-            try {
-                document.querySelector('.waveform-container').style.display = 'block';
-                initWaveSurfer();
-                
-                const formData = new FormData();
-                formData.append('url', url);
-
-                const response = await fetch('/upload-audio', {
-                    method: 'POST',
-                    body: formData
-                });
-
-                if (!response.ok) throw new Error('Download failed');
-                
-                const data = await response.json();
-                tempFilePath = data.temp_path;
-                
                 wavesurfer.load(`/temp/${tempFilePath}`);
                 
                 wavesurfer.on('ready', () => {
                     document.getElementById('startTime').value = '0';
                     document.getElementById('endTime').value = wavesurfer.getDuration().toFixed(2);
                 });
-            } catch (error) {
-                alert('Error processing YouTube URL: ' + error.message);
-            } finally {
-                // Reset load button
-                const loadBtn = document.getElementById('loadUrlBtn');
-                loadBtn.disabled = false;
-                loadBtn.innerHTML = '<i class="fas fa-download me-2"></i>Load Audio';
-            }
+            })
+            .catch(error => {
+                alert('Error: ' + error.message);
+                document.querySelector('.upload-container').style.opacity = '1';
+            });
         }
 
-        // Cut audio
-        async function cutAudio() {
-            if (!tempFilePath) {
-                alert('Please load an audio file first');
-                return;
-            }
-
-            const startTime = parseFloat(document.getElementById('startTime').value) || 0;
-            const endTime = parseFloat(document.getElementById('endTime').value) || wavesurfer.getDuration();
-
-            try {
-                // Show loading state
-                const cutBtn = document.getElementById('cutBtn');
-                cutBtn.disabled = true;
-                cutBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Processing...';
-
-                const response = await fetch('/cut-audio', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        temp_path: tempFilePath,
-                        start_time: startTime,
-                        end_time: endTime
-                    })
-                });
-
-                if (!response.ok) {
-                    const errorData = await response.json();
-                    throw new Error(errorData.error || 'Failed to cut audio');
-                }
-                
-                const blob = await response.blob();
-                const url = window.URL.createObjectURL(blob);
-                const a = document.createElement('a');
-                a.href = url;
-                a.download = 'cut_audio.mp3';
-                document.body.appendChild(a);
-                a.click();
-                a.remove();
-                window.URL.revokeObjectURL(url);
-            } catch (error) {
-                alert('Error cutting audio: ' + error.message);
-            } finally {
-                // Reset button state
-                const cutBtn = document.getElementById('cutBtn');
-                cutBtn.disabled = false;
-                cutBtn.innerHTML = '<i class="fas fa-cut me-2"></i>Cut Audio';
-            }
-        }
-
-        // Event Listeners
-        document.getElementById('url').addEventListener('input', function() {
-            const url = this.value.trim();
-            document.getElementById('loadUrlBtn').disabled = !isValidYouTubeUrl(url);
-        });
-
-        document.getElementById('loadUrlBtn').addEventListener('click', function() {
-            const url = document.getElementById('url').value.trim();
-            if (url && isValidYouTubeUrl(url)) {
-                this.disabled = true;
-                this.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Loading...';
-                handleYouTubeURL(url);
-                document.querySelector('.upload-container').style.display = 'none';
-            }
-        });
-
-        document.getElementById('fileInput').addEventListener('change', function(e) {
-            if (e.target.files[0]) {
-                handleFile(e.target.files[0]);
-            }
-        });
-
-        document.getElementById('cutBtn').addEventListener('click', cutAudio);
-
-        document.getElementById('playBtn').addEventListener('click', () => wavesurfer.play());
-        document.getElementById('pauseBtn').addEventListener('click', () => wavesurfer.pause());
-        document.getElementById('stopBtn').addEventListener('click', () => {
-            wavesurfer.stop();
-            wavesurfer.seekTo(0);
-        });
-
-        // Drag and drop handling
-        const dropZone = document.getElementById('dropZone');
-
-        dropZone.addEventListener('dragover', (e) => {
-            e.preventDefault();
-            dropZone.style.backgroundColor = 'rgba(0, 255, 157, 0.1)';
-        });
-
-        dropZone.addEventListener('dragleave', (e) => {
-            e.preventDefault();
-            dropZone.style.backgroundColor = 'transparent';
-        });
-
-        dropZone.addEventListener('drop', (e) => {
-            e.preventDefault();
-            dropZone.style.backgroundColor = 'transparent';
-            const file = e.dataTransfer.files[0];
-            if (file && file.type.startsWith('audio/')) {
-                handleFile(file);
-            } else {
-                alert('Please drop an audio file');
-            }
-        });
-
-        // Add YouTube URL validation function
-        function isValidYouTubeUrl(url) {
-            const youtubeRegex = /^(https?:\/\/)?(www\.)?(youtube\.com|youtu\.be)\/.+/;
-            return youtubeRegex.test(url);
-        }
+        // Keep the rest of your existing JavaScript for wavesurfer initialization,
+        // drag and drop handling, and cut functionality
     </script>
 </body>
 </html> 

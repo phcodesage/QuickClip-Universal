@@ -13,3 +13,5 @@ python-engineio==4.8.2
 python-socketio==5.11.1
 flask-socketio==5.3.6
 pydub==0.25.1
+requests==2.31.0
+urllib3==2.1.0

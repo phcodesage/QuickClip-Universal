@@ -16,6 +16,8 @@ from pytube import YouTube
 from pydub import AudioSegment
 import tempfile
 import uuid
+import requests
+from urllib.parse import parse_qs, urlparse
 
 app = Flask(__name__, static_folder='static', template_folder='templates')
 CORS(app)
@@ -284,38 +286,23 @@ def audio_cutter():
 @app.route('/upload-audio', methods=['POST'])
 def upload_audio():
     try:
-        if 'file' in request.files:
-            file = request.files['file']
-            temp_dir = tempfile.mkdtemp()
-            temp_path = os.path.join(temp_dir, secure_filename(file.filename))
-            file.save(temp_path)
-        else:
-            url = request.form.get('url')
-            if not url:
-                return jsonify({'error': 'No file or URL provided'}), 400
-                
-            temp_dir = tempfile.mkdtemp()
-            temp_path = os.path.join(temp_dir, 'temp_audio.mp3')
+        if 'file' not in request.files:
+            return jsonify({'error': 'No file provided'}), 400
             
-            # Use yt-dlp to download audio
-            cmd = [
-                'yt-dlp',
-                '-x',  # Extract audio
-                '--audio-format', 'mp3',  # Convert to MP3
-                '--audio-quality', '0',  # Best quality
-                '-o', temp_path,
-                url
-            ]
-            
-            process = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-            stdout, stderr = process.communicate()
-            
-            if process.returncode != 0:
-                raise Exception(f"Download failed: {stderr}")
+        file = request.files['file']
+        if not file.filename or not file.filename.lower().endswith(('.mp3', '.wav', '.m4a', '.ogg')):
+            return jsonify({'error': 'Invalid audio file format'}), 400
+
+        temp_dir = tempfile.mkdtemp()
+        temp_path = os.path.join(temp_dir, secure_filename(file.filename))
+        file.save(temp_path)
 
         # Convert to mp3 if needed and get duration
-        audio = AudioSegment.from_file(temp_path)
-        duration = len(audio) / 1000  # Convert to seconds
+        try:
+            audio = AudioSegment.from_file(temp_path)
+            duration = len(audio) / 1000  # Convert to seconds
+        except Exception as e:
+            raise Exception(f"Error processing audio: {str(e)}")
 
         # Save the temp_path for later use
         if not hasattr(app, 'temp_files'):
@@ -324,12 +311,15 @@ def upload_audio():
         app.temp_files[file_id] = temp_path
         
         return jsonify({
-            'temp_path': file_id,  # Return the file ID instead of the path
+            'temp_path': file_id,
             'duration': duration,
             'filename': os.path.basename(temp_path)
         })
-        
+
     except Exception as e:
+        logger.error(f"Error in upload_audio: {str(e)}")
+        if 'temp_dir' in locals() and temp_dir and os.path.exists(temp_dir):
+            shutil.rmtree(temp_dir)
         return jsonify({'error': str(e)}), 500
 
 # Add this new route to serve temp files
