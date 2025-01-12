@@ -181,6 +181,19 @@
             color: var(--accent-color) !important;
             background-color: rgba(0, 255, 157, 0.1);
         }
+
+        .wavesurfer-region {
+            z-index: 2 !important;
+        }
+
+        .wavesurfer-handle {
+            background-color: var(--accent-color) !important;
+            width: 4px !important;
+        }
+
+        .wavesurfer-handle:hover {
+            background-color: #00c3ff !important;
+        }
     </style>
 </head>
 <body style="background-color: var(--primary-dark); color: var(--text-primary);">
@@ -262,7 +275,8 @@
         </div>
     </section>
 
-    <script src="https://cdn.jsdelivr.net/npm/wavesurfer.js@7/dist/wavesurfer.min.js"></script>
+    <script src="https://unpkg.com/wavesurfer.js@5.2.0/dist/wavesurfer.js"></script>
+    <script src="https://unpkg.com/wavesurfer.js@5.2.0/dist/plugin/wavesurfer.regions.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         let wavesurfer;
@@ -274,6 +288,7 @@
                 wavesurfer.destroy();
             }
             
+            // First create the base WaveSurfer instance
             wavesurfer = WaveSurfer.create({
                 container: '#waveform',
                 waveColor: '#404040',
@@ -282,6 +297,58 @@
                 height: 100,
                 normalize: true,
                 backend: 'WebAudio'
+            });
+
+            // Resume audio context
+            wavesurfer.backend.ac.resume();
+
+            // Initialize regions plugin
+            const RegionsPlugin = window.WaveSurfer.regions;
+            
+            wavesurfer.addPlugin(RegionsPlugin.create({
+                regionsMinLength: 2,
+                dragSelection: {
+                    slop: 5
+                }
+            })).initPlugin('regions');
+
+            // Once audio is loaded
+            wavesurfer.on('ready', () => {
+                const duration = wavesurfer.getDuration();
+                document.getElementById('startTime').value = '0';
+                document.getElementById('endTime').value = duration.toFixed(2);
+                
+                // Create initial region
+                wavesurfer.regions.add({
+                    start: 0,
+                    end: duration,
+                    color: 'rgba(0, 255, 157, 0.2)',
+                    drag: true,
+                    resize: true
+                });
+            });
+
+            // Update time inputs when region is updated
+            wavesurfer.on('region-updated', (region) => {
+                document.getElementById('startTime').value = region.start.toFixed(2);
+                document.getElementById('endTime').value = region.end.toFixed(2);
+            });
+
+            // Update region when time inputs change
+            document.getElementById('startTime').addEventListener('change', function() {
+                const regions = wavesurfer.regions.list;
+                const region = Object.values(regions)[0];
+                if (region) {
+                    region.setStart(parseFloat(this.value) || 0);
+                }
+            });
+
+            document.getElementById('endTime').addEventListener('change', function() {
+                const regions = wavesurfer.regions.list;
+                const region = Object.values(regions)[0];
+                if (region) {
+                    region.setEnd(parseFloat(this.value) || wavesurfer.getDuration());
+                }
             });
         }
 
