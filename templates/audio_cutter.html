@@ -261,11 +261,8 @@
                     <div class="waveform-container" style="display: none;">
                         <div id="waveform"></div>
                         <div class="audio-controls mt-4">
-                            <button id="playBtn" class="btn btn-control">
+                            <button id="playPauseBtn" class="btn btn-control">
                                 <i class="fas fa-play"></i>
-                            </button>
-                            <button id="pauseBtn" class="btn btn-control">
-                                <i class="fas fa-pause"></i>
                             </button>
                             <button id="stopBtn" class="btn btn-control">
                                 <i class="fas fa-stop"></i>
@@ -472,11 +469,32 @@
         document.getElementById('cutBtn').addEventListener('click', cutAudio);
 
         // Playback controls
-        document.getElementById('playBtn').addEventListener('click', () => wavesurfer.play());
-        document.getElementById('pauseBtn').addEventListener('click', () => wavesurfer.pause());
+        document.getElementById('playPauseBtn').addEventListener('click', function() {
+            const icon = this.querySelector('i');
+            if (icon.classList.contains('fa-play')) {
+                wavesurfer.play();
+                icon.classList.remove('fa-play');
+                icon.classList.add('fa-pause');
+            } else {
+                wavesurfer.pause();
+                icon.classList.remove('fa-pause');
+                icon.classList.add('fa-play');
+            }
+        });
+
         document.getElementById('stopBtn').addEventListener('click', () => {
             wavesurfer.stop();
             wavesurfer.seekTo(0);
+            const playPauseIcon = document.querySelector('#playPauseBtn i');
+            playPauseIcon.classList.remove('fa-pause');
+            playPauseIcon.classList.add('fa-play');
+        });
+
+        // Add listener for when audio finishes to reset play button
+        wavesurfer.on('finish', function() {
+            const playPauseIcon = document.querySelector('#playPauseBtn i');
+            playPauseIcon.classList.remove('fa-pause');
+            playPauseIcon.classList.add('fa-play');
         });
 
         // Drag and drop handling

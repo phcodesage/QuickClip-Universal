@@ -11876,3 +11876,15 @@ ERROR: [youtube] hVTBQbI7lqI: Failed to extract any player response; please repo
 2025-01-12 23:33:21,224 - werkzeug - INFO - 127.0.0.1 - - [12/Jan/2025 23:33:21] "GET /audio-cutter HTTP/1.1" 200 -
 2025-01-12 23:33:24,993 - werkzeug - INFO - 127.0.0.1 - - [12/Jan/2025 23:33:24] "POST /upload-audio HTTP/1.1" 200 -
 2025-01-12 23:33:25,004 - werkzeug - INFO - 127.0.0.1 - - [12/Jan/2025 23:33:25] "GET /temp/fb6bf47e-223b-4ff1-8b04-7e407649a3c8 HTTP/1.1" 200 -
+2025-01-12 23:37:04,589 - werkzeug - INFO - 127.0.0.1 - - [12/Jan/2025 23:37:04] "GET /audio-cutter HTTP/1.1" 200 -
+2025-01-12 23:37:27,663 - werkzeug - INFO - 127.0.0.1 - - [12/Jan/2025 23:37:27] "POST /upload-audio HTTP/1.1" 200 -
+2025-01-12 23:37:27,672 - werkzeug - INFO - 127.0.0.1 - - [12/Jan/2025 23:37:27] "GET /temp/f761f6b9-cad6-4702-a8be-0233f3bc31ee HTTP/1.1" 200 -
+2025-01-12 23:39:22,231 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-01-12 23:39:22,231 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-01-12 23:39:22,231 - werkzeug - INFO -  * Restarting with stat
+2025-01-12 23:39:22,386 - werkzeug - WARNING -  * Debugger is active!
+2025-01-12 23:39:22,387 - werkzeug - INFO -  * Debugger PIN: 463-800-100
+2025-01-12 23:39:23,185 - werkzeug - INFO - 127.0.0.1 - - [12/Jan/2025 23:39:23] "GET /audio-cutter HTTP/1.1" 200 -
+2025-01-12 23:39:27,980 - werkzeug - INFO - 127.0.0.1 - - [12/Jan/2025 23:39:27] "POST /upload-audio HTTP/1.1" 200 -
+2025-01-12 23:39:27,991 - werkzeug - INFO - 127.0.0.1 - - [12/Jan/2025 23:39:27] "GET /temp/31aff7b6-47fb-4858-9271-cc1af3b1562c HTTP/1.1" 200 -
