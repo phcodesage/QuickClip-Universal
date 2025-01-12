@@ -22,6 +22,9 @@
             padding: 20px;
             border-radius: 15px;
             margin: 20px 0;
+            width: 100%;
+            max-width: 100%;
+            overflow: hidden;
         }
 
         .time-controls {
@@ -78,6 +81,9 @@
         #waveform {
             background: var(--primary-dark);
             border-radius: 10px;
+            width: 100%;
+            min-width: 100%;
+            overflow: hidden;
         }
 
         .hero-section {
@@ -147,6 +153,7 @@
         .download-section {
             background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
             padding: 0 0 80px 0;
+            width: 100%;
         }
 
         .navbar {
@@ -194,6 +201,14 @@
         .wavesurfer-handle:hover {
             background-color: #00c3ff !important;
         }
+
+        wave {
+            width: 100% !important;
+        }
+
+        wave canvas {
+            width: 100% !important;
+        }
     </style>
 </head>
 <body style="background-color: var(--primary-dark); color: var(--text-primary);">
@@ -227,9 +242,9 @@
 
     <!-- Audio Cutter Section -->
     <section class="download-section">
-        <div class="container">
+        <div class="container-fluid px-4">
             <div class="row justify-content-center">
-                <div class="col-md-8">
+                <div class="col-12">
                     <!-- Upload Container -->
                     <div class="upload-container" id="dropZone">
                         <i class="fas fa-cloud-upload-alt fa-3x mb-3" style="color: var(--accent-color);"></i>
@@ -296,7 +311,11 @@
                 cursorColor: '#00c3ff',
                 height: 100,
                 normalize: true,
-                backend: 'WebAudio'
+                backend: 'WebAudio',
+                responsive: true,
+                fillParent: true,
+                minPxPerSec: 1,
+                scrollParent: false
             });
 
             // Resume audio context

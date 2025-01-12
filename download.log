@@ -11861,3 +11861,18 @@ ERROR: [youtube] hVTBQbI7lqI: Failed to extract any player response; please repo
 2025-01-12 23:25:51,364 - pydub.converter - DEBUG - subprocess output: b'[out#0/mp3 @ 0x56fc3ad542c0] video:0KiB audio:335KiB subtitle:0KiB other streams:0KiB global headers:0KiB muxing overhead: 0.073528%'
 2025-01-12 23:25:51,364 - pydub.converter - DEBUG - subprocess output: b'size=     335KiB time=00:00:21.37 bitrate= 128.4kbits/s speed=92.6x'
 2025-01-12 23:25:51,368 - werkzeug - INFO - 127.0.0.1 - - [12/Jan/2025 23:25:51] "POST /cut-audio HTTP/1.1" 200 -
+2025-01-12 23:29:12,334 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-01-12 23:29:12,335 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-01-12 23:29:12,335 - werkzeug - INFO -  * Restarting with stat
+2025-01-12 23:29:12,486 - werkzeug - WARNING -  * Debugger is active!
+2025-01-12 23:29:12,487 - werkzeug - INFO -  * Debugger PIN: 463-800-100
+2025-01-12 23:29:15,074 - werkzeug - INFO - 127.0.0.1 - - [12/Jan/2025 23:29:15] "GET /audio-cutter HTTP/1.1" 200 -
+2025-01-12 23:29:19,573 - werkzeug - INFO - 127.0.0.1 - - [12/Jan/2025 23:29:19] "POST /upload-audio HTTP/1.1" 200 -
+2025-01-12 23:29:19,585 - werkzeug - INFO - 127.0.0.1 - - [12/Jan/2025 23:29:19] "GET /temp/835b7e6e-5b2b-4aca-93a1-66f68b0b7950 HTTP/1.1" 200 -
+2025-01-12 23:31:51,969 - werkzeug - INFO - 127.0.0.1 - - [12/Jan/2025 23:31:51] "GET /audio-cutter HTTP/1.1" 200 -
+2025-01-12 23:31:56,776 - werkzeug - INFO - 127.0.0.1 - - [12/Jan/2025 23:31:56] "POST /upload-audio HTTP/1.1" 200 -
+2025-01-12 23:31:56,786 - werkzeug - INFO - 127.0.0.1 - - [12/Jan/2025 23:31:56] "GET /temp/12101a56-85ee-4b3a-8ef6-6736135ae8a7 HTTP/1.1" 200 -
+2025-01-12 23:33:21,224 - werkzeug - INFO - 127.0.0.1 - - [12/Jan/2025 23:33:21] "GET /audio-cutter HTTP/1.1" 200 -
+2025-01-12 23:33:24,993 - werkzeug - INFO - 127.0.0.1 - - [12/Jan/2025 23:33:24] "POST /upload-audio HTTP/1.1" 200 -
+2025-01-12 23:33:25,004 - werkzeug - INFO - 127.0.0.1 - - [12/Jan/2025 23:33:25] "GET /temp/fb6bf47e-223b-4ff1-8b04-7e407649a3c8 HTTP/1.1" 200 -
