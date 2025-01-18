@@ -437,6 +437,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/audio-cutter"><i class="fas fa-scissors me-2"></i>Audio Cutter</a>
                     </li>
+                    <li class="nav-item" id="authLinks">
+                        <a class="nav-link" href="/auth"><i class="fas fa-user me-2"></i>Login</a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -921,6 +924,32 @@
 
         // Check cookie consent on page load
         document.addEventListener('DOMContentLoaded', checkCookieConsent);
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const token = localStorage.getItem('token');
+            const authLinks = document.getElementById('authLinks');
+            
+            if (token) {
+                // User is logged in
+                authLinks.innerHTML = `
+                    <div class="dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            <i class="fas fa-user me-2"></i>Account
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-dark">
+                            <li><a class="dropdown-item" href="/profile"><i class="fas fa-user-circle me-2"></i>Profile</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#" onclick="logout()"><i class="fas fa-sign-out-alt me-2"></i>Logout</a></li>
+                        </ul>
+                    </div>
+                `;
+            }
+        });
+
+        function logout() {
+            localStorage.removeItem('token');
+            window.location.reload();
+        }
     </script>
 
     <footer>
