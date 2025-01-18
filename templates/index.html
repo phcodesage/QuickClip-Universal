@@ -159,11 +159,26 @@
         }
 
         footer {
-            background-color: var(--primary-dark);
+            background-color: var(--secondary-dark);
             padding: 20px 0;
-            margin-top: auto;
             text-align: center;
             color: var(--text-secondary);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        footer a:hover {
+            text-decoration: underline !important;
+            opacity: 0.9;
+        }
+
+        footer .fa-heart {
+            animation: heartbeat 1.5s ease infinite;
+        }
+
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
         }
 
         .download-options {
@@ -529,7 +544,7 @@
                     <div class="feature-card">
                         <i class="fas fa-bolt feature-icon"></i>
                         <h3>Fast Download</h3>
-                        <p>Download your favorite videos in seconds with our optimized download engine.</p>
+                        <p>Download your favorite videos with our optimized download engine.</p>
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -549,13 +564,6 @@
             </div>
         </div>
     </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <p>&copy; 2024 QuickClip Universal. All rights reserved.</p>
-        </div>
-    </footer>
 
     <!-- Privacy Policy Modal -->
     <div class="modal fade" id="privacyModal" tabindex="-1" aria-hidden="true">
@@ -914,5 +922,11 @@
         // Check cookie consent on page load
         document.addEventListener('DOMContentLoaded', checkCookieConsent);
     </script>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 QuickClip Universal. Created with <i class="fas fa-heart" style="color: var(--accent-color);"></i> by <a href="https://github.com/phcodesage" target="_blank" style="color: var(--accent-color); text-decoration: none;">phcodesage</a></p>
+        </div>
+    </footer>
 </body>
 </html>

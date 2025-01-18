@@ -209,6 +209,29 @@
         wave canvas {
             width: 100% !important;
         }
+
+        footer {
+            background-color: var(--secondary-dark);
+            padding: 20px 0;
+            text-align: center;
+            color: var(--text-secondary);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        footer a:hover {
+            text-decoration: underline !important;
+            opacity: 0.9;
+        }
+
+        footer .fa-heart {
+            animation: heartbeat 1.5s ease infinite;
+        }
+
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
     </style>
 </head>
 <body style="background-color: var(--primary-dark); color: var(--text-primary);">
@@ -286,6 +309,12 @@
             </div>
         </div>
     </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 QuickClip Universal. Created with <i class="fas fa-heart" style="color: var(--accent-color);"></i> by <a href="https://github.com/phcodesage" target="_blank" style="color: var(--accent-color); text-decoration: none;">phcodesage</a></p>
+        </div>
+    </footer>
 
     <script src="https://unpkg.com/wavesurfer.js@5.2.0/dist/wavesurfer.js"></script>
     <script src="https://unpkg.com/wavesurfer.js@5.2.0/dist/plugin/wavesurfer.regions.js"></script>
