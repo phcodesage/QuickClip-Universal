@@ -12012,3 +12012,161 @@ ERROR: [youtube] hVTBQbI7lqI: Failed to extract any player response; please repo
 2025-01-18 22:59:25,204 - werkzeug - INFO - 127.0.0.1 - - [18/Jan/2025 22:59:25] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
 2025-01-18 22:59:26,491 - werkzeug - INFO - 127.0.0.1 - - [18/Jan/2025 22:59:26] "GET /socket.io/?EIO=4&transport=websocket&sid=rm1KopJJqJnyGDTpAAAO HTTP/1.1" 200 -
 2025-01-18 22:59:26,499 - werkzeug - INFO - 127.0.0.1 - - [18/Jan/2025 22:59:26] "[33mGET /auth HTTP/1.1[0m" 404 -
+2025-01-18 23:00:11,105 - werkzeug - INFO - 127.0.0.1 - - [18/Jan/2025 23:00:11] "GET /socket.io/?EIO=4&transport=polling&t=PHvxRpP HTTP/1.1" 200 -
+2025-01-18 23:00:11,112 - werkzeug - INFO - 127.0.0.1 - - [18/Jan/2025 23:00:11] "POST /socket.io/?EIO=4&transport=polling&t=PHvxRpb&sid=Wo2STXL3gBYWUNxLAAAQ HTTP/1.1" 200 -
+2025-01-18 23:00:11,123 - werkzeug - INFO - 127.0.0.1 - - [18/Jan/2025 23:00:11] "GET /socket.io/?EIO=4&transport=polling&t=PHvxRpc&sid=Wo2STXL3gBYWUNxLAAAQ HTTP/1.1" 200 -
+2025-01-18 23:00:11,133 - werkzeug - INFO - 127.0.0.1 - - [18/Jan/2025 23:00:11] "GET /socket.io/?EIO=4&transport=polling&t=PHvxRps&sid=Wo2STXL3gBYWUNxLAAAQ HTTP/1.1" 200 -
+2025-01-18 23:01:19,904 - werkzeug - INFO - 127.0.0.1 - - [18/Jan/2025 23:01:19] "GET /socket.io/?EIO=4&transport=websocket&sid=Wo2STXL3gBYWUNxLAAAQ HTTP/1.1" 200 -
+2025-01-18 23:01:19,912 - werkzeug - INFO - 127.0.0.1 - - [18/Jan/2025 23:01:19] "GET / HTTP/1.1" 200 -
+2025-01-18 23:01:25,309 - werkzeug - INFO - 127.0.0.1 - - [18/Jan/2025 23:01:25] "GET /socket.io/?EIO=4&transport=polling&t=PHvxjwv HTTP/1.1" 200 -
+2025-01-18 23:01:25,329 - werkzeug - INFO - 127.0.0.1 - - [18/Jan/2025 23:01:25] "POST /socket.io/?EIO=4&transport=polling&t=PHvxjx5&sid=jIpNYNen7W8SroKqAAAS HTTP/1.1" 200 -
+2025-01-18 23:01:25,337 - werkzeug - INFO - 127.0.0.1 - - [18/Jan/2025 23:01:25] "GET /socket.io/?EIO=4&transport=polling&t=PHvxjx7&sid=jIpNYNen7W8SroKqAAAS HTTP/1.1" 200 -
+2025-01-18 23:01:25,613 - werkzeug - INFO - 127.0.0.1 - - [18/Jan/2025 23:01:25] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-01-18 23:01:28,245 - werkzeug - INFO - 127.0.0.1 - - [18/Jan/2025 23:01:28] "GET /socket.io/?EIO=4&transport=websocket&sid=jIpNYNen7W8SroKqAAAS HTTP/1.1" 200 -
+2025-01-18 23:01:28,253 - werkzeug - INFO - 127.0.0.1 - - [18/Jan/2025 23:01:28] "[33mGET /auth HTTP/1.1[0m" 404 -
+2025-01-18 23:01:33,045 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-01-18 23:01:33,045 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-01-18 23:01:33,045 - werkzeug - INFO -  * Restarting with stat
+2025-01-18 23:01:33,351 - werkzeug - WARNING -  * Debugger is active!
+2025-01-18 23:01:33,351 - werkzeug - INFO -  * Debugger PIN: 101-793-690
+2025-01-18 23:01:34,567 - werkzeug - INFO - 127.0.0.1 - - [18/Jan/2025 23:01:34] "[33mGET /auth HTTP/1.1[0m" 404 -
+2025-01-18 23:01:34,712 - werkzeug - INFO - 127.0.0.1 - - [18/Jan/2025 23:01:34] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-01-18 23:01:36,233 - werkzeug - INFO - 127.0.0.1 - - [18/Jan/2025 23:01:36] "GET / HTTP/1.1" 200 -
+2025-01-18 23:01:36,394 - werkzeug - INFO - 127.0.0.1 - - [18/Jan/2025 23:01:36] "GET /socket.io/?EIO=4&transport=polling&t=PHvxme7 HTTP/1.1" 200 -
+2025-01-18 23:01:36,410 - werkzeug - INFO - 127.0.0.1 - - [18/Jan/2025 23:01:36] "POST /socket.io/?EIO=4&transport=polling&t=PHvxmeD&sid=-2XwDeM5RrwMhf4wAAAA HTTP/1.1" 200 -
+2025-01-18 23:01:36,416 - werkzeug - INFO - 127.0.0.1 - - [18/Jan/2025 23:01:36] "GET /socket.io/?EIO=4&transport=polling&t=PHvxmeE&sid=-2XwDeM5RrwMhf4wAAAA HTTP/1.1" 200 -
+2025-01-18 23:01:36,554 - werkzeug - INFO - 127.0.0.1 - - [18/Jan/2025 23:01:36] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-01-18 23:01:37,358 - werkzeug - INFO - 127.0.0.1 - - [18/Jan/2025 23:01:37] "GET /socket.io/?EIO=4&transport=websocket&sid=-2XwDeM5RrwMhf4wAAAA HTTP/1.1" 200 -
+2025-01-18 23:01:37,367 - werkzeug - INFO - 127.0.0.1 - - [18/Jan/2025 23:01:37] "[33mGET /auth HTTP/1.1[0m" 404 -
+2025-01-18 23:12:49,524 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-01-18 23:12:49,524 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-01-18 23:12:49,524 - werkzeug - INFO -  * Restarting with stat
+2025-01-18 23:12:49,835 - werkzeug - WARNING -  * Debugger is active!
+2025-01-18 23:12:49,835 - werkzeug - INFO -  * Debugger PIN: 101-793-690
+2025-01-18 23:14:04,991 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-01-18 23:14:04,991 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-01-18 23:14:04,991 - werkzeug - INFO -  * Restarting with stat
+2025-01-18 23:14:05,284 - werkzeug - WARNING -  * Debugger is active!
+2025-01-18 23:14:05,284 - werkzeug - INFO -  * Debugger PIN: 101-793-690
+2025-01-18 23:25:12,157 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-01-18 23:25:12,157 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-01-18 23:25:12,158 - werkzeug - INFO -  * Restarting with stat
+2025-01-18 23:25:12,448 - werkzeug - WARNING -  * Debugger is active!
+2025-01-18 23:25:12,448 - werkzeug - INFO -  * Debugger PIN: 101-793-690
+2025-01-18 23:25:17,061 - werkzeug - INFO - 127.0.0.1 - - [18/Jan/2025 23:25:17] "[33mGET /auth HTTP/1.1[0m" 404 -
+2025-01-18 23:25:17,329 - werkzeug - INFO - 127.0.0.1 - - [18/Jan/2025 23:25:17] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-01-18 23:25:18,601 - werkzeug - INFO - 127.0.0.1 - - [18/Jan/2025 23:25:18] "GET /socket.io/?EIO=4&transport=polling&t=PHw1Bs5 HTTP/1.1" 200 -
+2025-01-18 23:25:18,613 - werkzeug - INFO - 127.0.0.1 - - [18/Jan/2025 23:25:18] "POST /socket.io/?EIO=4&transport=polling&t=PHw1BsH&sid=Yij6sY7adfQWssoVAAAA HTTP/1.1" 200 -
+2025-01-18 23:25:18,624 - werkzeug - INFO - 127.0.0.1 - - [18/Jan/2025 23:25:18] "GET /socket.io/?EIO=4&transport=polling&t=PHw1BsK&sid=Yij6sY7adfQWssoVAAAA HTTP/1.1" 200 -
+2025-01-18 23:25:18,635 - werkzeug - INFO - 127.0.0.1 - - [18/Jan/2025 23:25:18] "GET /socket.io/?EIO=4&transport=polling&t=PHw1Bsa&sid=Yij6sY7adfQWssoVAAAA HTTP/1.1" 200 -
+2025-01-18 23:25:21,270 - werkzeug - INFO - 127.0.0.1 - - [18/Jan/2025 23:25:21] "GET /socket.io/?EIO=4&transport=websocket&sid=Yij6sY7adfQWssoVAAAA HTTP/1.1" 200 -
+2025-01-18 23:25:21,283 - werkzeug - INFO - 127.0.0.1 - - [18/Jan/2025 23:25:21] "[33mGET /login HTTP/1.1[0m" 404 -
+2025-01-18 23:26:05,002 - werkzeug - INFO - 127.0.0.1 - - [18/Jan/2025 23:26:05] "GET /socket.io/?EIO=4&transport=polling&t=PHw1NB1 HTTP/1.1" 200 -
+2025-01-18 23:26:05,020 - werkzeug - INFO - 127.0.0.1 - - [18/Jan/2025 23:26:05] "POST /socket.io/?EIO=4&transport=polling&t=PHw1NBD&sid=FGTNZmXvcGx0UwR1AAAC HTTP/1.1" 200 -
+2025-01-18 23:26:05,021 - werkzeug - INFO - 127.0.0.1 - - [18/Jan/2025 23:26:05] "GET /socket.io/?EIO=4&transport=polling&t=PHw1NBE&sid=FGTNZmXvcGx0UwR1AAAC HTTP/1.1" 200 -
+2025-01-18 23:26:39,775 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-01-18 23:26:39,775 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-01-18 23:26:39,775 - werkzeug - INFO -  * Restarting with stat
+2025-01-18 23:26:40,078 - werkzeug - WARNING -  * Debugger is active!
+2025-01-18 23:26:40,078 - werkzeug - INFO -  * Debugger PIN: 357-950-534
+2025-01-18 23:26:43,218 - werkzeug - INFO - 127.0.0.1 - - [18/Jan/2025 23:26:43] "GET /socket.io/?EIO=4&transport=polling&t=PHw1WW4 HTTP/1.1" 200 -
+2025-01-18 23:26:43,236 - werkzeug - INFO - 127.0.0.1 - - [18/Jan/2025 23:26:43] "POST /socket.io/?EIO=4&transport=polling&t=PHw1WWL&sid=ZyaUO0B8jszEnvkEAAAA HTTP/1.1" 200 -
+2025-01-18 23:26:43,239 - werkzeug - INFO - 127.0.0.1 - - [18/Jan/2025 23:26:43] "GET /socket.io/?EIO=4&transport=polling&t=PHw1WWM&sid=ZyaUO0B8jszEnvkEAAAA HTTP/1.1" 200 -
+2025-01-18 23:30:37,877 - werkzeug - INFO - 127.0.0.1 - - [18/Jan/2025 23:30:37] "GET /socket.io/?EIO=4&transport=websocket&sid=ZyaUO0B8jszEnvkEAAAA HTTP/1.1" 200 -
+2025-01-18 23:30:37,887 - werkzeug - INFO - 127.0.0.1 - - [18/Jan/2025 23:30:37] "[33mGET /auth HTTP/1.1[0m" 404 -
+2025-01-18 23:30:41,509 - werkzeug - INFO - 127.0.0.1 - - [18/Jan/2025 23:30:41] "[33mGET /login HTTP/1.1[0m" 404 -
+2025-01-18 23:32:25,125 - werkzeug - INFO -  * Detected change in '/home/rech/proj/flask-proj/QuickClip-Universal/app.py', reloading
+2025-01-18 23:32:25,221 - werkzeug - INFO -  * Restarting with stat
+2025-01-18 23:32:25,539 - werkzeug - WARNING -  * Debugger is active!
+2025-01-18 23:32:25,540 - werkzeug - INFO -  * Debugger PIN: 357-950-534
+2025-01-18 23:32:38,621 - werkzeug - INFO -  * Detected change in '/home/rech/proj/flask-proj/QuickClip-Universal/app.py', reloading
+2025-01-18 23:32:38,686 - werkzeug - INFO -  * Restarting with stat
+2025-01-18 23:32:39,009 - werkzeug - WARNING -  * Debugger is active!
+2025-01-18 23:32:39,009 - werkzeug - INFO -  * Debugger PIN: 357-950-534
+2025-01-18 23:32:51,085 - werkzeug - INFO -  * Detected change in '/home/rech/proj/flask-proj/QuickClip-Universal/app.py', reloading
+2025-01-18 23:32:51,165 - werkzeug - INFO -  * Restarting with stat
+2025-01-18 23:32:51,531 - werkzeug - WARNING -  * Debugger is active!
+2025-01-18 23:32:51,532 - werkzeug - INFO -  * Debugger PIN: 357-950-534
+2025-01-18 23:33:00,593 - werkzeug - INFO -  * Detected change in '/home/rech/proj/flask-proj/QuickClip-Universal/app.py', reloading
+2025-01-18 23:33:00,697 - werkzeug - INFO -  * Restarting with stat
+2025-01-18 23:33:03,191 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-01-18 23:33:03,191 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-01-18 23:33:03,192 - werkzeug - INFO -  * Restarting with stat
+2025-01-18 23:33:03,526 - werkzeug - WARNING -  * Debugger is active!
+2025-01-18 23:33:03,526 - werkzeug - INFO -  * Debugger PIN: 357-950-534
+2025-01-18 23:33:17,748 - werkzeug - INFO - 127.0.0.1 - - [18/Jan/2025 23:33:17] "[33mGET /login HTTP/1.1[0m" 404 -
+2025-01-18 23:33:17,893 - werkzeug - INFO - 127.0.0.1 - - [18/Jan/2025 23:33:17] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-01-18 23:33:20,838 - werkzeug - INFO - 127.0.0.1 - - [18/Jan/2025 23:33:20] "GET /socket.io/?EIO=4&transport=polling&t=PHw31b2 HTTP/1.1" 200 -
+2025-01-18 23:33:20,846 - werkzeug - INFO - 127.0.0.1 - - [18/Jan/2025 23:33:20] "POST /socket.io/?EIO=4&transport=polling&t=PHw31bB&sid=qFpzVKWdjqPVQ993AAAA HTTP/1.1" 200 -
+2025-01-18 23:33:20,857 - werkzeug - INFO - 127.0.0.1 - - [18/Jan/2025 23:33:20] "GET /socket.io/?EIO=4&transport=polling&t=PHw31bD&sid=qFpzVKWdjqPVQ993AAAA HTTP/1.1" 200 -
+2025-01-18 23:33:20,869 - werkzeug - INFO - 127.0.0.1 - - [18/Jan/2025 23:33:20] "GET /socket.io/?EIO=4&transport=polling&t=PHw31bU&sid=qFpzVKWdjqPVQ993AAAA HTTP/1.1" 200 -
+2025-01-18 23:33:21,268 - werkzeug - INFO - 127.0.0.1 - - [18/Jan/2025 23:33:21] "GET /socket.io/?EIO=4&transport=websocket&sid=qFpzVKWdjqPVQ993AAAA HTTP/1.1" 200 -
+2025-01-18 23:33:21,279 - werkzeug - INFO - 127.0.0.1 - - [18/Jan/2025 23:33:21] "[33mGET /auth HTTP/1.1[0m" 404 -
+2025-01-18 23:33:25,520 - werkzeug - INFO - 127.0.0.1 - - [18/Jan/2025 23:33:25] "[33mGET /login HTTP/1.1[0m" 404 -
+2025-01-18 23:33:28,693 - werkzeug - INFO -  * Detected change in '/home/rech/proj/flask-proj/QuickClip-Universal/app.py', reloading
+2025-01-18 23:33:28,761 - werkzeug - INFO -  * Restarting with stat
+2025-01-18 23:33:29,152 - werkzeug - WARNING -  * Debugger is active!
+2025-01-18 23:33:29,152 - werkzeug - INFO -  * Debugger PIN: 357-950-534
+2025-01-18 23:33:42,125 - werkzeug - INFO - 127.0.0.1 - - [18/Jan/2025 23:33:42] "[35m[1mGET /auth/login HTTP/1.1[0m" 501 -
+2025-01-18 23:33:48,803 - werkzeug - INFO - 127.0.0.1 - - [18/Jan/2025 23:33:48] "[35m[1mGET /auth/signup HTTP/1.1[0m" 501 -
+2025-01-18 23:35:09,805 - werkzeug - INFO -  * Detected change in '/home/rech/proj/flask-proj/QuickClip-Universal/app.py', reloading
+2025-01-18 23:35:09,871 - werkzeug - INFO -  * Restarting with stat
+2025-01-18 23:35:10,227 - werkzeug - WARNING -  * Debugger is active!
+2025-01-18 23:35:10,227 - werkzeug - INFO -  * Debugger PIN: 357-950-534
+2025-01-19 04:09:09,489 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-01-19 04:09:09,489 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-01-19 04:09:09,489 - werkzeug - INFO -  * Restarting with stat
+2025-01-19 04:09:09,649 - werkzeug - WARNING -  * Debugger is active!
+2025-01-19 04:09:09,649 - werkzeug - INFO -  * Debugger PIN: 123-671-979
+2025-01-19 04:09:30,671 - werkzeug - INFO - 127.0.0.1 - - [19/Jan/2025 04:09:30] "GET / HTTP/1.1" 200 -
+2025-01-19 04:09:30,855 - werkzeug - INFO - 127.0.0.1 - - [19/Jan/2025 04:09:30] "GET /socket.io/?EIO=4&transport=polling&t=PHx2E_b HTTP/1.1" 200 -
+2025-01-19 04:09:30,871 - werkzeug - INFO - 127.0.0.1 - - [19/Jan/2025 04:09:30] "POST /socket.io/?EIO=4&transport=polling&t=PHx2E_m&sid=dd-wg3eC0mc-Q9CPAAAA HTTP/1.1" 200 -
+2025-01-19 04:09:30,872 - werkzeug - INFO - 127.0.0.1 - - [19/Jan/2025 04:09:30] "GET /socket.io/?EIO=4&transport=polling&t=PHx2E_n&sid=dd-wg3eC0mc-Q9CPAAAA HTTP/1.1" 200 -
+2025-01-19 04:09:30,878 - werkzeug - INFO - 127.0.0.1 - - [19/Jan/2025 04:09:30] "GET /socket.io/?EIO=4&transport=polling&t=PHx2E_x&sid=dd-wg3eC0mc-Q9CPAAAA HTTP/1.1" 200 -
+2025-01-19 04:09:31,155 - werkzeug - INFO - 127.0.0.1 - - [19/Jan/2025 04:09:31] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-01-19 04:09:56,395 - werkzeug - INFO - 127.0.0.1 - - [19/Jan/2025 04:09:56] "GET /socket.io/?EIO=4&transport=websocket&sid=dd-wg3eC0mc-Q9CPAAAA HTTP/1.1" 200 -
+2025-01-19 04:09:56,408 - werkzeug - INFO - 127.0.0.1 - - [19/Jan/2025 04:09:56] "GET /audio-cutter HTTP/1.1" 200 -
+2025-01-19 04:09:57,709 - werkzeug - INFO - 127.0.0.1 - - [19/Jan/2025 04:09:57] "GET / HTTP/1.1" 200 -
+2025-01-19 04:09:57,917 - werkzeug - INFO - 127.0.0.1 - - [19/Jan/2025 04:09:57] "GET /socket.io/?EIO=4&transport=polling&t=PHx2LcQ HTTP/1.1" 200 -
+2025-01-19 04:09:57,922 - werkzeug - INFO - 127.0.0.1 - - [19/Jan/2025 04:09:57] "POST /socket.io/?EIO=4&transport=polling&t=PHx2LcW&sid=-d6ksZF1rifbfRgUAAAC HTTP/1.1" 200 -
+2025-01-19 04:09:57,928 - werkzeug - INFO - 127.0.0.1 - - [19/Jan/2025 04:09:57] "GET /socket.io/?EIO=4&transport=polling&t=PHx2LcX&sid=-d6ksZF1rifbfRgUAAAC HTTP/1.1" 200 -
+2025-01-19 04:09:57,934 - werkzeug - INFO - 127.0.0.1 - - [19/Jan/2025 04:09:57] "GET /socket.io/?EIO=4&transport=polling&t=PHx2Lcg&sid=-d6ksZF1rifbfRgUAAAC HTTP/1.1" 200 -
+2025-01-19 04:09:58,636 - werkzeug - INFO - 127.0.0.1 - - [19/Jan/2025 04:09:58] "GET /socket.io/?EIO=4&transport=websocket&sid=-d6ksZF1rifbfRgUAAAC HTTP/1.1" 200 -
+2025-01-19 04:09:58,645 - werkzeug - INFO - 127.0.0.1 - - [19/Jan/2025 04:09:58] "[33mGET /auth HTTP/1.1[0m" 404 -
+2025-01-19 04:11:31,161 - werkzeug - INFO -  * Detected change in '/home/rech/proj/flask-proj/QuickClip-Universal/app.py', reloading
+2025-01-19 04:11:31,196 - werkzeug - INFO -  * Restarting with stat
+2025-01-19 04:14:45,160 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-01-19 04:14:45,160 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-01-19 04:14:45,161 - werkzeug - INFO -  * Restarting with stat
+2025-01-19 04:14:45,446 - werkzeug - WARNING -  * Debugger is active!
+2025-01-19 04:14:45,446 - werkzeug - INFO -  * Debugger PIN: 123-671-979
+2025-01-19 04:14:51,576 - werkzeug - INFO - 127.0.0.1 - - [19/Jan/2025 04:14:51] "[33mGET /auth HTTP/1.1[0m" 404 -
+2025-01-19 04:14:51,771 - werkzeug - INFO - 127.0.0.1 - - [19/Jan/2025 04:14:51] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-01-19 04:14:56,560 - werkzeug - INFO - 127.0.0.1 - - [19/Jan/2025 04:14:56] "GET / HTTP/1.1" 200 -
+2025-01-19 04:14:56,758 - werkzeug - INFO - 127.0.0.1 - - [19/Jan/2025 04:14:56] "GET /socket.io/?EIO=4&transport=polling&t=PHx3UZo HTTP/1.1" 200 -
+2025-01-19 04:14:56,772 - werkzeug - INFO - 127.0.0.1 - - [19/Jan/2025 04:14:56] "POST /socket.io/?EIO=4&transport=polling&t=PHx3UZy&sid=TSTg2U4rQaDdaH5SAAAA HTTP/1.1" 200 -
+2025-01-19 04:14:56,773 - werkzeug - INFO - 127.0.0.1 - - [19/Jan/2025 04:14:56] "GET /socket.io/?EIO=4&transport=polling&t=PHx3UZz&sid=TSTg2U4rQaDdaH5SAAAA HTTP/1.1" 200 -
+2025-01-19 04:14:56,785 - werkzeug - INFO - 127.0.0.1 - - [19/Jan/2025 04:14:56] "GET /socket.io/?EIO=4&transport=polling&t=PHx3UaC&sid=TSTg2U4rQaDdaH5SAAAA HTTP/1.1" 200 -
+2025-01-19 04:15:01,339 - werkzeug - INFO - 127.0.0.1 - - [19/Jan/2025 04:15:01] "GET /socket.io/?EIO=4&transport=websocket&sid=TSTg2U4rQaDdaH5SAAAA HTTP/1.1" 200 -
+2025-01-19 04:15:01,350 - werkzeug - INFO - 127.0.0.1 - - [19/Jan/2025 04:15:01] "GET /audio-cutter HTTP/1.1" 200 -
+2025-01-19 04:15:02,734 - werkzeug - INFO - 127.0.0.1 - - [19/Jan/2025 04:15:02] "GET / HTTP/1.1" 200 -
+2025-01-19 04:15:02,930 - werkzeug - INFO - 127.0.0.1 - - [19/Jan/2025 04:15:02] "GET /socket.io/?EIO=4&transport=polling&t=PHx3W4F HTTP/1.1" 200 -
+2025-01-19 04:15:02,946 - werkzeug - INFO - 127.0.0.1 - - [19/Jan/2025 04:15:02] "POST /socket.io/?EIO=4&transport=polling&t=PHx3W4O&sid=v7wvMSoZF3eN0toqAAAC HTTP/1.1" 200 -
+2025-01-19 04:15:02,946 - werkzeug - INFO - 127.0.0.1 - - [19/Jan/2025 04:15:02] "GET /socket.io/?EIO=4&transport=polling&t=PHx3W4Q&sid=v7wvMSoZF3eN0toqAAAC HTTP/1.1" 200 -
+2025-01-19 04:15:03,700 - werkzeug - INFO - 127.0.0.1 - - [19/Jan/2025 04:15:03] "GET /socket.io/?EIO=4&transport=websocket&sid=v7wvMSoZF3eN0toqAAAC HTTP/1.1" 200 -
+2025-01-19 04:15:03,709 - werkzeug - INFO - 127.0.0.1 - - [19/Jan/2025 04:15:03] "[33mGET /auth HTTP/1.1[0m" 404 -
+2025-01-19 04:16:11,883 - werkzeug - INFO -  * Detected change in '/home/rech/proj/flask-proj/QuickClip-Universal/app.py', reloading
+2025-01-19 04:16:11,953 - werkzeug - INFO -  * Restarting with stat
+2025-01-19 04:16:12,266 - werkzeug - WARNING -  * Debugger is active!
+2025-01-19 04:16:12,266 - werkzeug - INFO -  * Debugger PIN: 123-671-979
+2025-01-19 04:16:15,734 - werkzeug - INFO - 127.0.0.1 - - [19/Jan/2025 04:16:15] "GET /auth HTTP/1.1" 200 -
+2025-01-19 04:16:16,123 - werkzeug - INFO - 127.0.0.1 - - [19/Jan/2025 04:16:16] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-01-19 04:16:22,810 - werkzeug - INFO - 127.0.0.1 - - [19/Jan/2025 04:16:22] "[35m[1mPOST /auth/login HTTP/1.1[0m" 500 -

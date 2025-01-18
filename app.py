@@ -1,4 +1,4 @@
-from flask import Flask, request, send_from_directory, render_template, jsonify, abort, Response, send_file
+from flask import Flask, request, session, send_from_directory, render_template, jsonify, redirect, Response, send_file
 from flask_cors import CORS
 import os
 import json
@@ -18,6 +18,12 @@ import tempfile
 import uuid
 import requests
 from urllib.parse import parse_qs, urlparse
+from werkzeug.security import generate_password_hash, check_password_hash
+import jwt
+from functools import wraps
+from datetime import timedelta
+from models import db, User, Download, AudioCut
+
 
 app = Flask(__name__, static_folder='static', template_folder='templates')
 CORS(app)
@@ -37,6 +43,45 @@ logging.basicConfig(
     ]
 )
 logger = logging.getLogger(__name__)
+
+# Add these configurations
+app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'your-secret-key-here')
+app.config['JWT_EXPIRATION_DELTA'] = timedelta(days=7)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///quickclip.db'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+db.init_app(app)
+
+with app.app_context():
+    db.create_all()
+
+# User model (you'll need to create a database)
+class User:
+    def __init__(self, id, username, email, password_hash):
+        self.id = id
+        self.username = username
+        self.email = email
+        self.password_hash = password_hash
+
+# Authentication decorator
+def token_required(f):
+    @wraps(f)
+    def decorated(*args, **kwargs):
+        token = None
+        if 'Authorization' in request.headers:
+            token = request.headers['Authorization'].split(' ')[1]
+        
+        if not token:
+            return jsonify({'error': 'Token is missing'}), 401
+        
+        try:
+            data = jwt.decode(token, app.config['SECRET_KEY'], algorithms=["HS256"])
+            current_user = User.query.get(data['user_id'])  # You'll need to implement this with your database
+        except:
+            return jsonify({'error': 'Token is invalid'}), 401
+            
+        return f(current_user, *args, **kwargs)
+    
+    return decorated
 
 @app.route('/', methods=['GET'])
 def index():
@@ -374,6 +419,109 @@ def cut_audio():
     except Exception as e:
         print(f"Error in cut_audio: {str(e)}")
         return jsonify({'error': str(e)}), 500
+
+
+
+# Add after your existing imports
+users_db = {}  # In-memory storage for demo. Replace with real database.
+
+@app.route('/auth')
+def auth():
+    return render_template('auth.html')
+
+@app.route('/auth/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'GET':
+        return render_template('auth.html')
+        
+    data = request.get_json()
+    email = data.get('email')
+    password = data.get('password')
+    
+    try:
+        user = User.query.filter_by(email=email).first()
+        
+        if not user or not check_password_hash(user.password_hash, password):
+            return jsonify({'error': 'Invalid email or password'}), 401
+        
+        # Generate JWT token
+        token = jwt.encode({
+            'user_id': user.id,
+            'exp': datetime.utcnow() + app.config['JWT_EXPIRATION_DELTA']
+        }, app.config['SECRET_KEY'])
+        
+        return jsonify({
+            'token': token,
+            'message': 'Login successful'
+        })
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+@app.route('/auth/signup', methods=['GET', 'POST'])
+def signup():
+    if request.method == 'GET':
+        return render_template('auth.html')
+        
+    data = request.get_json()
+    username = data.get('username')
+    email = data.get('email')
+    password = data.get('password')
+    
+    try:
+        if User.query.filter_by(email=email).first():
+            return jsonify({'error': 'Email already registered'}), 400
+            
+        # Create new user
+        new_user = User(
+            username=username,
+            email=email,
+            password_hash=generate_password_hash(password)
+        )
+        
+        db.session.add(new_user)
+        db.session.commit()
+        
+        # Generate JWT token
+        token = jwt.encode({
+            'user_id': new_user.id,
+            'exp': datetime.utcnow() + app.config['JWT_EXPIRATION_DELTA']
+        }, app.config['SECRET_KEY'])
+        
+        return jsonify({
+            'token': token,
+            'message': 'Signup successful'
+        })
+    except Exception as e:
+        db.session.rollback()
+        return jsonify({'error': str(e)}), 500
+
+@app.route('/auth/logout')
+def logout():
+    session.pop('user', None)
+    return redirect(url_for('index'))
+
+@app.route('/auth/<provider>')
+def social_auth(provider):
+    # Placeholder for social auth
+    return jsonify({
+        'message': f'Social auth with {provider} not implemented'
+    }), 501
+
+@app.route('/auth/google')
+def google_auth():
+    # Implement Google OAuth here
+    pass
+
+@app.route('/auth/github')
+def github_auth():
+    # Implement GitHub OAuth here
+    pass
+
+# Profile/Dashboard route
+@app.route('/profile')
+@token_required
+def profile(current_user):
+    return render_template('profile.html', user=current_user)
 
 if __name__ == '__main__':
     socketio.run(app, debug=True, port=5000)
