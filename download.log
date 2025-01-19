@@ -12170,3 +12170,57 @@ ERROR: [youtube] hVTBQbI7lqI: Failed to extract any player response; please repo
 2025-01-19 04:16:15,734 - werkzeug - INFO - 127.0.0.1 - - [19/Jan/2025 04:16:15] "GET /auth HTTP/1.1" 200 -
 2025-01-19 04:16:16,123 - werkzeug - INFO - 127.0.0.1 - - [19/Jan/2025 04:16:16] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
 2025-01-19 04:16:22,810 - werkzeug - INFO - 127.0.0.1 - - [19/Jan/2025 04:16:22] "[35m[1mPOST /auth/login HTTP/1.1[0m" 500 -
+2025-01-19 04:16:51,861 - werkzeug - INFO - 127.0.0.1 - - [19/Jan/2025 04:16:51] "[35m[1mGET /auth/google HTTP/1.1[0m" 500 -
+2025-01-19 04:16:51,888 - werkzeug - INFO - 127.0.0.1 - - [19/Jan/2025 04:16:51] "GET /auth/google?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2025-01-19 04:16:51,891 - werkzeug - INFO - 127.0.0.1 - - [19/Jan/2025 04:16:51] "GET /auth/google?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2025-01-19 04:16:52,053 - werkzeug - INFO - 127.0.0.1 - - [19/Jan/2025 04:16:52] "GET /auth/google?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2025-01-19 04:16:52,061 - werkzeug - INFO - 127.0.0.1 - - [19/Jan/2025 04:16:52] "[36mGET /auth/google?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2025-01-19 04:16:56,216 - werkzeug - INFO - 127.0.0.1 - - [19/Jan/2025 04:16:56] "[35m[1mGET /auth/github HTTP/1.1[0m" 500 -
+2025-01-19 04:16:56,236 - werkzeug - INFO - 127.0.0.1 - - [19/Jan/2025 04:16:56] "GET /auth/github?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2025-01-19 04:16:56,244 - werkzeug - INFO - 127.0.0.1 - - [19/Jan/2025 04:16:56] "GET /auth/github?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2025-01-19 04:16:56,387 - werkzeug - INFO - 127.0.0.1 - - [19/Jan/2025 04:16:56] "GET /auth/github?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2025-01-19 04:16:56,396 - werkzeug - INFO - 127.0.0.1 - - [19/Jan/2025 04:16:56] "[36mGET /auth/github?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2025-01-19 04:20:48,892 - werkzeug - INFO - 127.0.0.1 - - [19/Jan/2025 04:20:48] "GET / HTTP/1.1" 200 -
+2025-01-19 04:20:49,111 - werkzeug - INFO - 127.0.0.1 - - [19/Jan/2025 04:20:49] "GET /socket.io/?EIO=4&transport=polling&t=PHx4qbL HTTP/1.1" 200 -
+2025-01-19 04:20:49,122 - werkzeug - INFO - 127.0.0.1 - - [19/Jan/2025 04:20:49] "POST /socket.io/?EIO=4&transport=polling&t=PHx4qbR&sid=JAKmoBps6KBAHTnPAAAA HTTP/1.1" 200 -
+2025-01-19 04:20:49,124 - werkzeug - INFO - 127.0.0.1 - - [19/Jan/2025 04:20:49] "GET /socket.io/?EIO=4&transport=polling&t=PHx4qbS&sid=JAKmoBps6KBAHTnPAAAA HTTP/1.1" 200 -
+2025-01-19 04:20:50,627 - werkzeug - INFO - 127.0.0.1 - - [19/Jan/2025 04:20:50] "GET /socket.io/?EIO=4&transport=websocket&sid=JAKmoBps6KBAHTnPAAAA HTTP/1.1" 200 -
+2025-01-19 04:20:50,636 - werkzeug - INFO - 127.0.0.1 - - [19/Jan/2025 04:20:50] "GET /auth HTTP/1.1" 200 -
+2025-01-19 04:20:56,788 - werkzeug - INFO - 127.0.0.1 - - [19/Jan/2025 04:20:56] "GET / HTTP/1.1" 200 -
+2025-01-19 04:20:56,975 - werkzeug - INFO - 127.0.0.1 - - [19/Jan/2025 04:20:56] "GET /socket.io/?EIO=4&transport=polling&t=PHx4sWA HTTP/1.1" 200 -
+2025-01-19 04:20:56,987 - werkzeug - INFO - 127.0.0.1 - - [19/Jan/2025 04:20:56] "POST /socket.io/?EIO=4&transport=polling&t=PHx4sWI&sid=hWakhF4Ff1Khcm2RAAAC HTTP/1.1" 200 -
+2025-01-19 04:20:56,988 - werkzeug - INFO - 127.0.0.1 - - [19/Jan/2025 04:20:56] "GET /socket.io/?EIO=4&transport=polling&t=PHx4sWJ&sid=hWakhF4Ff1Khcm2RAAAC HTTP/1.1" 200 -
+2025-01-19 04:20:57,914 - werkzeug - INFO - 127.0.0.1 - - [19/Jan/2025 04:20:57] "GET /socket.io/?EIO=4&transport=websocket&sid=hWakhF4Ff1Khcm2RAAAC HTTP/1.1" 200 -
+2025-01-19 04:20:57,923 - werkzeug - INFO - 127.0.0.1 - - [19/Jan/2025 04:20:57] "GET /auth HTTP/1.1" 200 -
+2025-01-19 04:20:58,770 - werkzeug - INFO - 127.0.0.1 - - [19/Jan/2025 04:20:58] "GET / HTTP/1.1" 200 -
+2025-01-19 04:20:58,956 - werkzeug - INFO - 127.0.0.1 - - [19/Jan/2025 04:20:58] "GET /socket.io/?EIO=4&transport=polling&t=PHx4s_8 HTTP/1.1" 200 -
+2025-01-19 04:20:58,968 - werkzeug - INFO - 127.0.0.1 - - [19/Jan/2025 04:20:58] "POST /socket.io/?EIO=4&transport=polling&t=PHx4s_G&sid=wb_WyGGjqP5cpZ7QAAAE HTTP/1.1" 200 -
+2025-01-19 04:20:58,969 - werkzeug - INFO - 127.0.0.1 - - [19/Jan/2025 04:20:58] "GET /socket.io/?EIO=4&transport=polling&t=PHx4s_H&sid=wb_WyGGjqP5cpZ7QAAAE HTTP/1.1" 200 -
+2025-01-19 04:21:02,690 - werkzeug - INFO - 127.0.0.1 - - [19/Jan/2025 04:21:02] "GET /socket.io/?EIO=4&transport=websocket&sid=wb_WyGGjqP5cpZ7QAAAE HTTP/1.1" 200 -
+2025-01-19 04:21:02,700 - werkzeug - INFO - 127.0.0.1 - - [19/Jan/2025 04:21:02] "GET /audio-cutter HTTP/1.1" 200 -
+2025-01-19 04:21:03,987 - werkzeug - INFO - 127.0.0.1 - - [19/Jan/2025 04:21:03] "GET / HTTP/1.1" 200 -
+2025-01-19 04:21:04,282 - werkzeug - INFO - 127.0.0.1 - - [19/Jan/2025 04:21:04] "GET /socket.io/?EIO=4&transport=polling&t=PHx4uIO HTTP/1.1" 200 -
+2025-01-19 04:21:04,295 - werkzeug - INFO - 127.0.0.1 - - [19/Jan/2025 04:21:04] "POST /socket.io/?EIO=4&transport=polling&t=PHx4uIV&sid=qQaba-LY8cCU8-qaAAAG HTTP/1.1" 200 -
+2025-01-19 04:21:04,295 - werkzeug - INFO - 127.0.0.1 - - [19/Jan/2025 04:21:04] "GET /socket.io/?EIO=4&transport=polling&t=PHx4uIW&sid=qQaba-LY8cCU8-qaAAAG HTTP/1.1" 200 -
+2025-01-19 04:31:05,067 - werkzeug - INFO - 127.0.0.1 - - [19/Jan/2025 04:31:05] "GET /socket.io/?EIO=4&transport=websocket&sid=qQaba-LY8cCU8-qaAAAG HTTP/1.1" 200 -
+2025-01-19 04:31:05,075 - werkzeug - INFO - 127.0.0.1 - - [19/Jan/2025 04:31:05] "GET /auth HTTP/1.1" 200 -
+2025-01-20 03:33:16,088 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-01-20 03:33:16,088 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-01-20 03:33:16,088 - werkzeug - INFO -  * Restarting with stat
+2025-01-20 03:33:16,367 - werkzeug - WARNING -  * Debugger is active!
+2025-01-20 03:33:16,372 - werkzeug - INFO -  * Debugger PIN: 501-695-188
+2025-01-20 03:33:22,308 - werkzeug - INFO - 127.0.0.1 - - [20/Jan/2025 03:33:22] "GET / HTTP/1.1" 200 -
+2025-01-20 03:33:22,524 - werkzeug - INFO - 127.0.0.1 - - [20/Jan/2025 03:33:22] "GET /socket.io/?EIO=4&transport=polling&t=PI03ZNQ HTTP/1.1" 200 -
+2025-01-20 03:33:22,533 - werkzeug - INFO - 127.0.0.1 - - [20/Jan/2025 03:33:22] "POST /socket.io/?EIO=4&transport=polling&t=PI03ZNU&sid=bQCzbIYkFojIXPDXAAAA HTTP/1.1" 200 -
+2025-01-20 03:33:22,534 - werkzeug - INFO - 127.0.0.1 - - [20/Jan/2025 03:33:22] "GET /socket.io/?EIO=4&transport=polling&t=PI03ZNV&sid=bQCzbIYkFojIXPDXAAAA HTTP/1.1" 200 -
+2025-01-20 03:33:22,539 - werkzeug - INFO - 127.0.0.1 - - [20/Jan/2025 03:33:22] "GET /socket.io/?EIO=4&transport=polling&t=PI03ZNe&sid=bQCzbIYkFojIXPDXAAAA HTTP/1.1" 200 -
+2025-01-20 03:33:22,679 - werkzeug - INFO - 127.0.0.1 - - [20/Jan/2025 03:33:22] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-01-20 03:33:27,112 - werkzeug - INFO - 127.0.0.1 - - [20/Jan/2025 03:33:27] "GET /socket.io/?EIO=4&transport=websocket&sid=bQCzbIYkFojIXPDXAAAA HTTP/1.1" 200 -
+2025-01-20 03:33:27,118 - werkzeug - INFO - 127.0.0.1 - - [20/Jan/2025 03:33:27] "GET /audio-cutter HTTP/1.1" 200 -
+2025-01-20 03:33:30,253 - werkzeug - INFO - 127.0.0.1 - - [20/Jan/2025 03:33:30] "GET /auth HTTP/1.1" 200 -
+2025-01-20 03:34:13,148 - werkzeug - INFO - 127.0.0.1 - - [20/Jan/2025 03:34:13] "GET /auth HTTP/1.1" 200 -
+2025-01-20 03:34:13,534 - werkzeug - INFO - 127.0.0.1 - - [20/Jan/2025 03:34:13] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-01-20 03:35:16,645 - werkzeug - INFO - 127.0.0.1 - - [20/Jan/2025 03:35:16] "GET /auth HTTP/1.1" 200 -
+2025-01-20 03:35:21,939 - werkzeug - INFO - 127.0.0.1 - - [20/Jan/2025 03:35:21] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-01-20 03:35:24,500 - werkzeug - INFO - 127.0.0.1 - - [20/Jan/2025 03:35:24] "GET /auth HTTP/1.1" 200 -
