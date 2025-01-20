@@ -12224,3 +12224,31 @@ ERROR: [youtube] hVTBQbI7lqI: Failed to extract any player response; please repo
 2025-01-20 03:35:16,645 - werkzeug - INFO - 127.0.0.1 - - [20/Jan/2025 03:35:16] "GET /auth HTTP/1.1" 200 -
 2025-01-20 03:35:21,939 - werkzeug - INFO - 127.0.0.1 - - [20/Jan/2025 03:35:21] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
 2025-01-20 03:35:24,500 - werkzeug - INFO - 127.0.0.1 - - [20/Jan/2025 03:35:24] "GET /auth HTTP/1.1" 200 -
+2025-01-20 21:35:10,632 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-01-20 21:35:10,632 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-01-20 21:35:10,632 - werkzeug - INFO -  * Restarting with stat
+2025-01-20 21:35:11,288 - werkzeug - WARNING -  * Debugger is active!
+2025-01-20 21:35:11,289 - werkzeug - INFO -  * Debugger PIN: 494-391-296
+2025-01-20 21:35:15,363 - werkzeug - INFO - 127.0.0.1 - - [20/Jan/2025 21:35:15] "GET /auth HTTP/1.1" 200 -
+2025-01-20 21:36:46,202 - werkzeug - INFO - 127.0.0.1 - - [20/Jan/2025 21:36:46] "[33mPOST /api/register HTTP/1.1[0m" 404 -
+2025-01-20 21:37:03,205 - werkzeug - INFO - 127.0.0.1 - - [20/Jan/2025 21:37:03] "[33mPOST /auth/api/register HTTP/1.1[0m" 404 -
+2025-01-20 21:37:19,383 - werkzeug - INFO - 127.0.0.1 - - [20/Jan/2025 21:37:19] "[31m[1mPOST /auth/register HTTP/1.1[0m" 405 -
+2025-01-20 21:37:44,666 - werkzeug - INFO - 127.0.0.1 - - [20/Jan/2025 21:37:44] "[35m[1mPOST /auth/signup HTTP/1.1[0m" 500 -
+2025-01-20 21:38:34,752 - werkzeug - INFO -  * Detected change in '/home/rech/proj/flask-proj/QuickClip-Universal/app.py', reloading
+2025-01-20 21:38:34,904 - werkzeug - INFO -  * Restarting with stat
+2025-01-20 21:38:35,788 - werkzeug - WARNING -  * Debugger is active!
+2025-01-20 21:38:35,788 - werkzeug - INFO -  * Debugger PIN: 494-391-296
+2025-01-20 21:38:38,968 - werkzeug - INFO - 127.0.0.1 - - [20/Jan/2025 21:38:38] "GET /auth HTTP/1.1" 200 -
+2025-01-20 21:38:39,917 - werkzeug - INFO - 127.0.0.1 - - [20/Jan/2025 21:38:39] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-01-20 21:38:44,319 - werkzeug - INFO - 127.0.0.1 - - [20/Jan/2025 21:38:44] "[31m[1mPOST /auth/register HTTP/1.1[0m" 405 -
+2025-01-20 21:39:03,529 - werkzeug - INFO - 127.0.0.1 - - [20/Jan/2025 21:39:03] "[35m[1mPOST /auth/signup HTTP/1.1[0m" 201 -
+2025-01-20 21:39:03,563 - werkzeug - INFO - 127.0.0.1 - - [20/Jan/2025 21:39:03] "GET / HTTP/1.1" 200 -
+2025-01-20 21:39:04,070 - werkzeug - INFO - 127.0.0.1 - - [20/Jan/2025 21:39:04] "GET /socket.io/?EIO=4&transport=polling&t=PI3y343 HTTP/1.1" 200 -
+2025-01-20 21:39:04,101 - werkzeug - INFO - 127.0.0.1 - - [20/Jan/2025 21:39:04] "POST /socket.io/?EIO=4&transport=polling&t=PI3y34G&sid=POdLPeUH9HMeH9ZuAAAA HTTP/1.1" 200 -
+2025-01-20 21:39:04,102 - werkzeug - INFO - 127.0.0.1 - - [20/Jan/2025 21:39:04] "GET /socket.io/?EIO=4&transport=polling&t=PI3y34I&sid=POdLPeUH9HMeH9ZuAAAA HTTP/1.1" 200 -
+2025-01-20 21:39:04,123 - werkzeug - INFO - 127.0.0.1 - - [20/Jan/2025 21:39:04] "GET /socket.io/?EIO=4&transport=polling&t=PI3y34p&sid=POdLPeUH9HMeH9ZuAAAA HTTP/1.1" 200 -
+2025-01-20 21:40:46,765 - werkzeug - INFO - 127.0.0.1 - - [20/Jan/2025 21:40:46] "[31m[1mPOST /auth/login HTTP/1.1[0m" 401 -
+2025-01-20 21:40:59,130 - werkzeug - INFO - 127.0.0.1 - - [20/Jan/2025 21:40:59] "POST /auth/login HTTP/1.1" 200 -
+2025-01-20 21:41:24,404 - werkzeug - INFO - 127.0.0.1 - - [20/Jan/2025 21:41:24] "[31m[1mPOST /auth/register HTTP/1.1[0m" 405 -
+2025-01-20 21:41:40,203 - werkzeug - INFO - 127.0.0.1 - - [20/Jan/2025 21:41:40] "[35m[1mPOST /auth/signup HTTP/1.1[0m" 201 -

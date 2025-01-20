@@ -210,6 +210,9 @@
                 <div class="error-message" id="loginError"></div>
                 <input type="email" class="form-control" placeholder="Email" id="loginEmail">
                 <input type="password" class="form-control" placeholder="Password" id="loginPassword">
+                <div class="text-end mb-3">
+                    <a href="#" onclick="showForgotPassword()" class="text-secondary">Forgot Password?</a>
+                </div>
                 <button class="btn btn-auth" onclick="login()">
                     <i class="fas fa-sign-in-alt me-2"></i>Login
                 </button>
@@ -235,6 +238,18 @@
                 <button class="btn btn-auth" onclick="signup()">
                     <i class="fas fa-user-plus me-2"></i>Sign Up
                 </button>
+            </div>
+
+            <div id="forgotPasswordForm" style="display: none;">
+                <h3 class="text-center mb-4">Reset Password</h3>
+                <div class="error-message" id="forgotError"></div>
+                <input type="email" class="form-control" placeholder="Email" id="forgotEmail">
+                <button class="btn btn-auth" onclick="requestPasswordReset()">
+                    <i class="fas fa-paper-plane me-2"></i>Send Reset Link
+                </button>
+                <div class="text-center mt-3">
+                    <a href="#" onclick="showLoginForm()">Back to Login</a>
+                </div>
             </div>
         </div>
     </div>
@@ -279,8 +294,9 @@
                     throw new Error(data.error || 'Login failed');
                 }
 
-                // Store token and redirect
-                localStorage.setItem('token', data.token);
+                // Store both tokens
+                localStorage.setItem('access_token', data.access_token);
+                localStorage.setItem('refresh_token', data.refresh_token);
                 window.location.href = '/';
             } catch (error) {
                 errorDiv.textContent = error.message;
@@ -316,8 +332,9 @@
                     throw new Error(data.error || 'Signup failed');
                 }
 
-                // Automatically log in and redirect
-                localStorage.setItem('token', data.token);
+                // Store both tokens
+                localStorage.setItem('access_token', data.access_token);
+                localStorage.setItem('refresh_token', data.refresh_token);
                 window.location.href = '/';
             } catch (error) {
                 errorDiv.textContent = error.message;
@@ -325,8 +342,51 @@
             }
         }
 
+        function logout() {
+            localStorage.removeItem('access_token');
+            localStorage.removeItem('refresh_token');
+            window.location.href = '/';
+        }
+
         function socialAuth(provider) {
             window.location.href = `/auth/${provider}`;
+        }
+
+        function showForgotPassword() {
+            document.getElementById('loginForm').style.display = 'none';
+            document.getElementById('forgotPasswordForm').style.display = 'block';
+        }
+
+        function showLoginForm() {
+            document.getElementById('loginForm').style.display = 'block';
+            document.getElementById('forgotPasswordForm').style.display = 'none';
+        }
+
+        async function requestPasswordReset() {
+            const email = document.getElementById('forgotEmail').value;
+            const errorDiv = document.getElementById('forgotError');
+            
+            try {
+                const response = await fetch('/auth/forgot-password', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ email })
+                });
+
+                const data = await response.json();
+
+                if (!response.ok) {
+                    throw new Error(data.error || 'Password reset request failed');
+                }
+
+                alert('Password reset link has been sent to your email!');
+                showLoginForm();
+            } catch (error) {
+                errorDiv.textContent = error.message;
+                errorDiv.style.display = 'block';
+            }
         }
     </script>
 </body>

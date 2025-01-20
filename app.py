@@ -23,6 +23,9 @@ import jwt
 from functools import wraps
 from datetime import timedelta
 from models import db, User, Download, AudioCut
+from flask_mail import Mail, Message
+from itsdangerous import URLSafeTimedSerializer
+from config import Config
 
 
 app = Flask(__name__, static_folder='static', template_folder='templates')
@@ -54,14 +57,6 @@ db.init_app(app)
 with app.app_context():
     db.create_all()
 
-# User model (you'll need to create a database)
-class User:
-    def __init__(self, id, username, email, password_hash):
-        self.id = id
-        self.username = username
-        self.email = email
-        self.password_hash = password_hash
-
 # Authentication decorator
 def token_required(f):
     @wraps(f)
@@ -74,10 +69,14 @@ def token_required(f):
             return jsonify({'error': 'Token is missing'}), 401
         
         try:
-            data = jwt.decode(token, app.config['SECRET_KEY'], algorithms=["HS256"])
-            current_user = User.query.get(data['user_id'])  # You'll need to implement this with your database
-        except:
-            return jsonify({'error': 'Token is invalid'}), 401
+            data = jwt.decode(token, app.config['JWT_SECRET_KEY'], algorithms=["HS256"])
+            current_user = User.query.get(data['user_id'])
+            if not current_user:
+                return jsonify({'error': 'User not found'}), 404
+        except jwt.ExpiredSignatureError:
+            return jsonify({'error': 'Token has expired'}), 401
+        except jwt.InvalidTokenError:
+            return jsonify({'error': 'Invalid token'}), 401
             
         return f(current_user, *args, **kwargs)
     
@@ -444,16 +443,14 @@ def login():
         if not user or not check_password_hash(user.password_hash, password):
             return jsonify({'error': 'Invalid email or password'}), 401
         
-        # Generate JWT token
-        token = jwt.encode({
-            'user_id': user.id,
-            'exp': datetime.utcnow() + app.config['JWT_EXPIRATION_DELTA']
-        }, app.config['SECRET_KEY'])
+        # Generate tokens
+        access_token, refresh_token = create_tokens(user.id)
         
         return jsonify({
-            'token': token,
+            'access_token': access_token,
+            'refresh_token': refresh_token,
             'message': 'Login successful'
-        })
+        }), 200
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
@@ -462,12 +459,12 @@ def signup():
     if request.method == 'GET':
         return render_template('auth.html')
         
-    data = request.get_json()
-    username = data.get('username')
-    email = data.get('email')
-    password = data.get('password')
-    
     try:
+        data = request.get_json()
+        username = data.get('username')
+        email = data.get('email')
+        password = data.get('password')
+        
         if User.query.filter_by(email=email).first():
             return jsonify({'error': 'Email already registered'}), 400
             
@@ -481,16 +478,14 @@ def signup():
         db.session.add(new_user)
         db.session.commit()
         
-        # Generate JWT token
-        token = jwt.encode({
-            'user_id': new_user.id,
-            'exp': datetime.utcnow() + app.config['JWT_EXPIRATION_DELTA']
-        }, app.config['SECRET_KEY'])
+        # Generate tokens
+        access_token, refresh_token = create_tokens(new_user.id)
         
         return jsonify({
-            'token': token,
+            'access_token': access_token,
+            'refresh_token': refresh_token,
             'message': 'Signup successful'
-        })
+        }), 201
     except Exception as e:
         db.session.rollback()
         return jsonify({'error': str(e)}), 500
@@ -522,6 +517,105 @@ def github_auth():
 @token_required
 def profile(current_user):
     return render_template('profile.html', user=current_user)
+
+# Initialize Flask-Mail
+mail = Mail(app)
+app.config.from_object(Config)
+
+# Create serializer for tokens
+serializer = URLSafeTimedSerializer(app.config['SECRET_KEY'])
+
+def send_reset_email(user_email):
+    token = serializer.dumps(user_email, salt='password-reset-salt')
+    reset_url = url_for('reset_password', token=token, _external=True)
+    
+    msg = Message('Password Reset Request',
+                 recipients=[user_email])
+    msg.body = f'''To reset your password, visit the following link:
+{reset_url}
+
+If you did not make this request, simply ignore this email.
+'''
+    mail.send(msg)
+
+@app.route('/auth/forgot-password', methods=['POST'])
+def forgot_password():
+    try:
+        data = request.get_json()
+        email = data.get('email')
+        
+        user = User.query.filter_by(email=email).first()
+        if not user:
+            return jsonify({'error': 'Email not found'}), 404
+            
+        send_reset_email(email)
+        return jsonify({'message': 'Password reset email sent'}), 200
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+@app.route('/auth/reset-password/<token>', methods=['GET', 'POST'])
+def reset_password(token):
+    if request.method == 'GET':
+        try:
+            email = serializer.loads(token, salt='password-reset-salt', max_age=3600)
+            return render_template('reset_password.html', token=token)
+        except:
+            return 'The password reset link is invalid or has expired.', 400
+    
+    try:
+        email = serializer.loads(token, salt='password-reset-salt', max_age=3600)
+        data = request.get_json()
+        new_password = data.get('password')
+        
+        user = User.query.filter_by(email=email).first()
+        if not user:
+            return jsonify({'error': 'User not found'}), 404
+            
+        user.password_hash = generate_password_hash(new_password)
+        db.session.commit()
+        
+        return jsonify({'message': 'Password has been reset successfully'}), 200
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+def create_tokens(user_id):
+    access_token = jwt.encode({
+        'user_id': user_id,
+        'exp': datetime.utcnow() + app.config['JWT_ACCESS_TOKEN_EXPIRES']
+    }, app.config['JWT_SECRET_KEY'])
+    
+    refresh_token = jwt.encode({
+        'user_id': user_id,
+        'exp': datetime.utcnow() + app.config['JWT_REFRESH_TOKEN_EXPIRES']
+    }, app.config['JWT_SECRET_KEY'])
+    
+    return access_token, refresh_token
+
+@app.route('/auth/refresh', methods=['POST'])
+def refresh_token():
+    refresh_token = request.headers.get('Authorization')
+    if not refresh_token:
+        return jsonify({'error': 'Refresh token is missing'}), 401
+    
+    try:
+        data = jwt.decode(refresh_token.split(' ')[1], 
+                         app.config['JWT_SECRET_KEY'], 
+                         algorithms=["HS256"])
+        
+        user = User.query.get(data['user_id'])
+        if not user:
+            return jsonify({'error': 'User not found'}), 404
+            
+        access_token, new_refresh_token = create_tokens(user.id)
+        
+        return jsonify({
+            'access_token': access_token,
+            'refresh_token': new_refresh_token
+        }), 200
+    except jwt.ExpiredSignatureError:
+        return jsonify({'error': 'Refresh token has expired'}), 401
+    except jwt.InvalidTokenError:
+        return jsonify({'error': 'Invalid refresh token'}), 401
 
 if __name__ == '__main__':
     socketio.run(app, debug=True, port=5000)
