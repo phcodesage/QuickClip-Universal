@@ -12252,3 +12252,16 @@ ERROR: [youtube] hVTBQbI7lqI: Failed to extract any player response; please repo
 2025-01-20 21:40:59,130 - werkzeug - INFO - 127.0.0.1 - - [20/Jan/2025 21:40:59] "POST /auth/login HTTP/1.1" 200 -
 2025-01-20 21:41:24,404 - werkzeug - INFO - 127.0.0.1 - - [20/Jan/2025 21:41:24] "[31m[1mPOST /auth/register HTTP/1.1[0m" 405 -
 2025-01-20 21:41:40,203 - werkzeug - INFO - 127.0.0.1 - - [20/Jan/2025 21:41:40] "[35m[1mPOST /auth/signup HTTP/1.1[0m" 201 -
+2025-01-24 23:08:37,349 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-01-24 23:08:37,349 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-01-24 23:08:37,349 - werkzeug - INFO -  * Restarting with stat
+2025-01-24 23:08:37,684 - werkzeug - WARNING -  * Debugger is active!
+2025-01-24 23:08:37,689 - werkzeug - INFO -  * Debugger PIN: 144-357-881
+2025-01-24 23:08:40,967 - werkzeug - INFO - 127.0.0.1 - - [24/Jan/2025 23:08:40] "GET /auth HTTP/1.1" 200 -
+2025-01-24 23:08:41,683 - werkzeug - INFO - 127.0.0.1 - - [24/Jan/2025 23:08:41] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-01-24 23:08:48,747 - werkzeug - INFO - 127.0.0.1 - - [24/Jan/2025 23:08:48] "GET / HTTP/1.1" 200 -
+2025-01-24 23:08:48,980 - werkzeug - INFO - 127.0.0.1 - - [24/Jan/2025 23:08:48] "GET /socket.io/?EIO=4&transport=polling&t=PIOsylH HTTP/1.1" 200 -
+2025-01-24 23:08:49,006 - werkzeug - INFO - 127.0.0.1 - - [24/Jan/2025 23:08:49] "POST /socket.io/?EIO=4&transport=polling&t=PIOsylf&sid=4TpqPR5lFr8wt6S9AAAA HTTP/1.1" 200 -
+2025-01-24 23:08:49,011 - werkzeug - INFO - 127.0.0.1 - - [24/Jan/2025 23:08:49] "GET /socket.io/?EIO=4&transport=polling&t=PIOsylg&sid=4TpqPR5lFr8wt6S9AAAA HTTP/1.1" 200 -
+2025-01-24 23:08:49,025 - werkzeug - INFO - 127.0.0.1 - - [24/Jan/2025 23:08:49] "GET /socket.io/?EIO=4&transport=polling&t=PIOsylv&sid=4TpqPR5lFr8wt6S9AAAA HTTP/1.1" 200 -

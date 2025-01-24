@@ -1,3 +1,4 @@
+import audio_patch  # Add this at the very top of app.py
 from flask import Flask, request, session, send_from_directory, url_for, render_template, jsonify, redirect, Response, send_file
 from flask_cors import CORS
 import os
@@ -13,7 +14,8 @@ import logging
 from flask_socketio import SocketIO, emit
 import re
 from pytube import YouTube
-from pydub import AudioSegment
+import soundfile as sf
+import numpy as np
 import tempfile
 import uuid
 import requests
@@ -334,17 +336,17 @@ def upload_audio():
             return jsonify({'error': 'No file provided'}), 400
             
         file = request.files['file']
-        if not file.filename or not file.filename.lower().endswith(('.mp3', '.wav', '.m4a', '.ogg')):
-            return jsonify({'error': 'Invalid audio file format'}), 400
+        if not file.filename or not file.filename.lower().endswith(('.wav', '.flac')):
+            return jsonify({'error': 'Invalid audio file format. Please use WAV or FLAC.'}), 400
 
         temp_dir = tempfile.mkdtemp()
         temp_path = os.path.join(temp_dir, secure_filename(file.filename))
         file.save(temp_path)
 
-        # Convert to mp3 if needed and get duration
+        # Get audio duration
         try:
-            audio = AudioSegment.from_file(temp_path)
-            duration = len(audio) / 1000  # Convert to seconds
+            audio_data, sample_rate = sf.read(temp_path)
+            duration = len(audio_data) / sample_rate  # Duration in seconds
         except Exception as e:
             raise Exception(f"Error processing audio: {str(e)}")
 
@@ -375,7 +377,7 @@ def serve_temp_file(file_id):
                 app.temp_files[file_id],
                 mimetype='audio/mpeg',
                 as_attachment=False,
-                download_name='temp_audio.mp3'
+                download_name='temp_audio.wav'
             )
         except Exception as e:
             print(f"Error serving temp file: {str(e)}")
@@ -395,15 +397,21 @@ def cut_audio():
             
         temp_path = app.temp_files[file_id]
         
-        # Load audio and cut
-        audio = AudioSegment.from_file(temp_path)
-        cut_audio = audio[start_time*1000:end_time*1000]
+        # Load audio file
+        audio_data, sample_rate = sf.read(temp_path)
+        
+        # Convert time to samples
+        start_sample = int(start_time * sample_rate)
+        end_sample = int(end_time * sample_rate)
+        
+        # Cut the audio
+        cut_audio = audio_data[start_sample:end_sample]
         
         # Save to new temp file
-        output_path = os.path.join(DOWNLOAD_FOLDER, 'cut_audio.mp3')
-        cut_audio.export(output_path, format='mp3')
+        output_path = os.path.join(DOWNLOAD_FOLDER, 'cut_audio.wav')
+        sf.write(output_path, cut_audio, sample_rate)
         
-        response = send_from_directory(DOWNLOAD_FOLDER, 'cut_audio.mp3', as_attachment=True)
+        response = send_from_directory(DOWNLOAD_FOLDER, 'cut_audio.wav', as_attachment=True)
         
         @response.call_on_close
         def cleanup():
