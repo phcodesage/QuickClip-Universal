@@ -1,444 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="h-full">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>QuickClip Universal - Video Downloader</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        :root {
-            --primary-dark: #1a1a1a;
-            --secondary-dark: #2d2d2d;
-            --accent-color: #00ff9d;
-            --text-primary: #ffffff;
-            --text-secondary: #b3b3b3;
-        }
-
-        body {
-            background-color: var(--primary-dark);
-            color: var(--text-primary);
-            font-family: 'Inter', sans-serif;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .hero-section {
-            padding: 80px 0 40px 0;
-            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
-            text-align: center;
-        }
-
-        .hero-title {
-            font-size: 3.5rem;
-            font-weight: 800;
-            margin-bottom: 20px;
-            background: linear-gradient(45deg, var(--accent-color), #00c3ff);
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .hero-subtitle {
-            color: var(--text-secondary);
-            font-size: 1.2rem;
-            margin-bottom: 40px;
-        }
-
-        .download-section {
-            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
-            padding: 0 0 80px 0;
-        }
-
-        .download-container {
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: var(--secondary-dark);
-            border-radius: 20px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-        }
-
-        .form-control, .form-select {
-            background-color: var(--primary-dark);
-            border: 2px solid #404040;
-            color: var(--text-primary);
-            padding: 12px;
-            border-radius: 10px;
-            transition: all 0.3s ease;
-        }
-
-        .form-control:focus, .form-select:focus {
-            background-color: var(--primary-dark);
-            border-color: var(--accent-color);
-            color: var(--text-primary);
-            box-shadow: 0 0 0 0.25rem rgba(0, 255, 157, 0.1);
-        }
-
-        .btn-primary {
-            background: linear-gradient(45deg, var(--accent-color), #00c3ff);
-            border: none;
-            padding: 12px 24px;
-            font-weight: 600;
-            border-radius: 10px;
-            transition: all 0.3s ease;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 20px rgba(0, 255, 157, 0.2);
-        }
-
-        .progress {
-            height: 10px;
-            background-color: var(--primary-dark);
-            border-radius: 5px;
-            margin-top: 20px;
-        }
-
-        .progress-bar {
-            background: linear-gradient(45deg, var(--accent-color), #00c3ff);
-            border-radius: 5px;
-        }
-
-        .status-container {
-            min-height: 100px;
-            margin-top: 30px;
-        }
-
-        .error-message {
-            background-color: rgba(220, 53, 69, 0.1);
-            border: 1px solid #dc3545;
-            color: #dc3545;
-            padding: 15px;
-            border-radius: 10px;
-            display: none;
-        }
-
-        .success-message {
-            background-color: rgba(40, 167, 69, 0.1);
-            border: 1px solid #28a745;
-            color: #28a745;
-            padding: 15px;
-            border-radius: 10px;
-            display: none;
-        }
-
-        .status-message {
-            color: var(--text-secondary);
-        }
-
-        .features-section {
-            padding: 60px 0;
-            background-color: var(--secondary-dark);
-        }
-
-        .feature-card {
-            background-color: var(--primary-dark);
-            padding: 30px;
-            border-radius: 15px;
-            height: 100%;
-            transition: transform 0.3s ease;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .feature-icon {
-            font-size: 2.5rem;
-            color: var(--accent-color);
-            margin-bottom: 20px;
-        }
-
-        .spinner-border {
-            width: 1.5rem;
-            height: 1.5rem;
-            border-width: 0.2em;
-            margin-right: 10px;
-        }
-
-        footer {
-            background-color: var(--secondary-dark);
-            padding: 20px 0;
-            text-align: center;
-            color: var(--text-secondary);
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        footer a:hover {
-            text-decoration: underline !important;
-            opacity: 0.9;
-        }
-
-        footer .fa-heart {
-            animation: heartbeat 1.5s ease infinite;
-        }
-
-        @keyframes heartbeat {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-            100% { transform: scale(1); }
-        }
-
-        .download-options {
-            opacity: 0;
-            max-height: 0;
-            overflow: hidden;
-            transition: all 0.5s ease-in-out;
-            margin-top: 20px;
-        }
-
-        .download-options.show {
-            opacity: 1;
-            max-height: 500px;
-        }
-
-        .url-input-container {
-            max-width: 600px;
-            margin: 0 auto;
-            position: relative;
-        }
-
-        .url-input-container .form-control {
-            padding-right: 50px;
-        }
-
-        .url-input-container .clear-input {
-            position: absolute;
-            right: 15px;
-            top: 50%;
-            transform: translateY(-50%);
-            background: none;
-            border: none;
-            color: var(--text-secondary);
-            cursor: pointer;
-            display: none;
-        }
-
-        .url-input-container .clear-input:hover {
-            color: var(--text-primary);
-        }
-
-        .format-container {
-            transform: translateY(20px);
-            opacity: 0;
-            transition: all 0.3s ease-in-out;
-        }
-
-        .format-container.show {
-            transform: translateY(0);
-            opacity: 1;
-        }
-
-        .download-progress-container {
-            background-color: var(--primary-dark);
-            padding: 15px;
-            border-radius: 10px;
-            border: 1px solid #404040;
-        }
-
-        .progress-info {
-            color: var(--text-primary);
-        }
-
-        .progress-status {
-            font-weight: 500;
-        }
-
-        .progress-percentage {
-            color: var(--accent-color);
-            font-weight: 600;
-        }
-
-        .progress-detail {
-            color: var(--text-secondary);
-            font-size: 0.875rem;
-        }
-
-        .progress {
-            background-color: rgba(255, 255, 255, 0.1);
-            overflow: hidden;
-        }
-
-        .progress-bar {
-            background: linear-gradient(45deg, var(--accent-color), #00c3ff);
-            transition: width 0.3s ease;
-        }
-
-        .video-preview-container {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .preview-card {
-            background-color: var(--secondary-dark);
-            border-radius: 15px;
-            padding: 15px;
-            display: flex;
-            gap: 20px;
-            align-items: center;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        .video-thumbnail {
-            width: 160px;
-            height: 90px;
-            object-fit: cover;
-            border-radius: 8px;
-        }
-
-        .video-info {
-            flex: 1;
-        }
-
-        .video-title {
-            font-size: 1.1rem;
-            margin-bottom: 8px;
-            color: var(--text-primary);
-        }
-
-        .video-author {
-            color: var(--accent-color);
-            font-size: 0.9rem;
-            margin-bottom: 4px;
-        }
-
-        .video-duration {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-        }
-
-        .download-complete {
-            color: var(--accent-color);
-            font-weight: 600;
-        }
-
-        .download-actions {
-            margin-bottom: 20px;
-        }
-
-        .btn-secondary {
-            background-color: var(--primary-dark);
-            border: 2px solid var(--accent-color);
-            color: var(--accent-color);
-            padding: 12px 24px;
-            font-weight: 600;
-            border-radius: 10px;
-            transition: all 0.3s ease;
-        }
-
-        .btn-secondary:hover {
-            background-color: var(--accent-color);
-            color: var(--primary-dark);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 20px rgba(0, 255, 157, 0.2);
-        }
-
-        .legal-banner {
-            background-color: rgba(0, 0, 0, 0.9);
-            color: var(--text-primary);
-            padding: 15px 0;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-            z-index: 1000;
-            display: none;
-        }
-
-        .legal-banner .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 20px;
-        }
-
-        .legal-banner a {
-            color: var(--accent-color);
-            text-decoration: none;
-        }
-
-        .legal-banner a:hover {
-            text-decoration: underline;
-        }
-
-        .modal-content {
-            background-color: var(--secondary-dark);
-            color: var(--text-primary);
-        }
-
-        .modal-header {
-            border-bottom-color: #404040;
-        }
-
-        .modal-header .btn-close {
-            filter: invert(1) grayscale(100%) brightness(200%);
-        }
-
-        .modal-body h6 {
-            color: var(--accent-color);
-            margin-top: 1.5rem;
-        }
-
-        .modal-body ul {
-            padding-left: 1.2rem;
-        }
-
-        .modal-body li {
-            margin-bottom: 0.5rem;
-        }
-
-        .navbar {
-            background-color: var(--secondary-dark);
-            padding: 1rem 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .navbar-brand {
-            color: var(--accent-color) !important;
-            font-weight: 700;
-            font-size: 1.5rem;
-        }
-
-        .navbar-toggler {
-            border-color: var(--accent-color);
-        }
-
-        .navbar-toggler-icon {
-            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(0, 255, 157, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
-        }
-
-        .nav-link {
-            color: var(--text-secondary) !important;
-            margin: 0 0.5rem;
-            padding: 0.5rem 1rem !important;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-        }
-
-        .nav-link:hover, .nav-link.active {
-            color: var(--accent-color) !important;
-            background-color: rgba(0, 255, 157, 0.1);
-        }
-    </style>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
-<body class="bg-light">
-    <nav class="navbar navbar-expand-lg sticky-top">
-        <div class="container">
-            <a class="navbar-brand" href="/">QuickClip Universal</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
+<body class="bg-gray-900 text-white font-sans flex flex-col min-h-screen h-full overflow-hidden">
+    <nav class="bg-gray-800 shadow-lg py-4">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <a class="text-2xl font-bold text-white" href="/">QuickClip Universal</a>
+            <button class="lg:hidden text-white focus:outline-none" type="button" id="navbar-toggle">
+                <i class="fas fa-bars"></i>
             </button>
-            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="/"><i class="fas fa-video me-2"></i>Video Downloader</a>
+            <div class="hidden lg:flex lg:items-center lg:w-auto w-full" id="navbarNav">
+                <ul class="lg:flex items-center justify-between text-base text-white pt-4 lg:pt-0">
+                    <li>
+                        <a class="lg:p-4 py-3 px-0 block hover:text-green-400" href="/"><i class="fas fa-video mr-2"></i>Video Downloader</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/audio-cutter"><i class="fas fa-scissors me-2"></i>Audio Cutter</a>
-                    </li>
-                    <li class="nav-item" id="authLinks">
-                        <a class="nav-link" href="/auth"><i class="fas fa-user me-2"></i>Login</a>
+                    <li>
+                        <a class="lg:p-4 py-3 px-0 block hover:text-green-400" href="/audio-cutter"><i class="fas fa-scissors mr-2"></i>Audio Cutter</a>
                     </li>
                 </ul>
             </div>
@@ -446,92 +28,82 @@
     </nav>
 
     <!-- Hero Section with Download -->
-    <section class="hero-section">
-        <div class="container">
-            <h1 class="hero-title">QuickClip Universal</h1>
-            <p class="hero-subtitle">Transform Any YouTube Video into Personal Media Instantly</p>
+    <main class="flex-grow flex flex-col justify-center items-center">
+        <section class="py-8 bg-gradient-to-br from-gray-900 to-gray-800 text-center w-full">
+        <div class="container mx-auto px-4">
+            <h1 class="text-5xl font-extrabold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-blue-500">QuickClip Universal</h1>
+            <p class="text-xl text-gray-400 mb-8">Transform Any YouTube Video into Personal Media Instantly</p>
             
             <!-- URL Input -->
-            <div class="url-input-container">
-                <input type="text" class="form-control" id="url" name="url" required 
+            <div class="relative max-w-2xl mx-auto">
+                <input type="text" class="w-full p-4 pr-12 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-green-400" id="url" name="url" required 
                        placeholder="Paste your YouTube URL here">
-                <button class="clear-input" id="clearUrl">
+                <button class="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-white" id="clearUrl">
                     <i class="fas fa-times"></i>
                 </button>
             </div>
 
-            <div class="video-preview-container mt-4" style="display: none;">
-                <div class="preview-card">
-                    <img src="" alt="Video thumbnail" class="video-thumbnail">
-                    <div class="video-info">
-                        <h3 class="video-title"></h3>
-                        <p class="video-author"></p>
-                        <p class="video-duration"></p>
+            <div class="mt-8 hidden" id="videoPreviewContainer">
+                <div class="bg-gray-800 rounded-lg shadow-lg p-4 flex flex-col md:flex-row items-center">
+                    <img src="" alt="Video thumbnail" class="w-full md:w-48 h-auto rounded-md mb-4 md:mb-0 md:mr-4" id="videoThumbnail">
+                    <div class="text-left">
+                        <h3 class="text-xl font-semibold text-white" id="videoTitle"></h3>
+                        <p class="text-gray-400" id="videoAuthor"></p>
+                        <p class="text-gray-400" id="videoDuration"></p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <div class="legal-banner" id="cookieBanner">
-        <div class="container">
-            <p>We use cookies to improve your experience. By using QuickClip Universal, you agree to our 
-                <a href="#" data-bs-toggle="modal" data-bs-target="#privacyModal">Privacy Policy</a> and 
-                <a href="#" data-bs-toggle="modal" data-bs-target="#termsModal">Terms of Service</a>.
+    <div class="fixed bottom-0 left-0 right-0 bg-gray-800 text-white p-4 text-center shadow-lg z-50" id="cookieBanner">
+        <div class="container mx-auto flex flex-col md:flex-row justify-between items-center">
+            <p class="mb-2 md:mb-0">We use cookies to improve your experience. By using QuickClip Universal, you agree to our 
+                <a href="#" class="text-green-400 hover:underline" data-bs-toggle="modal" data-bs-target="#privacyModal">Privacy Policy</a> and 
+                <a href="#" class="text-green-400 hover:underline" data-bs-toggle="modal" data-bs-target="#termsModal">Terms of Service</a>.
             </p>
-            <button class="btn btn-sm btn-outline-light" onclick="acceptCookies()">Accept</button>
+            <button class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded" onclick="acceptCookies()">Accept</button>
         </div>
     </div>
 
     <!-- Download Options Section -->
-    <section class="download-section">
-        <div class="container">
-            <div class="download-options" id="downloadOptions">
-                <div class="download-container">
-                    <form id="downloadForm">
-                        <div class="format-container mb-4">
-                            <label for="format" class="form-label">Format</label>
-                            <select class="form-select" id="format" name="format">
+    <section class="py-8 bg-gray-900">
+        <div class="container mx-auto px-4">
+            <div class="hidden" id="downloadOptions">
+                <div class="max-w-xl mx-auto p-6 bg-gray-800 rounded-lg shadow-lg"git ad                    <form id="downloadForm">
+                        <div class="mb-4 format-container">
+                            <label for="format" class="block text-gray-300 text-sm font-bold mb-2">Format</label>
+                            <select class="shadow appearance-none border border-gray-700 rounded w-full py-3 px-4 bg-gray-700 text-white leading-tight focus:outline-none focus:shadow-outline focus:border-green-400" id="format" name="format">
                                 <option value="mp4">MP4 (Video)</option>
                                 <option value="wav">WAV (Audio only)</option>
                             </select>
                         </div>
 
-                        <div class="download-progress-container mb-4" style="display: none;">
-                            <div class="progress-info d-flex justify-content-between mb-2">
-                                <span class="progress-status">Processing...</span>
-                                <span class="progress-percentage">0%</span>
+                        <div class="mb-4 hidden" id="downloadProgressContainer">
+                            <div class="flex justify-between mb-1 text-gray-300">
+                                <span id="progressStatus">Processing...</span>
+                                <span id="progressPercentage">0%</span>
                             </div>
-                            <div class="progress" style="height: 8px;">
-                                <div class="progress-bar progress-bar-animated" 
-                                     role="progressbar" 
-                                     style="width: 0%"
-                                     aria-valuenow="0" 
-                                     aria-valuemin="0" 
-                                     aria-valuemax="100">
-                                </div>
+                            <div class="w-full bg-gray-700 rounded-full h-2.5">
+                                <div class="bg-green-500 h-2.5 rounded-full" style="width: 0%" id="progressBar"></div>
                             </div>
-                            <div class="progress-detail mt-2 text-secondary small"></div>
+                            <div class="mt-2 text-gray-400 text-sm" id="progressDetail"></div>
                         </div>
 
-                        <div class="download-actions">
-                            <button type="button" class="btn btn-primary w-100 mb-3" id="downloadBtn" onclick="startDownload()" disabled>
-                                <i class="fas fa-download me-2"></i>Download
+                        <div class="flex flex-col space-y-4">
+                            <button type="button" class="bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-4 rounded-lg focus:outline-none focus:shadow-outline disabled:opacity-50 disabled:cursor-not-allowed" id="downloadBtn" onclick="startDownload()" disabled>
+                                <i class="fas fa-download mr-2"></i>Download
                             </button>
                             
-                            <button type="button" class="btn btn-secondary w-100" id="downloadAnotherBtn" style="display: none;" onclick="resetDownloadState()">
-                                <i class="fas fa-plus me-2"></i>Download Another
+                            <button type="button" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-4 rounded-lg focus:outline-none focus:shadow-outline hidden" id="downloadAnotherBtn" onclick="resetDownloadState()">
+                                <i class="fas fa-plus mr-2"></i>Download Another
                             </button>
                         </div>
                         
-                        <div class="status-container">
-                            <div class="error-message" id="errorMessage"></div>
-                            <div class="success-message" id="successMessage"></div>
-                            <div class="status-message" id="statusMessage"></div>
-                            <div class="progress" style="display: none;">
-                                <div class="progress-bar progress-bar-striped progress-bar-animated" 
-                                     role="progressbar" style="width: 0%"></div>
-                            </div>
+                        <div class="mt-6">
+                            <div class="bg-red-500 bg-opacity-20 border border-red-600 text-red-300 px-4 py-3 rounded relative hidden" role="alert" id="errorMessage"></div>
+                            <div class="bg-green-500 bg-opacity-20 border border-green-600 text-green-300 px-4 py-3 rounded relative hidden" role="alert" id="successMessage"></div>
+                            <div class="text-gray-400 text-sm mt-2" id="statusMessage"></div>
                         </div>
                     </form>
                 </div>
@@ -539,29 +111,30 @@
         </div>
     </section>
 
-    <!-- Features Section -->
-    <section class="features-section">
-        <div class="container">
-            <div class="row g-4">
-                <div class="col-md-4">
-                    <div class="feature-card">
-                        <i class="fas fa-bolt feature-icon"></i>
-                        <h3>Fast Download</h3>
-                        <p>Download your favorite videos with our optimized download engine.</p>
+    </main>
+    <section class="py-8 bg-gray-900 text-center text-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold mb-10">Key Features</h2>
+            <div class="flex flex-wrap justify-center -mx-4">
+                <div class="w-full md:w-1/3 px-4 mb-8">
+                    <div class="p-6 bg-gray-800 rounded-lg shadow-lg h-full flex flex-col items-center">
+                        <i class="fas fa-cut fa-4x mb-4 text-green-400"></i>
+                        <h3>Precise Audio Cutting</h3>
+                        <p class="text-gray-400">Easily trim and cut audio segments with millisecond precision.</p>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="feature-card">
-                        <i class="fas fa-check-circle feature-icon"></i>
-                        <h3>High Quality</h3>
-                        <p>Get the best available quality for both video and audio downloads.</p>
+                <div class="w-full md:w-1/3 px-4 mb-8">
+                    <div class="p-6 bg-gray-800 rounded-lg shadow-lg h-full flex flex-col items-center">
+                        <i class="fas fa-file-audio fa-4x mb-4 text-green-400"></i>
+                        <h3>Multiple Audio Formats</h3>
+                        <p class="text-gray-400">Supports various audio formats for cutting and conversion.</p>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="feature-card">
-                        <i class="fas fa-shield-alt feature-icon"></i>
-                        <h3>Safe & Secure</h3>
-                        <p>Your downloads are processed securely with no data collection.</p>
+                <div class="w-full md:w-1/3 px-4 mb-8">
+                    <div class="p-6 bg-gray-800 rounded-lg shadow-lg h-full flex flex-col items-center">
+                        <i class="fas fa-cloud-download-alt fa-4x mb-4 text-green-400"></i>
+                        <h3>Fast Downloads</h3>
+                        <p class="text-gray-400">Quickly download your processed audio files.</p>
                     </div>
                 </div>
             </div>
@@ -569,12 +142,13 @@
     </section>
 
     <!-- Privacy Policy Modal -->
-    <div class="modal fade" id="privacyModal" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-scrollable">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Privacy Policy</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    <div class="fixed inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center z-50 hidden" id="privacyModal" tabindex="-1" aria-hidden="true">
+        <div class="bg-gray-800 rounded-lg shadow-xl max-w-lg w-full p-6 relative max-h-[90vh] overflow-y-auto">
+            <div class="flex justify-between items-center pb-3 border-b border-gray-700">
+                <h5 class="text-2xl font-bold text-white">Privacy Policy</h5>
+                <button type="button" class="text-gray-400 hover:text-white focus:outline-none" onclick="closeModal('privacyModal')" aria-label="Close">
+                    <i class="fas fa-times"></i>
+                </button>
                 </div>
                 <div class="modal-body">
                     <h6>1. Information We Collect</h6>
@@ -601,12 +175,13 @@
     </div>
 
     <!-- Terms of Service Modal -->
-    <div class="modal fade" id="termsModal" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-scrollable">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Terms of Service</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    <div class="fixed inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center z-50 hidden" id="termsModal" tabindex="-1" aria-hidden="true">
+        <div class="bg-gray-800 rounded-lg shadow-xl max-w-lg w-full p-6 relative max-h-[90vh] overflow-y-auto">
+            <div class="flex justify-between items-center pb-3 border-b border-gray-700">
+                <h5 class="text-2xl font-bold text-white">Terms of Service</h5>
+                <button type="button" class="text-gray-400 hover:text-white focus:outline-none" onclick="closeModal('termsModal')" aria-label="Close">
+                    <i class="fas fa-times"></i>
+                </button>
                 </div>
                 <div class="modal-body">
                     <h6>1. Acceptable Use</h6>
@@ -634,7 +209,6 @@
 
     <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     
     <!-- Keep the existing JavaScript -->
     <script>
@@ -952,10 +526,37 @@
         }
     </script>
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2024 QuickClip Universal. Created with <i class="fas fa-heart" style="color: var(--accent-color);"></i> by <a href="https://github.com/phcodesage" target="_blank" style="color: var(--accent-color); text-decoration: none;">phcodesage</a></p>
+    <footer class="bg-gray-800 text-white py-6">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-sm">&copy; 2023 QuickClip Universal. All rights reserved.</p>
         </div>
     </footer>
+    <script>
+        function openModal(modalId) {
+            document.getElementById(modalId).classList.remove('hidden');
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.add('hidden');
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const privacyLinks = document.querySelectorAll('[data-bs-target="#privacyModal"]');
+            privacyLinks.forEach(link => {
+                link.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    openModal('privacyModal');
+                });
+            });
+
+            const termsLinks = document.querySelectorAll('[data-bs-target="#termsModal"]');
+            termsLinks.forEach(link => {
+                link.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    openModal('termsModal');
+                });
+            });
+        });
+    </script>
 </body>
 </html>
