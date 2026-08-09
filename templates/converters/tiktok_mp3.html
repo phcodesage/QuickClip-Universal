@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TikTok to MP3 & Audio Downloader - QuickClip Universal</title>
+    <meta name="description" content="Extract MP3 audio tracks and viral sounds from TikTok videos for free.">
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='favicon.svg') }}">
+    <link rel="alternate icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <!-- Material Symbols & Icons -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Logo Theme Sheet -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <header class="md3-navbar py-3">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 flex justify-between items-center">
+            <a class="flex items-center gap-3 text-lg font-bold text-white no-underline group" href="/">
+                <svg class="w-10 h-10 vector-logo-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="48" height="48" rx="14" fill="url(#tt_logo_bg)"/>
+                    <path d="M15 13L35 24L15 35V13Z" fill="white" fill-opacity="0.95"/>
+                    <path d="M27 9L17 25H25L21 39L33 21H24L27 9Z" fill="url(#tt_logo_bolt)"/>
+                    <defs>
+                        <linearGradient id="tt_logo_bg" x1="0" y1="0" x2="48" y2="48" gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#8B5CF6"/>
+                            <stop offset="1" stop-color="#2563EB"/>
+                        </linearGradient>
+                        <linearGradient id="tt_logo_bolt" x1="17" y1="9" x2="33" y2="39" gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#F59E0B"/>
+                            <stop offset="1" stop-color="#EF4444"/>
+                        </linearGradient>
+                    </defs>
+                </svg>
+                <span class="brand-title-gradient tracking-wide">QuickClip Universal</span>
+            </a>
+            
+            <div class="flex items-center gap-2">
+                <a class="md3-nav-pill" href="/"><span class="material-symbols-outlined text-xl">home</span><span class="hidden sm:inline">Home</span></a>
+                <a class="md3-nav-pill active" href="/downloader"><span class="material-symbols-outlined text-xl">download</span><span class="hidden sm:inline">Downloader</span></a>
+                <a class="md3-nav-pill" href="/audio-cutter"><span class="material-symbols-outlined text-xl">content_cut</span><span class="hidden sm:inline">Audio Cutter</span></a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Converter Screen -->
+    <main class="flex-grow py-10 sm:py-16">
+        <div class="max-w-3xl mx-auto px-4 space-y-6">
+            <!-- Screen Header -->
+            <div class="text-center space-y-3">
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-cyan-500/15 text-cyan-400 text-sm font-medium border border-cyan-500/30">
+                    <i class="fab fa-tiktok text-lg"></i> TikTok Audio Extractor
+                </div>
+                
+                <h1 class="text-3xl sm:text-4xl font-extrabold text-white">Convert TikTok to MP3</h1>
+                <p class="text-base text-gray-400 max-w-xl mx-auto">Paste any TikTok clip or video link to extract high-quality audio tracks.</p>
+            </div>
+
+            <!-- Input Box -->
+            <div class="space-y-2">
+                <div class="relative flex items-center">
+                    <span class="material-symbols-outlined absolute left-4 text-cyan-400">link</span>
+                    <input type="text" 
+                           id="url" 
+                           class="md3-text-field pl-12 pr-12 text-base" 
+                           placeholder="https://www.tiktok.com/@user/video/..." 
+                           autocomplete="off">
+                    <button type="button" 
+                            id="clearUrl" 
+                            class="absolute right-4 text-gray-400 hover:text-white hidden"
+                            title="Clear URL">
+                        <span class="material-symbols-outlined text-xl">close</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Video Preview Card -->
+            <div id="videoPreviewContainer" class="hidden">
+                <div class="md3-card p-5 text-left flex flex-col sm:flex-row items-center gap-5">
+                    <img id="videoThumbnail" src="" alt="Thumbnail" class="w-full sm:w-44 h-32 object-cover rounded-xl shadow">
+                    <div class="flex-grow space-y-2 w-full">
+                        <span id="platformBadge" class="md3-chip text-xs">
+                            <i class="fab fa-tiktok text-cyan-400 mr-1"></i> TikTok Media Detected
+                        </span>
+                        <h3 id="videoTitle" class="text-base sm:text-lg font-bold text-white leading-snug line-clamp-2"></h3>
+                        <div class="flex flex-wrap gap-4 text-xs text-gray-400">
+                            <span id="videoAuthor"><i class="fas fa-user-circle mr-1"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Download Options & Progress -->
+            <div id="downloadOptions" class="hidden">
+                <div class="md3-card p-6 text-left space-y-5">
+                    <form id="downloadForm" onsubmit="event.preventDefault(); startDownload();" class="space-y-4">
+                        <div>
+                            <label for="format" class="block text-gray-300 text-sm font-medium mb-2">Output Format</label>
+                            <select id="format" name="format" class="md3-text-field">
+                                <option value="mp3" selected>MP3 - Sound Track Only</option>
+                                <option value="mp4">MP4 - Full TikTok Video</option>
+                                <option value="wav">WAV - Lossless Audio</option>
+                            </select>
+                        </div>
+
+                        <div id="downloadProgressContainer" class="space-y-2 hidden">
+                            <div class="flex justify-between items-center text-sm font-medium">
+                                <span id="progressStatus" class="text-purple-300">Extracting TikTok sound...</span>
+                                <span id="progressPercentage" class="text-gray-300">0%</span>
+                            </div>
+                            <div class="md3-progress-track">
+                                <div id="progressBar" class="md3-progress-indicator" style="width: 0%"></div>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-col sm:flex-row gap-3 pt-2">
+                            <button type="button" id="downloadBtn" onclick="startDownload()" class="md3-btn-filled w-full flex-1 py-3 text-base">
+                                <span class="material-symbols-outlined text-xl">music_note</span> Download TikTok MP3
+                            </button>
+                        </div>
+
+                        <div id="errorMessage" class="md3-alert-error hidden"></div>
+                        <div id="successMessage" class="md3-alert-success hidden"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-gray-950 border-t border-gray-800 py-6 text-center text-gray-500 text-sm">
+        <p>&copy; 2026 QuickClip Universal. All rights reserved.</p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.2/socket.io.min.js"></script>
+    <script>
+        const socket = io();
+        let currentVideoTitle = '';
+
+        socket.on('download_progress', (data) => {
+            const bar = document.getElementById('progressBar');
+            const percText = document.getElementById('progressPercentage');
+            document.getElementById('downloadProgressContainer').classList.remove('hidden');
+            const clamped = Math.min(100, Math.max(0, data.progress));
+            bar.style.width = clamped + '%';
+            percText.textContent = Math.round(clamped) + '%';
+        });
+
+        let debounceTimer;
+        document.getElementById('url').addEventListener('input', function() {
+            const urlVal = this.value.trim();
+            document.getElementById('clearUrl').classList.toggle('hidden', !urlVal);
+
+            clearTimeout(debounceTimer);
+            if (urlVal && (urlVal.startsWith('http://') || urlVal.startsWith('https://'))) {
+                debounceTimer = setTimeout(() => { getVideoInfo(urlVal); }, 400);
+            }
+        });
+
+        document.getElementById('clearUrl').addEventListener('click', function() {
+            document.getElementById('url').value = '';
+            document.getElementById('clearUrl').classList.add('hidden');
+            document.getElementById('videoPreviewContainer').classList.add('hidden');
+            document.getElementById('downloadOptions').classList.add('hidden');
+        });
+
+        async function getVideoInfo(url) {
+            try {
+                const response = await fetch('/video-info', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ url })
+                });
+                const data = await response.json();
+                if (!response.ok || data.error) throw new Error(data.error || 'Failed to fetch TikTok info');
+
+                currentVideoTitle = data.title;
+                document.getElementById('videoThumbnail').src = data.thumbnail;
+                document.getElementById('videoTitle').textContent = data.title;
+                document.getElementById('videoAuthor').innerHTML = `<i class="fas fa-user-circle mr-1"></i> ${data.author}`;
+                document.getElementById('videoPreviewContainer').classList.remove('hidden');
+                document.getElementById('downloadOptions').classList.remove('hidden');
+            } catch (err) {
+                console.error(err);
+            }
+        }
+
+        async function startDownload() {
+            const url = document.getElementById('url').value.trim();
+            const format = document.getElementById('format').value;
+            const downloadBtn = document.getElementById('downloadBtn');
+
+            downloadBtn.disabled = true;
+            downloadBtn.innerHTML = '<span class="material-symbols-outlined text-xl animate-spin">progress_activity</span> Processing Sound Track...';
+
+            try {
+                const response = await fetch('/download', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ url, format })
+                });
+
+                if (!response.ok) throw new Error('Download failed');
+
+                const blob = await response.blob();
+                document.getElementById('successMessage').textContent = 'TikTok MP3 sound exported successfully!';
+                document.getElementById('successMessage').classList.remove('hidden');
+
+                const blobUrl = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = blobUrl;
+                a.download = `${currentVideoTitle ? currentVideoTitle.replace(/[^\w\s-]/g, '') : 'tiktok_sound'}.${format}`;
+                document.body.appendChild(a);
+                a.click();
+                a.remove();
+                window.URL.revokeObjectURL(blobUrl);
+            } catch (err) {
+                document.getElementById('errorMessage').textContent = err.message;
+                document.getElementById('errorMessage').classList.remove('hidden');
+            } finally {
+                downloadBtn.disabled = false;
+                downloadBtn.innerHTML = '<span class="material-symbols-outlined text-xl">music_note</span> Download TikTok MP3';
+            }
+        }
+    </script>
+</body>
+</html>

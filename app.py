@@ -130,6 +130,22 @@ def index():
 def downloader_page():
     return render_template('downloader.html')
 
+@app.route('/youtube-to-mp3', methods=['GET'])
+def youtube_to_mp3_page():
+    return render_template('converters/youtube_mp3.html')
+
+@app.route('/instagram-to-mp3', methods=['GET'])
+def instagram_to_mp3_page():
+    return render_template('converters/instagram_mp3.html')
+
+@app.route('/tiktok-to-mp3', methods=['GET'])
+def tiktok_to_mp3_page():
+    return render_template('converters/tiktok_mp3.html')
+
+@app.route('/facebook-downloader', methods=['GET'])
+def facebook_downloader_page():
+    return render_template('converters/facebook_downloader.html')
+
 @app.route('/video-info', methods=['POST'])
 def get_video_info():
     try:

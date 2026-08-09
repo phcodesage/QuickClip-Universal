@@ -27,6 +27,34 @@ class TestQuickClipBuild(unittest.TestCase):
             html = resp.read().decode('utf-8')
             self.assertIn("Video & Audio Downloader", html)
 
+    def test_youtube_to_mp3_page(self):
+        req = urllib.request.Request(f"{BASE_URL}/youtube-to-mp3")
+        with urllib.request.urlopen(req) as resp:
+            self.assertEqual(resp.status, 200)
+            html = resp.read().decode('utf-8')
+            self.assertIn("YouTube to MP3", html)
+
+    def test_instagram_to_mp3_page(self):
+        req = urllib.request.Request(f"{BASE_URL}/instagram-to-mp3")
+        with urllib.request.urlopen(req) as resp:
+            self.assertEqual(resp.status, 200)
+            html = resp.read().decode('utf-8')
+            self.assertIn("Instagram Reels to MP3", html)
+
+    def test_tiktok_to_mp3_page(self):
+        req = urllib.request.Request(f"{BASE_URL}/tiktok-to-mp3")
+        with urllib.request.urlopen(req) as resp:
+            self.assertEqual(resp.status, 200)
+            html = resp.read().decode('utf-8')
+            self.assertIn("TikTok to MP3", html)
+
+    def test_facebook_downloader_page(self):
+        req = urllib.request.Request(f"{BASE_URL}/facebook-downloader")
+        with urllib.request.urlopen(req) as resp:
+            self.assertEqual(resp.status, 200)
+            html = resp.read().decode('utf-8')
+            self.assertIn("Facebook Video Downloader", html)
+
     def test_audio_cutter_page(self):
         req = urllib.request.Request(f"{BASE_URL}/audio-cutter")
         with urllib.request.urlopen(req) as resp:
