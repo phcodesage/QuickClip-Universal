@@ -44,21 +44,28 @@ app.config.from_object(Config)
 CORS(app)
 socketio = SocketIO(app, cors_allowed_origins="*")
 
+IS_VERCEL = 'VERCEL' in os.environ or 'AWS_LAMBDA_FUNCTION_NAME' in os.environ
+BASE_STORAGE_DIR = '/tmp' if IS_VERCEL else os.getcwd()
+
 # Ensure absolute path for downloads
-DOWNLOAD_FOLDER = os.path.abspath(os.path.join(os.getcwd(), 'downloads'))
+DOWNLOAD_FOLDER = os.path.abspath(os.path.join(BASE_STORAGE_DIR, 'downloads'))
 os.makedirs(DOWNLOAD_FOLDER, exist_ok=True)
 
 # Temporary audio uploads tracking dictionary
 app.temp_files = {}
 
 # Set up logging configuration
+log_handlers = [logging.StreamHandler(sys.stdout)]
+if not IS_VERCEL:
+    try:
+        log_handlers.append(logging.FileHandler('download.log'))
+    except Exception:
+        pass
+
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-    handlers=[
-        logging.StreamHandler(sys.stdout),
-        logging.FileHandler('download.log')
-    ]
+    handlers=log_handlers
 )
 logger = logging.getLogger(__name__)
 
