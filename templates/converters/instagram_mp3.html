@@ -191,7 +191,7 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.2/socket.io.min.js"></script>
     <script>
-        const socket = io();
+        const socket = io({ transports: ['polling', 'websocket'], reconnectionAttempts: 3 });
         let currentVideoTitle = '';
 
         socket.on('download_progress', (data) => {

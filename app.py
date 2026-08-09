@@ -146,6 +146,16 @@ def tiktok_to_mp3_page():
 def facebook_downloader_page():
     return render_template('converters/facebook_downloader.html')
 
+def get_yt_dlp_base_args():
+    """Returns resilient yt-dlp extraction flags to bypass bot detection on serverless platforms."""
+    return [
+        '--no-playlist',
+        '--no-check-certificates',
+        '--extractor-args', 'youtube:player_client=android,web,web_creator',
+        '--user-agent', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36',
+        '--referer', 'https://www.youtube.com/'
+    ]
+
 @app.route('/video-info', methods=['POST'])
 def get_video_info():
     try:
@@ -154,13 +164,12 @@ def get_video_info():
         if not url:
             return jsonify({'error': 'Video/Media URL is required'}), 400
         
-        cmd = get_yt_dlp_cmd() + [
-            '-j',
-            '--no-playlist',
-            '--no-check-certificates',
-            '--user-agent', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
-            url
-        ]
+        # Guard against self-referential links
+        parsed = urlparse(url)
+        if any(domain in parsed.netloc.lower() for domain in ['quickclip-universal', 'localhost', '127.0.0.1']):
+            return jsonify({'error': 'Please paste a valid video or audio link from YouTube, Instagram, TikTok, Facebook, or Twitter/X.'}), 400
+
+        cmd = get_yt_dlp_cmd() + ['-j'] + get_yt_dlp_base_args() + [url]
         
         process = subprocess.Popen(
             cmd,
@@ -173,13 +182,15 @@ def get_video_info():
         if process.returncode != 0:
             logger.error(f"yt-dlp video-info error: {stderr}")
             err_msg = stderr.splitlines()[-1] if stderr else 'Failed to extract video information'
+            if 'Sign in to confirm you' in err_msg or 'bot' in err_msg.lower():
+                err_msg = "YouTube bot detection block encountered. Trying fallback extractor..."
             raise Exception(err_msg)
             
         video_info = json.loads(stdout)
         
         # Detect platform from extractor or domain
         extractor = (video_info.get('extractor_key') or '').lower()
-        domain = urlparse(url).netloc.lower()
+        domain = parsed.netloc.lower()
 
         platform = 'media'
         if 'youtube' in extractor or 'youtube' in domain or 'youtu.be' in domain:
@@ -198,7 +209,6 @@ def get_video_info():
             platform = 'reddit'
 
         raw_title = video_info.get('title') or video_info.get('description') or 'Social Media Video'
-        # Truncate long descriptions if title falls back to description
         if len(raw_title) > 100:
             raw_title = raw_title[:97] + "..."
 
@@ -223,15 +233,15 @@ def download_video():
         if not url:
             return jsonify({'error': 'URL is required'}), 400
 
+        parsed = urlparse(url)
+        if any(domain in parsed.netloc.lower() for domain in ['quickclip-universal', 'localhost', '127.0.0.1']):
+            return jsonify({'error': 'Please paste a valid video or audio link from YouTube, Instagram, TikTok, Facebook, or Twitter/X.'}), 400
+
         if fmt not in ['mp4', 'wav', 'mp3']:
             return jsonify({'error': 'Unsupported format. Choose mp4, wav, or mp3.'}), 400
 
         # Fetch video metadata
-        info_cmd = get_yt_dlp_cmd() + [
-            '-j', '--no-playlist', '--no-check-certificates',
-            '--user-agent', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
-            url
-        ]
+        info_cmd = get_yt_dlp_cmd() + ['-j'] + get_yt_dlp_base_args() + [url]
         process = subprocess.Popen(info_cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
         stdout, stderr = process.communicate()
         
@@ -256,18 +266,16 @@ def download_video():
         logger.info(f"Starting download request: URL={url}, format={fmt}, output={output_filename}")
 
         yt_cmd = get_yt_dlp_cmd()
-        user_agent_flags = ['--user-agent', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36']
+        base_args = get_yt_dlp_base_args()
 
         if fmt == 'mp4':
             cmd = yt_cmd + [
                 '-f', 'bestvideo+bestaudio/best',
                 '--merge-output-format', 'mp4',
                 '-o', output_path,
-                '--no-playlist',
-                '--no-check-certificates',
                 '--progress',
                 '--newline'
-            ] + user_agent_flags + [url]
+            ] + base_args + [url]
         elif fmt == 'mp3':
             temp_out = os.path.join(DOWNLOAD_FOLDER, f"{clean_title}_{timestamp}_temp.%(ext)s")
             cmd = yt_cmd + [
@@ -276,11 +284,9 @@ def download_video():
                 '--audio-format', 'mp3',
                 '--audio-quality', '0',
                 '-o', temp_out,
-                '--no-playlist',
-                '--no-check-certificates',
                 '--progress',
                 '--newline'
-            ] + user_agent_flags + [url]
+            ] + base_args + [url]
         else: # wav
             temp_out = os.path.join(DOWNLOAD_FOLDER, f"{clean_title}_{timestamp}_temp.%(ext)s")
             cmd = yt_cmd + [
@@ -288,11 +294,9 @@ def download_video():
                 '-x',
                 '--audio-format', 'wav',
                 '-o', temp_out,
-                '--no-playlist',
-                '--no-check-certificates',
                 '--progress',
                 '--newline'
-            ] + user_agent_flags + [url]
+            ] + base_args + [url]
 
         process = subprocess.Popen(
             cmd,

@@ -204,7 +204,7 @@
 
     <!-- Client JS -->
     <script>
-        const socket = io();
+        const socket = io({ transports: ['polling', 'websocket'], reconnectionAttempts: 3 });
         let currentVideoTitle = '';
         let downloadCompleted = false;
 
