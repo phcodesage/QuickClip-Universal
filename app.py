@@ -151,10 +151,28 @@ def get_yt_dlp_base_args():
     return [
         '--no-playlist',
         '--no-check-certificates',
-        '--extractor-args', 'youtube:player_client=ios,android,mweb,web',
-        '--user-agent', 'Mozilla/5.0 (iPhone; CPU iPhone OS 17_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.5 Mobile/15E148 Safari/604.1',
+        '--extractor-args', 'youtube:player_client=tv_embedded,tv,ios,mweb,web',
+        '--user-agent', 'Mozilla/5.0 (SmartTV; SmartTV; U; Linux/SmartTV) AppleWebKit/537.36 (KHTML, like Gecko) Safari/537.36',
         '--referer', 'https://www.youtube.com/'
     ]
+
+def get_youtube_oembed_info(url):
+    """Fallback metadata extractor using official YouTube oEmbed API when yt-dlp hits bot blocks."""
+    try:
+        oembed_url = f"https://www.youtube.com/oembed?url={requests.utils.quote(url)}&format=json"
+        res = requests.get(oembed_url, timeout=5)
+        if res.status_code == 200:
+            data = res.json()
+            return {
+                'title': data.get('title') or 'YouTube Video',
+                'thumbnail': data.get('thumbnail_url') or '',
+                'duration': 0,
+                'author': data.get('author_name') or 'YouTube Creator',
+                'platform': 'youtube'
+            }
+    except Exception as e:
+        logger.warning(f"oEmbed fallback error: {e}")
+    return None
 
 @app.route('/video-info', methods=['POST'])
 def get_video_info():
@@ -166,9 +184,11 @@ def get_video_info():
         
         # Guard against self-referential links
         parsed = urlparse(url)
-        if any(domain in parsed.netloc.lower() for domain in ['quickclip-universal', 'localhost', '127.0.0.1']):
+        domain = parsed.netloc.lower()
+        if any(d in domain for d in ['quickclip-universal', 'localhost', '127.0.0.1']):
             return jsonify({'error': 'Please paste a valid video or audio link from YouTube, Instagram, TikTok, Facebook, or Twitter/X.'}), 400
 
+        video_info = None
         cmd = get_yt_dlp_cmd() + ['-j'] + get_yt_dlp_base_args() + [url]
         
         process = subprocess.Popen(
@@ -180,12 +200,17 @@ def get_video_info():
         stdout, stderr = process.communicate()
         
         if process.returncode != 0:
-            logger.warning(f"Primary yt-dlp attempt failed: {stderr}. Retrying with iOS/TV fallback client...")
+            logger.warning(f"Primary yt-dlp attempt failed: {stderr}. Checking oEmbed fallback...")
+            if 'youtube' in domain or 'youtu.be' in domain or 'youtube' in (url.lower()):
+                oembed_data = get_youtube_oembed_info(url)
+                if oembed_data:
+                    return jsonify(oembed_data), 200
+
             fallback_cmd = get_yt_dlp_cmd() + [
                 '-j',
                 '--no-playlist',
                 '--no-check-certificates',
-                '--extractor-args', 'youtube:player_client=ios,tv',
+                '--extractor-args', 'youtube:player_client=tv_embedded,tv',
                 url
             ]
             fb_proc = subprocess.Popen(fallback_cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
@@ -193,7 +218,6 @@ def get_video_info():
             if fb_proc.returncode == 0 and fb_out:
                 video_info = json.loads(fb_out)
             else:
-                logger.error(f"yt-dlp video-info error: {stderr}")
                 err_msg = stderr.splitlines()[-1] if stderr else 'Failed to extract video information'
                 raise Exception(err_msg)
         else:
