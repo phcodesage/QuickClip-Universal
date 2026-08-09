@@ -13,8 +13,15 @@ import shutil
 import logging
 from flask_socketio import SocketIO, emit
 import re
-import soundfile as sf
-import numpy as np
+try:
+    import soundfile as sf
+except ImportError:
+    sf = None
+
+try:
+    import numpy as np
+except ImportError:
+    np = None
 import tempfile
 import uuid
 import requests

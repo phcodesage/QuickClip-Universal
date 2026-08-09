@@ -6,17 +6,16 @@ itsdangerous==2.2.0
 Jinja2==3.1.4
 MarkupSafe==2.1.5
 Werkzeug==3.0.3
-yt-dlp==2024.3.10
-pytube==15.0.0  # Adding as a backup option
+yt-dlp
 flask-socketio==5.3.6
 python-engineio==4.8.2
 python-socketio==5.11.1
-flask-socketio==5.3.6
-pydub==0.25.1
 requests==2.31.0
 urllib3==2.1.0
 PyJWT==2.8.0
+Flask-JWT-Extended==4.6.0
 sqlalchemy==2.0.37
 Flask-SQLAlchemy==3.1.1
 python-dotenv==1.0.1
-Flask-Mail==0.9.1
+soundfile
+numpy
