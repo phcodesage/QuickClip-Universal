@@ -151,8 +151,8 @@ def get_yt_dlp_base_args():
     return [
         '--no-playlist',
         '--no-check-certificates',
-        '--extractor-args', 'youtube:player_client=android,web,web_creator',
-        '--user-agent', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36',
+        '--extractor-args', 'youtube:player_client=ios,android,mweb,web',
+        '--user-agent', 'Mozilla/5.0 (iPhone; CPU iPhone OS 17_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.5 Mobile/15E148 Safari/604.1',
         '--referer', 'https://www.youtube.com/'
     ]
 
@@ -180,13 +180,24 @@ def get_video_info():
         stdout, stderr = process.communicate()
         
         if process.returncode != 0:
-            logger.error(f"yt-dlp video-info error: {stderr}")
-            err_msg = stderr.splitlines()[-1] if stderr else 'Failed to extract video information'
-            if 'Sign in to confirm you' in err_msg or 'bot' in err_msg.lower():
-                err_msg = "YouTube bot detection block encountered. Trying fallback extractor..."
-            raise Exception(err_msg)
-            
-        video_info = json.loads(stdout)
+            logger.warning(f"Primary yt-dlp attempt failed: {stderr}. Retrying with iOS/TV fallback client...")
+            fallback_cmd = get_yt_dlp_cmd() + [
+                '-j',
+                '--no-playlist',
+                '--no-check-certificates',
+                '--extractor-args', 'youtube:player_client=ios,tv',
+                url
+            ]
+            fb_proc = subprocess.Popen(fallback_cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+            fb_out, fb_err = fb_proc.communicate()
+            if fb_proc.returncode == 0 and fb_out:
+                video_info = json.loads(fb_out)
+            else:
+                logger.error(f"yt-dlp video-info error: {stderr}")
+                err_msg = stderr.splitlines()[-1] if stderr else 'Failed to extract video information'
+                raise Exception(err_msg)
+        else:
+            video_info = json.loads(stdout)
         
         # Detect platform from extractor or domain
         extractor = (video_info.get('extractor_key') or '').lower()
