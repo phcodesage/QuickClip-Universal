@@ -30,7 +30,11 @@ from werkzeug.security import generate_password_hash, check_password_hash
 import jwt
 from functools import wraps
 from models import db, User, Download, AudioCut
-from flask_mail import Mail, Message
+try:
+    from flask_mail import Mail, Message
+except ImportError:
+    Mail = None
+    Message = None
 from itsdangerous import URLSafeTimedSerializer
 from config import Config
 
@@ -63,7 +67,7 @@ db.init_app(app)
 with app.app_context():
     db.create_all()
 
-mail = Mail(app)
+mail = Mail(app) if Mail is not None else None
 serializer = URLSafeTimedSerializer(app.config['SECRET_KEY'])
 
 def get_yt_dlp_cmd():
