@@ -1,12 +1,10 @@
-node_modules
-# Environment files
-.env
-myenv/
-venv/
-package-lock.json
-
-# Database files
-mydatabase.db
-migrations/
+__pycache__/
+*.pyc
+*.pyo
+*.log
 instance/
 downloads/
+temp/
+test_material.wav
+test_sample.wav
+.DS_Store

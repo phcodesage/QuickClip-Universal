@@ -1,332 +1,447 @@
 <!DOCTYPE html>
-<html lang="en" class="overflow-hidden">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>QuickClip Universal - Audio Cutter</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/wavesurfer.js@7/dist/wavesurfer.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64,">
+    <meta name="description" content="Precision audio waveform editor and cutter built with Material Design 3.">
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='favicon.svg') }}">
+    <link rel="alternate icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <!-- Material Symbols & Icons -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Logo Theme Sheet -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
-<body class="bg-gray-900 text-white font-sans flex flex-col min-h-screen overflow-hidden">
-    <!-- Navigation -->
-    <nav class="bg-gray-800 shadow-lg py-4">
-        <div class="container mx-auto px-4 flex justify-between items-center">
-            <a class="text-2xl font-bold text-white" href="/">QuickClip Universal</a>
-            <button class="lg:hidden text-white focus:outline-none" type="button" id="navbar-toggle">
-                <i class="fas fa-bars"></i>
-            </button>
-            <div class="hidden lg:flex lg:items-center lg:w-auto w-full" id="navbarNav">
-                <ul class="lg:flex items-center justify-between text-base text-white pt-4 lg:pt-0">
-                    <li>
-                        <a class="lg:p-4 py-3 px-0 block hover:text-green-400" href="/"><i class="fas fa-video mr-2"></i>Video Downloader</a>
-                    </li>
-                    <li>
-                        <a class="lg:p-4 py-3 px-0 block hover:text-green-400" href="/audio-cutter"><i class="fas fa-scissors mr-2"></i>Audio Cutter</a>
-                    </li>
-                </ul>
+<body>
+    <!-- Navigation Bar -->
+    <header class="md3-navbar py-3">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 flex justify-between items-center">
+            <a class="flex items-center gap-3 text-lg font-bold text-white no-underline group" href="/">
+                <svg class="w-10 h-10 vector-logo-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="48" height="48" rx="14" fill="url(#ac_logo_bg)"/>
+                    <path d="M15 13L35 24L15 35V13Z" fill="white" fill-opacity="0.95"/>
+                    <path d="M27 9L17 25H25L21 39L33 21H24L27 9Z" fill="url(#ac_logo_bolt)"/>
+                    <defs>
+                        <linearGradient id="ac_logo_bg" x1="0" y1="0" x2="48" y2="48" gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#8B5CF6"/>
+                            <stop offset="1" stop-color="#2563EB"/>
+                        </linearGradient>
+                        <linearGradient id="ac_logo_bolt" x1="17" y1="9" x2="33" y2="39" gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#F59E0B"/>
+                            <stop offset="1" stop-color="#EF4444"/>
+                        </linearGradient>
+                    </defs>
+                </svg>
+                <span class="brand-title-gradient tracking-wide">QuickClip Universal</span>
+            </a>
+            
+            <div class="flex items-center gap-2">
+                <a class="md3-nav-pill" href="/"><span class="material-symbols-outlined text-xl">home</span><span class="hidden sm:inline">Home</span></a>
+                <a class="md3-nav-pill" href="/downloader"><span class="material-symbols-outlined text-xl">download</span><span class="hidden sm:inline">Downloader</span></a>
+                <a class="md3-nav-pill active" href="/audio-cutter"><span class="material-symbols-outlined text-xl">content_cut</span><span class="hidden sm:inline">Audio Cutter</span></a>
+                
+                <div id="navAuthContainer" class="flex items-center ml-2">
+                    <a href="/auth" class="md3-btn-filled py-1.5 px-4 text-sm">
+                        <span class="material-symbols-outlined text-lg">login</span> Login
+                    </a>
+                </div>
             </div>
         </div>
-    </nav>
+    </header>
 
-    <!-- Hero Section -->
-    <section class="py-8 bg-gradient-to-br from-gray-900 to-gray-800 text-center">
-        <div class="container mx-auto px-4">
-            <h1 class="text-5xl font-extrabold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-blue-500">Audio Cutter</h1>
-            <p class="text-xl text-gray-400 mb-8">Cut and trim your audio files with precision</p>
-        </div>
-    </section>
+    <!-- Main Content -->
+    <main class="flex-grow py-10 sm:py-16">
+        <div class="max-w-4xl mx-auto px-4 space-y-8">
+            <!-- Header -->
+            <div class="text-center space-y-3">
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-purple-500/15 text-purple-300 text-sm font-medium border border-purple-500/30">
+                    <span class="material-symbols-outlined text-lg">graphic_eq</span> Interactive Waveform Trimmer
+                </div>
+                <h1 class="text-3xl sm:text-4xl font-extrabold text-white">Audio Cutter & Trimmer</h1>
+                <p class="text-gray-400 text-base max-w-xl mx-auto">Upload an audio file, drag the region handles to choose your clip range, and export instantly.</p>
+            </div>
 
-    <!-- Audio Cutter Section -->
-    <section class="py-8 bg-gray-900 flex-grow">
-        <div class="container mx-auto px-4">
-            <div class="max-w-3xl mx-auto">
-
-                    <!-- Upload Container -->
-                    <div class="flex flex-col items-center justify-center p-8 border-2 border-dashed border-gray-600 rounded-lg text-gray-400 bg-gray-800 mb-8" id="dropZone">
-                        <i class="fas fa-cloud-upload-alt text-5xl mb-4 text-green-400"></i>
-                        <h3 class="text-2xl font-semibold mb-3 text-white">Drop your audio file here</h3>
-                        <p class="mb-4">or</p>
-                        <input type="file" id="fileInput" class="hidden" accept="audio/*">
-                        <button class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline" onclick="document.getElementById('fileInput').click()">
-                            <i class="fas fa-folder-open mr-2"></i>Browse Files
-                        </button>
-                        <p class="text-sm mt-3">Supported formats: MP3, WAV, M4A, OGG</p>
-    
-
-                    <!-- Waveform Container -->
-                    <div class="bg-gray-800 rounded-lg shadow-lg p-6 hidden" id="waveformContainer">
-                        <div id="waveform" class="w-full h-32 bg-gray-700 rounded-lg mb-4"></div>
-                        <div class="flex justify-center space-x-4 mb-6">
-                            <button id="playPauseBtn" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline">
-                                <i class="fas fa-play"></i>
-                            </button>
-                            <button id="stopBtn" class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline">
-                                <i class="fas fa-stop"></i>
-                            </button>
-                        </div>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-                        <div>
-                            <label for="startTime" class="block text-gray-300 text-sm font-bold mb-2">Start Time (s)</label>
-                            <input type="number" id="startTime" class="shadow appearance-none border border-gray-700 rounded w-full py-2 px-3 bg-gray-700 text-white leading-tight focus:outline-none focus:shadow-outline focus:border-green-400" value="0" step="0.1" min="0">
-                            </div>
-                        </div>
-                        <div>
-                            <label for="endTime" class="block text-gray-300 text-sm font-bold mb-2">End Time (s)</label>
-                            <input type="number" id="endTime" class="shadow appearance-none border border-gray-700 rounded w-full py-2 px-3 bg-gray-700 text-white leading-tight focus:outline-none focus:shadow-outline focus:border-green-400" value="0" step="0.1" min="0">
-                            </div>
-                        </div>
-                        </div>
+            <!-- Upload Drop Zone -->
+            <div id="dropZone" class="md3-card p-10 text-center border-2 border-dashed border-gray-600 hover:border-purple-400 transition-colors cursor-pointer">
+                <div class="max-w-md mx-auto space-y-4">
+                    <div class="w-16 h-16 mx-auto rounded-2xl bg-purple-500/20 text-purple-300 flex items-center justify-center border border-purple-500/30">
+                        <span class="material-symbols-outlined text-3xl">upload_file</span>
                     </div>
-                    <button id="cutBtn" class="bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-4 rounded-lg focus:outline-none focus:shadow-outline w-full">
-                            <i class="fas fa-cut mr-2"></i>Cut Audio
+                    <h3 class="text-xl font-bold text-white">Drag & Drop your audio file here</h3>
+                    <p class="text-gray-400 text-sm">Supports MP3, WAV, M4A, OGG, FLAC, AAC</p>
+                    <div>
+                        <input type="file" id="fileInput" class="hidden" accept="audio/*">
+                        <button type="button" onclick="document.getElementById('fileInput').click()" class="md3-btn-filled px-6 py-2.5 text-base">
+                            <span class="material-symbols-outlined text-xl">folder_open</span> Browse Files
                         </button>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <footer class="bg-gray-800 text-white py-6">
-        <div class="container mx-auto px-4 text-center">
-            <p class="text-sm">&copy; 2023 QuickClip Universal. All rights reserved.</p>
+            <!-- Loading Spinner -->
+            <div id="uploadLoader" class="md3-card p-8 text-center hidden">
+                <span class="material-symbols-outlined text-4xl text-purple-300 animate-spin mb-3">progress_activity</span>
+                <h4 class="text-lg font-bold text-white">Processing Waveform & Audio Data...</h4>
+                <p class="text-gray-400 text-sm">Converting audio channels into visual peak data.</p>
+            </div>
+
+            <!-- Waveform Editor Container -->
+            <div id="waveformContainer" class="md3-card p-6 sm:p-8 hidden space-y-6">
+                <!-- File details header -->
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 border-b border-gray-700/60 pb-4">
+                    <div>
+                        <span class="text-xs font-semibold text-purple-300 uppercase tracking-wider">Loaded Audio File</span>
+                        <h3 id="audioFileName" class="text-lg font-bold text-white truncate max-w-md">filename.mp3</h3>
+                    </div>
+                    <span id="audioTotalDuration" class="text-sm font-mono text-gray-400">Duration: 00:00</span>
+                </div>
+
+                <!-- Waveform Canvas -->
+                <div id="waveform"></div>
+
+                <!-- Playback & Region Control Toolbar -->
+                <div class="flex flex-wrap items-center justify-between gap-4 bg-gray-900/60 p-4 rounded-2xl border border-gray-800">
+                    <div class="flex items-center gap-3">
+                        <button id="playPauseBtn" class="md3-btn-filled py-2 px-5">
+                            <span class="material-symbols-outlined text-xl" id="playIcon">play_arrow</span> <span id="playText">Play</span>
+                        </button>
+                        <button id="stopBtn" class="md3-btn-tonal py-2 px-4">
+                            <span class="material-symbols-outlined text-xl text-red-400">stop</span> Stop
+                        </button>
+                    </div>
+
+                    <div class="flex items-center gap-2 text-sm text-gray-300 font-mono">
+                        <span id="currentTimeDisplay" class="bg-gray-800 px-3 py-1.5 rounded-lg border border-gray-700">00:00.0</span>
+                        <span>/</span>
+                        <span id="totalTimeDisplay" class="bg-gray-800 px-3 py-1.5 rounded-lg border border-gray-700">00:00.0</span>
+                    </div>
+                </div>
+
+                <!-- Precision Inputs -->
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                    <div>
+                        <label for="startTime" class="block text-gray-300 text-sm font-semibold mb-2">Start Time (seconds)</label>
+                        <input type="number" id="startTime" class="md3-text-field font-mono" value="0" step="0.1" min="0">
+                    </div>
+                    <div>
+                        <label for="endTime" class="block text-gray-300 text-sm font-semibold mb-2">End Time (seconds)</label>
+                        <input type="number" id="endTime" class="md3-text-field font-mono" value="0" step="0.1" min="0">
+                    </div>
+                    <div>
+                        <label for="outputFormat" class="block text-gray-300 text-sm font-semibold mb-2">Output Format</label>
+                        <select id="outputFormat" class="md3-text-field">
+                            <option value="mp3">MP3 (Compressed Audio)</option>
+                            <option value="wav">WAV (Lossless PCM)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Cut Action -->
+                <div class="pt-4 border-t border-gray-700/60 flex flex-col sm:flex-row gap-4 items-center justify-between">
+                    <button id="cutBtn" class="md3-btn-filled w-full sm:w-auto px-8 py-3 text-base">
+                        <span class="material-symbols-outlined text-xl">content_cut</span> Cut & Download Clip
+                    </button>
+
+                    <button type="button" onclick="location.reload()" class="md3-btn-outlined text-sm">
+                        <span class="material-symbols-outlined text-lg">upload</span> Upload Different File
+                    </button>
+                </div>
+            </div>
         </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-950 border-t border-gray-800 py-6 text-center text-gray-500 text-sm">
+        <p>&copy; 2026 QuickClip Universal. All rights reserved.</p>
     </footer>
 
-    <script src="https://unpkg.com/wavesurfer.js@5.2.0/dist/wavesurfer.js"></script>
-    <script src="https://unpkg.com/wavesurfer.js@5.2.0/dist/plugin/wavesurfer.regions.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        let wavesurfer;
-        let tempFilePath;
+    <!-- WaveSurfer v7 JS & Plugins -->
+    <script src="https://unpkg.com/wavesurfer.js@7/dist/wavesurfer.min.js"></script>
+    <script src="https://unpkg.com/wavesurfer.js@7/dist/plugins/regions.min.js"></script>
 
-        // Initialize WaveSurfer
-        function initWaveSurfer() {
+    <!-- Cutter Logic -->
+    <script>
+        let wavesurfer = null;
+        let wsRegions = null;
+        let activeRegion = null;
+        let currentTempPath = null;
+        let audioDuration = 0;
+
+        function formatTime(seconds) {
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            const millis = Math.floor((seconds % 1) * 10);
+            return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}.${millis}`;
+        }
+
+        function initWaveSurfer(audioUrl) {
             if (wavesurfer) {
                 wavesurfer.destroy();
             }
-            
-            // First create the base WaveSurfer instance
+
+            wsRegions = WaveSurfer.Regions.create();
+
             wavesurfer = WaveSurfer.create({
                 container: '#waveform',
-                waveColor: '#404040',
-                progressColor: 'var(--accent-color)',
-                cursorColor: '#00c3ff',
-                height: 100,
-                normalize: true,
-                backend: 'WebAudio',
-                responsive: true,
-                fillParent: true,
-                minPxPerSec: 1,
-                scrollParent: false
+                waveColor: '#475569',
+                progressColor: '#8b5cf6',
+                cursorColor: '#06b6d4',
+                barWidth: 2,
+                barGap: 1,
+                barRadius: 2,
+                height: 120,
+                plugins: [wsRegions]
             });
 
-            // Resume audio context
-            wavesurfer.backend.ac.resume();
+            wavesurfer.load(audioUrl);
 
-            // Initialize regions plugin
-            const RegionsPlugin = window.WaveSurfer.regions;
-            
-            wavesurfer.addPlugin(RegionsPlugin.create({
-                regionsMinLength: 2,
-                dragSelection: {
-                    slop: 5
-                }
-            })).initPlugin('regions');
-
-            // Once audio is loaded
             wavesurfer.on('ready', () => {
-                const duration = wavesurfer.getDuration();
-                document.getElementById('startTime').value = '0';
-                document.getElementById('endTime').value = duration.toFixed(2);
+                document.getElementById('uploadLoader').classList.add('hidden');
+                document.getElementById('waveformContainer').classList.remove('hidden');
                 
-                // Create initial region
-                wavesurfer.regions.add({
+                audioDuration = wavesurfer.getDuration();
+                document.getElementById('audioTotalDuration').textContent = `Duration: ${formatTime(audioDuration)}`;
+                document.getElementById('totalTimeDisplay').textContent = formatTime(audioDuration);
+                document.getElementById('startTime').value = 0;
+                document.getElementById('endTime').value = audioDuration.toFixed(2);
+
+                wsRegions.clearRegions();
+                activeRegion = wsRegions.addRegion({
                     start: 0,
-                    end: duration,
-                    color: 'rgba(0, 255, 157, 0.2)',
+                    end: audioDuration,
+                    color: 'rgba(139, 92, 246, 0.25)',
                     drag: true,
                     resize: true
                 });
-            });
 
-            // Update time inputs when region is updated
-            wavesurfer.on('region-updated', (region) => {
-                document.getElementById('startTime').value = region.start.toFixed(2);
-                document.getElementById('endTime').value = region.end.toFixed(2);
-            });
-
-            // Update region when time inputs change
-            document.getElementById('startTime').addEventListener('change', function() {
-                const regions = wavesurfer.regions.list;
-                const region = Object.values(regions)[0];
-                if (region) {
-                    region.setStart(parseFloat(this.value) || 0);
-                }
-            });
-
-            document.getElementById('endTime').addEventListener('change', function() {
-                const regions = wavesurfer.regions.list;
-                const region = Object.values(regions)[0];
-                if (region) {
-                    region.setEnd(parseFloat(this.value) || wavesurfer.getDuration());
-                }
-            });
-        }
-
-        function handleFile(file) {
-            if (!file.type.startsWith('audio/')) {
-                alert('Please select an audio file');
-                return;
-            }
-
-            const formData = new FormData();
-            formData.append('file', file);
-
-            // Show loading state
-            const uploadContainer = document.querySelector('.upload-container');
-            uploadContainer.style.opacity = '0.5';
-
-            fetch('/upload-audio', {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.error) throw new Error(data.error);
-                
-                tempFilePath = data.temp_path;
-                document.querySelector('.waveform-container').style.display = 'block';
-                uploadContainer.style.display = 'none';
-                
-                initWaveSurfer();
-                wavesurfer.load(`/temp/${tempFilePath}`);
-                
-                wavesurfer.on('ready', () => {
-                    document.getElementById('startTime').value = '0';
-                    document.getElementById('endTime').value = wavesurfer.getDuration().toFixed(2);
+                wsRegions.on('region-updated', (region) => {
+                    activeRegion = region;
+                    document.getElementById('startTime').value = region.start.toFixed(2);
+                    document.getElementById('endTime').value = region.end.toFixed(2);
                 });
-            })
-            .catch(error => {
-                alert('Error: ' + error.message);
-                uploadContainer.style.opacity = '1';
+            });
+
+            wavesurfer.on('audioprocess', (currentTime) => {
+                document.getElementById('currentTimeDisplay').textContent = formatTime(currentTime);
+            });
+
+            wavesurfer.on('finish', () => {
+                updatePlayState(false);
             });
         }
 
-        // Cut audio
-        async function cutAudio() {
-            if (!tempFilePath) {
-                alert('Please load an audio file first');
-                return;
-            }
-
-            const startTime = parseFloat(document.getElementById('startTime').value) || 0;
-            const endTime = parseFloat(document.getElementById('endTime').value) || wavesurfer.getDuration();
-
-            try {
-                // Show loading state
-                const cutBtn = document.getElementById('cutBtn');
-                cutBtn.disabled = true;
-                cutBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Processing...';
-
-                const response = await fetch('/cut-audio', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        temp_path: tempFilePath,
-                        start_time: startTime,
-                        end_time: endTime
-                    })
-                });
-
-                if (!response.ok) {
-                    const errorData = await response.json();
-                    throw new Error(errorData.error || 'Failed to cut audio');
-                }
-                
-                const blob = await response.blob();
-                const url = window.URL.createObjectURL(blob);
-                const a = document.createElement('a');
-                a.href = url;
-                a.download = 'cut_audio.mp3';
-                document.body.appendChild(a);
-                a.click();
-                a.remove();
-                window.URL.revokeObjectURL(url);
-            } catch (error) {
-                alert('Error cutting audio: ' + error.message);
-            } finally {
-                // Reset button state
-                const cutBtn = document.getElementById('cutBtn');
-                cutBtn.disabled = false;
-                cutBtn.innerHTML = '<i class="fas fa-cut me-2"></i>Cut Audio';
-            }
-        }
-
-        // Event Listeners
-        document.getElementById('fileInput').addEventListener('change', function(e) {
-            if (e.target.files[0]) {
-                handleFile(e.target.files[0]);
-            }
-        });
-
-        document.getElementById('cutBtn').addEventListener('click', cutAudio);
-
-        // Playback controls
-        document.getElementById('playPauseBtn').addEventListener('click', function() {
-            const icon = this.querySelector('i');
-            if (icon.classList.contains('fa-play')) {
-                wavesurfer.play();
-                icon.classList.remove('fa-play');
-                icon.classList.add('fa-pause');
+        function updatePlayState(isPlaying) {
+            const playIcon = document.getElementById('playIcon');
+            const playText = document.getElementById('playText');
+            if (isPlaying) {
+                playIcon.textContent = 'pause';
+                playText.textContent = 'Pause';
             } else {
+                playIcon.textContent = 'play_arrow';
+                playText.textContent = 'Play';
+            }
+        }
+
+        document.getElementById('playPauseBtn').addEventListener('click', () => {
+            if (!wavesurfer) return;
+            if (wavesurfer.isPlaying()) {
                 wavesurfer.pause();
-                icon.classList.remove('fa-pause');
-                icon.classList.add('fa-play');
+                updatePlayState(false);
+            } else {
+                if (activeRegion) {
+                    activeRegion.play();
+                } else {
+                    wavesurfer.play();
+                }
+                updatePlayState(true);
             }
         });
 
         document.getElementById('stopBtn').addEventListener('click', () => {
+            if (!wavesurfer) return;
             wavesurfer.stop();
-            wavesurfer.seekTo(0);
-            const playPauseIcon = document.querySelector('#playPauseBtn i');
-            playPauseIcon.classList.remove('fa-pause');
-            playPauseIcon.classList.add('fa-play');
+            updatePlayState(false);
+            document.getElementById('currentTimeDisplay').textContent = formatTime(0);
         });
 
-        // Add listener for when audio finishes to reset play button
-        wavesurfer.on('finish', function() {
-            const playPauseIcon = document.querySelector('#playPauseBtn i');
-            playPauseIcon.classList.remove('fa-pause');
-            playPauseIcon.classList.add('fa-play');
+        document.getElementById('startTime').addEventListener('change', function() {
+            const val = Math.max(0, parseFloat(this.value) || 0);
+            if (activeRegion) {
+                activeRegion.setOptions({ start: val, end: activeRegion.end });
+            }
         });
 
-        // Drag and drop handling
+        document.getElementById('endTime').addEventListener('change', function() {
+            const val = Math.min(audioDuration, parseFloat(this.value) || audioDuration);
+            if (activeRegion) {
+                activeRegion.setOptions({ start: activeRegion.start, end: val });
+            }
+        });
+
+        async function handleUpload(file) {
+            if (!file) return;
+
+            const dropZone = document.getElementById('dropZone');
+            const uploadLoader = document.getElementById('uploadLoader');
+            const waveformContainer = document.getElementById('waveformContainer');
+
+            dropZone.classList.add('hidden');
+            waveformContainer.classList.add('hidden');
+            uploadLoader.classList.remove('hidden');
+
+            const formData = new FormData();
+            formData.append('file', file);
+
+            try {
+                const response = await fetch('/upload-audio', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const data = await response.json();
+                if (!response.ok || data.error) {
+                    throw new Error(data.error || 'Failed to upload audio file.');
+                }
+
+                currentTempPath = data.temp_path;
+                document.getElementById('audioFileName').textContent = data.filename || file.name;
+                initWaveSurfer(`/temp/${currentTempPath}`);
+
+            } catch (err) {
+                alert('Upload Error: ' + err.message);
+                uploadLoader.classList.add('hidden');
+                dropZone.classList.remove('hidden');
+            }
+        }
+
+        document.getElementById('fileInput').addEventListener('change', (e) => {
+            if (e.target.files && e.target.files[0]) {
+                handleUpload(e.target.files[0]);
+            }
+        });
+
         const dropZone = document.getElementById('dropZone');
-
-        dropZone.addEventListener('dragover', (e) => {
-            e.preventDefault();
-            dropZone.style.backgroundColor = 'rgba(0, 255, 157, 0.1)';
+        ['dragenter', 'dragover'].forEach(eventName => {
+            dropZone.addEventListener(eventName, (e) => {
+                e.preventDefault();
+                dropZone.classList.add('border-purple-400');
+            }, false);
         });
 
-        dropZone.addEventListener('dragleave', (e) => {
-            e.preventDefault();
-            dropZone.style.backgroundColor = 'transparent';
+        ['dragleave', 'drop'].forEach(eventName => {
+            dropZone.addEventListener(eventName, (e) => {
+                e.preventDefault();
+                dropZone.classList.remove('border-purple-400');
+            }, false);
         });
 
         dropZone.addEventListener('drop', (e) => {
-            e.preventDefault();
-            dropZone.style.backgroundColor = 'transparent';
-            const file = e.dataTransfer.files[0];
-            if (file && file.type.startsWith('audio/')) {
-                handleFile(file);
-            } else {
-                alert('Please drop an audio file');
+            const dt = e.dataTransfer;
+            const files = dt.files;
+            if (files && files[0]) {
+                handleUpload(files[0]);
             }
         });
+
+        document.getElementById('cutBtn').addEventListener('click', async () => {
+            if (!currentTempPath) {
+                alert('Please upload an audio file first.');
+                return;
+            }
+
+            const startTime = parseFloat(document.getElementById('startTime').value) || 0;
+            const endTime = parseFloat(document.getElementById('endTime').value) || audioDuration;
+            const outputFormat = document.getElementById('outputFormat').value;
+            const cutBtn = document.getElementById('cutBtn');
+
+            if (startTime >= endTime) {
+                alert('Start time must be less than end time.');
+                return;
+            }
+
+            cutBtn.disabled = true;
+            cutBtn.innerHTML = '<span class="material-symbols-outlined text-xl animate-spin">progress_activity</span> Processing...';
+
+            const headers = { 'Content-Type': 'application/json' };
+            const token = localStorage.getItem('access_token');
+            if (token) {
+                headers['Authorization'] = `Bearer ${token}`;
+            }
+
+            try {
+                const response = await fetch('/cut-audio', {
+                    method: 'POST',
+                    headers: headers,
+                    body: JSON.stringify({
+                        temp_path: currentTempPath,
+                        start_time: startTime,
+                        end_time: endTime,
+                        output_format: outputFormat
+                    })
+                });
+
+                if (!response.ok) {
+                    const errData = await response.json().catch(() => ({}));
+                    throw new Error(errData.error || 'Failed to slice audio.');
+                }
+
+                const blob = await response.blob();
+                const url = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `clip_${Math.round(startTime)}s_${Math.round(endTime)}s.${outputFormat}`;
+                document.body.appendChild(a);
+                a.click();
+                a.remove();
+                window.URL.revokeObjectURL(url);
+            } catch (err) {
+                alert('Audio Cut Error: ' + err.message);
+            } finally {
+                cutBtn.disabled = false;
+                cutBtn.innerHTML = '<span class="material-symbols-outlined text-xl">content_cut</span> Cut & Download Clip';
+            }
+        });
+
+        async function checkUserAuth() {
+            const token = localStorage.getItem('access_token');
+            const navAuth = document.getElementById('navAuthContainer');
+            if (token) {
+                try {
+                    const res = await fetch('/api/me', {
+                        headers: { 'Authorization': `Bearer ${token}` }
+                    });
+                    const data = await res.json();
+                    if (data.authenticated) {
+                        navAuth.innerHTML = `
+                            <a href="/profile" class="md3-nav-pill text-purple-300">
+                                <span class="material-symbols-outlined">account_circle</span> ${data.user.username}
+                            </a>
+                            <button onclick="logout()" class="md3-btn-outlined py-1 px-3 text-xs ml-2" title="Logout">
+                                <span class="material-symbols-outlined text-base">logout</span>
+                            </button>
+                        `;
+                        return;
+                    }
+                } catch(e) {}
+            }
+            navAuth.innerHTML = `
+                <a href="/auth" class="md3-btn-filled py-1.5 px-4 text-sm">
+                    <span class="material-symbols-outlined text-lg">login</span> Login
+                </a>
+            `;
+        }
+
+        function logout() {
+            localStorage.removeItem('access_token');
+            localStorage.removeItem('refresh_token');
+            window.location.href = '/';
+        }
+
+        document.addEventListener('DOMContentLoaded', checkUserAuth);
     </script>
 </body>
 </html>
