@@ -42,6 +42,30 @@
             <div class="flex items-center gap-2">
                 <a class="md3-nav-pill" href="/"><span class="material-symbols-outlined text-xl">home</span><span class="hidden sm:inline">Home</span></a>
                 <a class="md3-nav-pill" href="/downloader"><span class="material-symbols-outlined text-xl">download</span><span class="hidden sm:inline">Downloader</span></a>
+                
+                <!-- Converters Dropdown -->
+                <div class="relative group">
+                    <button type="button" class="md3-nav-pill flex items-center gap-1 cursor-pointer">
+                        <span class="material-symbols-outlined text-xl">auto_awesome</span>
+                        <span class="hidden sm:inline">Converters</span>
+                        <span class="material-symbols-outlined text-base transition-transform group-hover:rotate-180">expand_more</span>
+                    </button>
+                    <div class="absolute right-0 top-full mt-2 w-56 py-2 bg-gray-900/95 backdrop-blur-xl border border-purple-500/30 rounded-2xl shadow-2xl hidden group-hover:block z-50">
+                        <a href="/youtube-to-mp3" class="flex items-center gap-3 px-4 py-2.5 text-sm text-gray-200 hover:bg-purple-500/15 hover:text-white no-underline transition-colors">
+                            <i class="fab fa-youtube text-red-400 text-base"></i> YouTube to MP3
+                        </a>
+                        <a href="/instagram-to-mp3" class="flex items-center gap-3 px-4 py-2.5 text-sm text-gray-200 hover:bg-purple-500/15 hover:text-white no-underline transition-colors">
+                            <i class="fab fa-instagram text-pink-400 text-base"></i> Instagram to MP3
+                        </a>
+                        <a href="/tiktok-to-mp3" class="flex items-center gap-3 px-4 py-2.5 text-sm text-gray-200 hover:bg-purple-500/15 hover:text-white no-underline transition-colors">
+                            <i class="fab fa-tiktok text-cyan-400 text-base"></i> TikTok to MP3
+                        </a>
+                        <a href="/facebook-downloader" class="flex items-center gap-3 px-4 py-2.5 text-sm text-gray-200 hover:bg-purple-500/15 hover:text-white no-underline transition-colors">
+                            <i class="fab fa-facebook text-blue-400 text-base"></i> Facebook Downloader
+                        </a>
+                    </div>
+                </div>
+
                 <a class="md3-nav-pill active" href="/audio-cutter"><span class="material-symbols-outlined text-xl">content_cut</span><span class="hidden sm:inline">Audio Cutter</span></a>
                 
                 <div id="navAuthContainer" class="flex items-center ml-2">
