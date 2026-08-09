@@ -18,7 +18,7 @@ class TestQuickClipBuild(unittest.TestCase):
         with urllib.request.urlopen(req) as resp:
             self.assertEqual(resp.status, 200)
             css = resp.read().decode('utf-8')
-            self.assertIn("Inter", css)
+            self.assertIn("Montserrat", css)
 
     def test_downloader_page(self):
         req = urllib.request.Request(f"{BASE_URL}/downloader")

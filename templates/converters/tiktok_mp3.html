@@ -27,7 +27,7 @@
                     <path d="M27 9L17 25H25L21 39L33 21H24L27 9Z" fill="url(#tt_logo_bolt)"/>
                     <defs>
                         <linearGradient id="tt_logo_bg" x1="0" y1="0" x2="48" y2="48" gradientUnits="userSpaceOnUse">
-                            <stop stop-color="#8B5CF6"/>
+                            <stop stop-color="#A855F7"/>
                             <stop offset="1" stop-color="#2563EB"/>
                         </linearGradient>
                         <linearGradient id="tt_logo_bolt" x1="17" y1="9" x2="33" y2="39" gradientUnits="userSpaceOnUse">
@@ -50,18 +50,18 @@
                         <span class="hidden sm:inline">Converters</span>
                         <span class="material-symbols-outlined text-base transition-transform group-hover:rotate-180">expand_more</span>
                     </button>
-                    <div class="absolute right-0 top-full mt-2 w-56 py-2 bg-gray-900/95 backdrop-blur-xl border border-purple-500/30 rounded-2xl shadow-2xl hidden group-hover:block z-50">
-                        <a href="/youtube-to-mp3" class="flex items-center gap-3 px-4 py-2.5 text-sm text-gray-200 hover:bg-purple-500/15 hover:text-white no-underline transition-colors">
+                    <div class="absolute right-0 top-full mt-2 w-56 py-2 bg-gray-900/95 backdrop-blur-xl border border-purple-500/40 rounded-2xl shadow-2xl hidden group-hover:block z-50">
+                        <a href="/youtube-to-mp3" class="flex items-center gap-3 px-4 py-2.5 text-sm text-white hover:bg-purple-500/25 no-underline transition-colors font-medium">
                             <i class="fab fa-youtube text-red-400 text-base"></i> YouTube to MP3
                         </a>
-                        <a href="/instagram-to-mp3" class="flex items-center gap-3 px-4 py-2.5 text-sm text-gray-200 hover:bg-purple-500/15 hover:text-white no-underline transition-colors">
+                        <a href="/instagram-to-mp3" class="flex items-center gap-3 px-4 py-2.5 text-sm text-white hover:bg-purple-500/25 no-underline transition-colors font-medium">
                             <i class="fab fa-instagram text-pink-400 text-base"></i> Instagram to MP3
                         </a>
-                        <a href="/tiktok-to-mp3" class="flex items-center gap-3 px-4 py-2.5 text-sm text-white bg-purple-500/20 no-underline transition-colors">
+                        <a href="/tiktok-to-mp3" class="flex items-center gap-3 px-4 py-2.5 text-sm text-white bg-purple-500/25 no-underline transition-colors font-medium">
                             <i class="fab fa-tiktok text-cyan-400 text-base"></i> TikTok to MP3
                         </a>
-                        <a href="/facebook-downloader" class="flex items-center gap-3 px-4 py-2.5 text-sm text-gray-200 hover:bg-purple-500/15 hover:text-white no-underline transition-colors">
-                            <i class="fab fa-facebook text-blue-400 text-base"></i> Facebook Downloader
+                        <a href="/facebook-downloader" class="flex items-center gap-3 px-4 py-2.5 text-sm text-white hover:bg-purple-500/25 no-underline transition-colors font-medium">
+                            <i class="fab fa-facebook text-blue-500 text-base"></i> Facebook Downloader
                         </a>
                     </div>
                 </div>
@@ -76,12 +76,12 @@
         <div class="max-w-3xl mx-auto px-4 space-y-6">
             <!-- Screen Header -->
             <div class="text-center space-y-3">
-                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-cyan-500/15 text-cyan-400 text-sm font-medium border border-cyan-500/30">
-                    <i class="fab fa-tiktok text-lg"></i> TikTok Audio Extractor
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-cyan-600/25 text-white text-sm font-semibold border border-cyan-400/50 shadow-md">
+                    <i class="fab fa-tiktok text-lg text-cyan-400"></i> TikTok Audio Extractor
                 </div>
                 
-                <h1 class="text-3xl sm:text-4xl font-extrabold text-white">Convert TikTok to MP3</h1>
-                <p class="text-base text-gray-400 max-w-xl mx-auto">Paste any TikTok clip or video link to extract high-quality audio tracks.</p>
+                <h1 class="text-3xl sm:text-4xl font-black text-white">Convert TikTok to MP3</h1>
+                <p class="text-base text-white font-medium max-w-xl mx-auto opacity-95">Paste any TikTok clip or video link to extract high-quality audio tracks.</p>
             </div>
 
             <!-- Input Box -->
@@ -95,7 +95,7 @@
                            autocomplete="off">
                     <button type="button" 
                             id="clearUrl" 
-                            class="absolute right-4 text-gray-400 hover:text-white hidden"
+                            class="absolute right-4 text-white hover:text-cyan-400 hidden"
                             title="Clear URL">
                         <span class="material-symbols-outlined text-xl">close</span>
                     </button>
@@ -104,15 +104,17 @@
 
             <!-- Video Preview Card -->
             <div id="videoPreviewContainer" class="hidden">
-                <div class="md3-card p-5 text-left flex flex-col sm:flex-row items-center gap-5">
-                    <img id="videoThumbnail" src="" alt="Thumbnail" class="w-full sm:w-44 h-32 object-cover rounded-xl shadow">
-                    <div class="flex-grow space-y-2 w-full">
-                        <span id="platformBadge" class="md3-chip text-xs">
-                            <i class="fab fa-tiktok text-cyan-400 mr-1"></i> TikTok Media Detected
-                        </span>
-                        <h3 id="videoTitle" class="text-base sm:text-lg font-bold text-white leading-snug line-clamp-2"></h3>
-                        <div class="flex flex-wrap gap-4 text-xs text-gray-400">
-                            <span id="videoAuthor"><i class="fas fa-user-circle mr-1"></i></span>
+                <div class="md3-card p-6 text-left space-y-4">
+                    <div class="flex flex-col sm:flex-row items-center gap-5">
+                        <img id="videoThumbnail" src="" alt="Thumbnail" class="w-full sm:w-48 h-36 object-cover rounded-2xl shadow-lg border border-cyan-500/30">
+                        <div class="flex-grow space-y-2 w-full">
+                            <span id="platformBadge" class="md3-chip text-xs font-bold">
+                                <i class="fab fa-tiktok text-cyan-300 mr-1"></i> TikTok Media Detected
+                            </span>
+                            <h3 id="videoTitle" class="text-base sm:text-xl font-extrabold text-white leading-snug"></h3>
+                            <div class="flex flex-wrap gap-4 text-sm text-white font-semibold pt-1">
+                                <span id="videoAuthor" class="bg-gray-800/80 px-3 py-1 rounded-lg border border-gray-700/60"><i class="fas fa-user-circle text-purple-300 mr-1"></i></span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -123,7 +125,7 @@
                 <div class="md3-card p-6 text-left space-y-5">
                     <form id="downloadForm" onsubmit="event.preventDefault(); startDownload();" class="space-y-4">
                         <div>
-                            <label for="format" class="block text-gray-300 text-sm font-medium mb-2">Output Format</label>
+                            <label for="format" class="block text-white text-sm font-bold mb-2">Select Format</label>
                             <select id="format" name="format" class="md3-text-field">
                                 <option value="mp3" selected>MP3 - Sound Track Only</option>
                                 <option value="mp4">MP4 - Full TikTok Video</option>
@@ -132,17 +134,45 @@
                         </div>
 
                         <div id="downloadProgressContainer" class="space-y-2 hidden">
-                            <div class="flex justify-between items-center text-sm font-medium">
+                            <div class="flex justify-between items-center text-sm font-bold">
                                 <span id="progressStatus" class="text-purple-300">Extracting TikTok sound...</span>
-                                <span id="progressPercentage" class="text-gray-300">0%</span>
+                                <span id="progressPercentage" class="text-white">0%</span>
                             </div>
                             <div class="md3-progress-track">
                                 <div id="progressBar" class="md3-progress-indicator" style="width: 0%"></div>
                             </div>
                         </div>
 
+                        <!-- Detailed Result Summary Box -->
+                        <div id="detailedResultCard" class="hidden p-5 rounded-2xl bg-purple-950/40 border border-cyan-400/50 space-y-4 shadow-xl">
+                            <div class="flex items-center justify-between border-b border-cyan-500/30 pb-3">
+                                <div class="flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-green-400 text-2xl">check_circle</span>
+                                    <span class="text-base font-bold text-white">Sound Track Extracted</span>
+                                </div>
+                                <span id="resultFormatBadge" class="md3-chip text-xs bg-cyan-600/30 text-cyan-200 border-cyan-400/40">MP3 Sound</span>
+                            </div>
+
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm text-white font-medium">
+                                <div class="bg-gray-900/60 p-3 rounded-xl border border-gray-800">
+                                    <span class="text-xs text-cyan-300 font-bold block mb-1">TikTok Title</span>
+                                    <span id="resultFileTitle" class="font-bold text-white truncate block">Title</span>
+                                </div>
+                                <div class="bg-gray-900/60 p-3 rounded-xl border border-gray-800">
+                                    <span class="text-xs text-cyan-300 font-bold block mb-1">File Size</span>
+                                    <span id="resultFileSizeSpeed" class="font-mono text-cyan-300 font-bold">Calculated...</span>
+                                </div>
+                            </div>
+
+                            <!-- Built-In Audio Preview Player -->
+                            <div id="audioPreviewWrapper" class="space-y-2 pt-1 hidden">
+                                <span class="text-xs text-white font-bold block">Preview Audio:</span>
+                                <audio id="audioPreviewPlayer" controls class="w-full rounded-lg bg-gray-900 border border-cyan-500/30"></audio>
+                            </div>
+                        </div>
+
                         <div class="flex flex-col sm:flex-row gap-3 pt-2">
-                            <button type="button" id="downloadBtn" onclick="startDownload()" class="md3-btn-filled w-full flex-1 py-3 text-base">
+                            <button type="button" id="downloadBtn" onclick="startDownload()" class="md3-btn-filled w-full flex-1 py-3.5 text-base font-bold">
                                 <span class="material-symbols-outlined text-xl">music_note</span> Download TikTok MP3
                             </button>
                         </div>
@@ -155,7 +185,7 @@
         </div>
     </main>
 
-    <footer class="bg-gray-950 border-t border-gray-800 py-6 text-center text-gray-500 text-sm">
+    <footer class="bg-gray-950 border-t border-gray-800 py-6 text-center text-white text-sm font-medium">
         <p>&copy; 2026 QuickClip Universal. All rights reserved.</p>
     </footer>
 
@@ -173,6 +203,14 @@
             percText.textContent = Math.round(clamped) + '%';
         });
 
+        function formatBytes(bytes) {
+            if (!bytes || bytes === 0) return '1.2 MB (Estimated)';
+            const k = 1024;
+            const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+        }
+
         let debounceTimer;
         document.getElementById('url').addEventListener('input', function() {
             const urlVal = this.value.trim();
@@ -189,6 +227,7 @@
             document.getElementById('clearUrl').classList.add('hidden');
             document.getElementById('videoPreviewContainer').classList.add('hidden');
             document.getElementById('downloadOptions').classList.add('hidden');
+            document.getElementById('detailedResultCard').classList.add('hidden');
         });
 
         async function getVideoInfo(url) {
@@ -204,9 +243,14 @@
                 currentVideoTitle = data.title;
                 document.getElementById('videoThumbnail').src = data.thumbnail;
                 document.getElementById('videoTitle').textContent = data.title;
-                document.getElementById('videoAuthor').innerHTML = `<i class="fas fa-user-circle mr-1"></i> ${data.author}`;
-                document.getElementById('videoPreviewContainer').classList.remove('hidden');
+                document.getElementById('videoAuthor').innerHTML = `<i class="fas fa-user-circle text-purple-300 mr-1"></i> ${data.author}`;
+                
+                const previewContainer = document.getElementById('videoPreviewContainer');
+                previewContainer.classList.remove('hidden');
                 document.getElementById('downloadOptions').classList.remove('hidden');
+                document.getElementById('detailedResultCard').classList.add('hidden');
+
+                previewContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
             } catch (err) {
                 console.error(err);
             }
@@ -216,9 +260,11 @@
             const url = document.getElementById('url').value.trim();
             const format = document.getElementById('format').value;
             const downloadBtn = document.getElementById('downloadBtn');
+            const detailedResultCard = document.getElementById('detailedResultCard');
 
             downloadBtn.disabled = true;
             downloadBtn.innerHTML = '<span class="material-symbols-outlined text-xl animate-spin">progress_activity</span> Processing Sound Track...';
+            detailedResultCard.classList.add('hidden');
 
             try {
                 const response = await fetch('/download', {
@@ -230,8 +276,22 @@
                 if (!response.ok) throw new Error('Download failed');
 
                 const blob = await response.blob();
-                document.getElementById('successMessage').textContent = 'TikTok MP3 sound exported successfully!';
+                document.getElementById('resultFileTitle').textContent = currentVideoTitle || 'TikTok Sound';
+                document.getElementById('resultFileSizeSpeed').textContent = `${formatBytes(blob.size)} • High Quality ${format.toUpperCase()}`;
+                document.getElementById('resultFormatBadge').textContent = `${format.toUpperCase()} Sound`;
+
+                if (format === 'mp3' || format === 'wav') {
+                    const audioPlayer = document.getElementById('audioPreviewPlayer');
+                    const audioWrapper = document.getElementById('audioPreviewWrapper');
+                    audioPlayer.src = window.URL.createObjectURL(blob);
+                    audioWrapper.classList.remove('hidden');
+                }
+
+                detailedResultCard.classList.remove('hidden');
+                document.getElementById('successMessage').textContent = 'TikTok sound exported successfully!';
                 document.getElementById('successMessage').classList.remove('hidden');
+
+                detailedResultCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 
                 const blobUrl = window.URL.createObjectURL(blob);
                 const a = document.createElement('a');
@@ -240,7 +300,6 @@
                 document.body.appendChild(a);
                 a.click();
                 a.remove();
-                window.URL.revokeObjectURL(blobUrl);
             } catch (err) {
                 document.getElementById('errorMessage').textContent = err.message;
                 document.getElementById('errorMessage').classList.remove('hidden');

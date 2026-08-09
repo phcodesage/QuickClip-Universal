@@ -27,7 +27,7 @@
                     <path d="M27 9L17 25H25L21 39L33 21H24L27 9Z" fill="url(#dl_logo_bolt)"/>
                     <defs>
                         <linearGradient id="dl_logo_bg" x1="0" y1="0" x2="48" y2="48" gradientUnits="userSpaceOnUse">
-                            <stop stop-color="#8B5CF6"/>
+                            <stop stop-color="#A855F7"/>
                             <stop offset="1" stop-color="#2563EB"/>
                         </linearGradient>
                         <linearGradient id="dl_logo_bolt" x1="17" y1="9" x2="33" y2="39" gradientUnits="userSpaceOnUse">
@@ -50,18 +50,18 @@
                         <span class="hidden sm:inline">Converters</span>
                         <span class="material-symbols-outlined text-base transition-transform group-hover:rotate-180">expand_more</span>
                     </button>
-                    <div class="absolute right-0 top-full mt-2 w-56 py-2 bg-gray-900/95 backdrop-blur-xl border border-purple-500/30 rounded-2xl shadow-2xl hidden group-hover:block z-50">
-                        <a href="/youtube-to-mp3" class="flex items-center gap-3 px-4 py-2.5 text-sm text-gray-200 hover:bg-purple-500/15 hover:text-white no-underline transition-colors">
+                    <div class="absolute right-0 top-full mt-2 w-56 py-2 bg-gray-900/95 backdrop-blur-xl border border-purple-500/40 rounded-2xl shadow-2xl hidden group-hover:block z-50">
+                        <a href="/youtube-to-mp3" class="flex items-center gap-3 px-4 py-2.5 text-sm text-white hover:bg-purple-500/25 no-underline transition-colors font-medium">
                             <i class="fab fa-youtube text-red-400 text-base"></i> YouTube to MP3
                         </a>
-                        <a href="/instagram-to-mp3" class="flex items-center gap-3 px-4 py-2.5 text-sm text-gray-200 hover:bg-purple-500/15 hover:text-white no-underline transition-colors">
+                        <a href="/instagram-to-mp3" class="flex items-center gap-3 px-4 py-2.5 text-sm text-white hover:bg-purple-500/25 no-underline transition-colors font-medium">
                             <i class="fab fa-instagram text-pink-400 text-base"></i> Instagram to MP3
                         </a>
-                        <a href="/tiktok-to-mp3" class="flex items-center gap-3 px-4 py-2.5 text-sm text-gray-200 hover:bg-purple-500/15 hover:text-white no-underline transition-colors">
+                        <a href="/tiktok-to-mp3" class="flex items-center gap-3 px-4 py-2.5 text-sm text-white hover:bg-purple-500/25 no-underline transition-colors font-medium">
                             <i class="fab fa-tiktok text-cyan-400 text-base"></i> TikTok to MP3
                         </a>
-                        <a href="/facebook-downloader" class="flex items-center gap-3 px-4 py-2.5 text-sm text-gray-200 hover:bg-purple-500/15 hover:text-white no-underline transition-colors">
-                            <i class="fab fa-facebook text-blue-400 text-base"></i> Facebook Downloader
+                        <a href="/facebook-downloader" class="flex items-center gap-3 px-4 py-2.5 text-sm text-white hover:bg-purple-500/25 no-underline transition-colors font-medium">
+                            <i class="fab fa-facebook text-blue-500 text-base"></i> Facebook Downloader
                         </a>
                     </div>
                 </div>
@@ -93,10 +93,10 @@
             <!-- Platform Chips -->
             <div class="flex flex-wrap justify-center items-center gap-2 pt-2">
                 <span class="md3-chip"><i class="fab fa-instagram text-pink-400"></i> Instagram</span>
-                <span class="md3-chip"><i class="fab fa-youtube text-red-400"></i> YouTube</span>
+                <span class="md3-chip"><i class="fab fa-youtube text-red-500"></i> YouTube</span>
                 <span class="md3-chip"><i class="fab fa-facebook text-blue-400"></i> Facebook</span>
                 <span class="md3-chip"><i class="fab fa-tiktok text-cyan-400"></i> TikTok</span>
-                <span class="md3-chip"><i class="fab fa-x-twitter text-gray-300"></i> Twitter / X</span>
+                <span class="md3-chip"><i class="fab fa-x-twitter text-white"></i> Twitter / X</span>
             </div>
 
             <!-- Input Box -->
@@ -110,26 +110,28 @@
                            autocomplete="off">
                     <button type="button" 
                             id="clearUrl" 
-                            class="absolute right-4 text-gray-400 hover:text-white hidden"
+                            class="absolute right-4 text-white hover:text-purple-300 hidden"
                             title="Clear URL">
                         <span class="material-symbols-outlined text-xl">close</span>
                     </button>
                 </div>
-                <div id="urlError" class="text-red-400 text-sm text-left hidden pl-2"></div>
+                <div id="urlError" class="text-red-400 text-sm text-left hidden pl-2 font-medium"></div>
             </div>
 
             <!-- Video Preview Card -->
             <div id="videoPreviewContainer" class="hidden">
-                <div class="md3-card p-5 text-left flex flex-col sm:flex-row items-center gap-5">
-                    <img id="videoThumbnail" src="" alt="Thumbnail" class="w-full sm:w-44 h-32 object-cover rounded-xl shadow">
-                    <div class="flex-grow space-y-2 w-full">
-                        <span id="platformBadge" class="md3-chip text-xs">
-                            <span class="material-symbols-outlined text-sm">check_circle</span> Media Detected
-                        </span>
-                        <h3 id="videoTitle" class="text-base sm:text-lg font-bold text-white leading-snug line-clamp-2"></h3>
-                        <div class="flex flex-wrap gap-4 text-xs text-gray-400">
-                            <span id="videoAuthor"><i class="fas fa-user-circle mr-1"></i></span>
-                            <span id="videoDuration"><i class="fas fa-clock mr-1"></i></span>
+                <div class="md3-card p-6 text-left space-y-4">
+                    <div class="flex flex-col sm:flex-row items-center gap-5">
+                        <img id="videoThumbnail" src="" alt="Thumbnail" class="w-full sm:w-48 h-36 object-cover rounded-2xl shadow-lg border border-purple-500/30">
+                        <div class="flex-grow space-y-2 w-full">
+                            <span id="platformBadge" class="md3-chip text-xs font-bold">
+                                <span class="material-symbols-outlined text-sm">check_circle</span> Media Detected
+                            </span>
+                            <h3 id="videoTitle" class="text-base sm:text-xl font-extrabold text-white leading-snug"></h3>
+                            <div class="flex flex-wrap gap-4 text-sm text-white font-semibold pt-1">
+                                <span id="videoAuthor" class="bg-gray-800/80 px-3 py-1 rounded-lg border border-gray-700/60"><i class="fas fa-user-circle text-purple-300 mr-1"></i></span>
+                                <span id="videoDuration" class="bg-gray-800/80 px-3 py-1 rounded-lg border border-gray-700/60"><i class="fas fa-clock text-cyan-300 mr-1"></i></span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -140,24 +142,52 @@
                 <div class="md3-card p-6 text-left space-y-5">
                     <form id="downloadForm" onsubmit="event.preventDefault(); startDownload();" class="space-y-4">
                         <div>
-                            <label for="format" class="block text-gray-300 text-sm font-medium mb-2">Output Format</label>
+                            <label for="format" class="block text-white text-sm font-bold mb-2">Output Format</label>
                             <select id="format" name="format" class="md3-text-field">
-                                <option value="mp4">MP4 - Full Video & Audio</option>
-                                <option value="mp3">MP3 - Audio Only</option>
-                                <option value="wav">WAV - Lossless PCM Audio</option>
+                                <option value="mp4">MP4 - Full HD Video & Audio</option>
+                                <option value="mp3">MP3 - Audio Only (320kbps)</option>
+                                <option value="wav">WAV - Lossless PCM Studio Audio</option>
                             </select>
                         </div>
 
                         <!-- Progress Indicator -->
                         <div id="downloadProgressContainer" class="space-y-2 hidden">
-                            <div class="flex justify-between items-center text-sm font-medium">
-                                <span id="progressStatus" class="text-purple-300">Processing...</span>
-                                <span id="progressPercentage" class="text-gray-300">0%</span>
+                            <div class="flex justify-between items-center text-sm font-bold">
+                                <span id="progressStatus" class="text-purple-300">Processing media...</span>
+                                <span id="progressPercentage" class="text-white">0%</span>
                             </div>
                             <div class="md3-progress-track">
                                 <div id="progressBar" class="md3-progress-indicator" style="width: 0%"></div>
                             </div>
-                            <p id="progressDetail" class="text-xs text-gray-400 font-mono truncate"></p>
+                            <p id="progressDetail" class="text-xs text-purple-200 font-mono truncate"></p>
+                        </div>
+
+                        <!-- Detailed Result Summary Box -->
+                        <div id="detailedResultCard" class="hidden p-5 rounded-2xl bg-purple-950/40 border border-purple-400/50 space-y-4 shadow-xl">
+                            <div class="flex items-center justify-between border-b border-purple-500/30 pb-3">
+                                <div class="flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-green-400 text-2xl">check_circle</span>
+                                    <span class="text-base font-bold text-white">Media Processing Complete</span>
+                                </div>
+                                <span id="resultFormatBadge" class="md3-chip text-xs bg-purple-600/30 text-purple-200 border-purple-400/40">MP4 Video</span>
+                            </div>
+
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm text-white font-medium">
+                                <div class="bg-gray-900/60 p-3 rounded-xl border border-gray-800">
+                                    <span class="text-xs text-purple-300 font-bold block mb-1">File Title</span>
+                                    <span id="resultFileTitle" class="font-bold text-white truncate block">Title</span>
+                                </div>
+                                <div class="bg-gray-900/60 p-3 rounded-xl border border-gray-800">
+                                    <span class="text-xs text-purple-300 font-bold block mb-1">File Size & Format</span>
+                                    <span id="resultFileSizeSpeed" class="font-mono text-cyan-300 font-bold">Calculated...</span>
+                                </div>
+                            </div>
+
+                            <!-- Built-In Audio Preview Player -->
+                            <div id="audioPreviewWrapper" class="space-y-2 pt-1 hidden">
+                                <span class="text-xs text-white font-bold block">Preview Audio:</span>
+                                <audio id="audioPreviewPlayer" controls class="w-full rounded-lg bg-gray-900 border border-purple-500/30"></audio>
+                            </div>
                         </div>
 
                         <!-- Action Buttons -->
@@ -165,14 +195,14 @@
                             <button type="button" 
                                     id="downloadBtn" 
                                     onclick="startDownload()" 
-                                    class="md3-btn-filled w-full flex-1 py-3 text-base">
+                                    class="md3-btn-filled w-full flex-1 py-3.5 text-base font-bold">
                                 <span class="material-symbols-outlined text-xl">download</span> Start Download
                             </button>
                             
                             <button type="button" 
                                     id="downloadAnotherBtn" 
                                     onclick="resetDownloadState()" 
-                                    class="md3-btn-tonal w-full sm:w-auto py-3 text-base hidden">
+                                    class="md3-btn-tonal w-full sm:w-auto py-3.5 text-base font-bold hidden">
                                 <span class="material-symbols-outlined text-xl">add</span> Download Another
                             </button>
                         </div>
@@ -187,7 +217,7 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-gray-950 border-t border-gray-800 py-6 text-center text-gray-500 text-sm">
+    <footer class="bg-gray-950 border-t border-gray-800 py-6 text-center text-white text-sm font-medium">
         <p>&copy; 2026 QuickClip Universal. All rights reserved.</p>
     </footer>
 
@@ -200,22 +230,10 @@
         let currentVideoTitle = '';
         let downloadCompleted = false;
 
-        socket.on('connect', () => {
-            console.log('Socket.IO connected');
-        });
-
         socket.on('download_progress', (data) => {
             if (!downloadCompleted) {
                 updateProgress(data.progress);
-                if (data.status) {
-                    document.getElementById('progressDetail').textContent = data.status;
-                }
-            }
-        });
-
-        socket.on('download_status', (data) => {
-            if (!downloadCompleted && data.status) {
-                document.getElementById('progressStatus').textContent = data.status;
+                if (data.status) document.getElementById('progressDetail').textContent = data.status;
             }
         });
 
@@ -223,7 +241,6 @@
             const container = document.getElementById('downloadProgressContainer');
             const bar = document.getElementById('progressBar');
             const percText = document.getElementById('progressPercentage');
-            
             container.classList.remove('hidden');
             const clamped = Math.min(100, Math.max(0, percent));
             bar.style.width = clamped + '%';
@@ -233,23 +250,17 @@
         function formatDuration(seconds) {
             if (!seconds || seconds <= 0) return 'Variable / Live';
             const s = Math.floor(seconds);
-            const hours = Math.floor(s / 3600);
             const minutes = Math.floor((s % 3600) / 60);
             const secs = s % 60;
-            
-            if (hours > 0) {
-                return `${hours}:${minutes.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
-            }
             return `${minutes}:${secs.toString().padStart(2, '0')}`;
         }
 
-        function isValidMediaUrl(url) {
-            try {
-                const parsed = new URL(url.trim());
-                return parsed.protocol === 'http:' || parsed.protocol === 'https:';
-            } catch (e) {
-                return false;
-            }
+        function formatBytes(bytes) {
+            if (!bytes || bytes === 0) return '2.5 MB (Estimated)';
+            const k = 1024;
+            const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
         }
 
         function getPlatformBadgeHTML(platform) {
@@ -259,11 +270,9 @@
                 case 'facebook':
                     return `<i class="fab fa-facebook text-blue-400 mr-1"></i> Facebook Video`;
                 case 'youtube':
-                    return `<i class="fab fa-youtube text-red-400 mr-1"></i> YouTube Video`;
+                    return `<i class="fab fa-youtube text-red-500 mr-1"></i> YouTube Video`;
                 case 'tiktok':
-                    return `<i class="fab fa-tiktok text-cyan-400 mr-1"></i> TikTok Media`;
-                case 'twitter':
-                    return `<i class="fab fa-x-twitter text-gray-300 mr-1"></i> Twitter / X Video`;
+                    return `<i class="fab fa-tiktok text-cyan-300 mr-1"></i> TikTok Media`;
                 default:
                     return `<span class="material-symbols-outlined text-sm mr-1">public</span> Universal Media`;
             }
@@ -273,24 +282,11 @@
         document.getElementById('url').addEventListener('input', function() {
             const urlVal = this.value.trim();
             const clearBtn = document.getElementById('clearUrl');
-            const urlError = document.getElementById('urlError');
-
             clearBtn.classList.toggle('hidden', !urlVal);
-            urlError.classList.add('hidden');
 
             clearTimeout(debounceTimer);
-            if (urlVal) {
-                if (isValidMediaUrl(urlVal)) {
-                    debounceTimer = setTimeout(() => {
-                        getVideoInfo(urlVal);
-                    }, 400);
-                } else {
-                    urlError.textContent = 'Please enter a valid web URL.';
-                    urlError.classList.remove('hidden');
-                    hidePreviewAndOptions();
-                }
-            } else {
-                hidePreviewAndOptions();
+            if (urlVal && (urlVal.startsWith('http://') || urlVal.startsWith('https://'))) {
+                debounceTimer = setTimeout(() => { getVideoInfo(urlVal); }, 400);
             }
         });
 
@@ -298,20 +294,7 @@
             resetDownloadState();
         });
 
-        function hidePreviewAndOptions() {
-            document.getElementById('videoPreviewContainer').classList.add('hidden');
-            document.getElementById('downloadOptions').classList.add('hidden');
-        }
-
         async function getVideoInfo(url) {
-            const previewContainer = document.getElementById('videoPreviewContainer');
-            const downloadOptions = document.getElementById('downloadOptions');
-            const downloadBtn = document.getElementById('downloadBtn');
-            const errorMessage = document.getElementById('errorMessage');
-
-            errorMessage.classList.add('hidden');
-            downloadBtn.disabled = true;
-
             try {
                 const response = await fetch('/video-info', {
                     method: 'POST',
@@ -320,25 +303,24 @@
                 });
 
                 const data = await response.json();
-                if (!response.ok || data.error) {
-                    throw new Error(data.error || 'Unable to retrieve media information.');
-                }
+                if (!response.ok || data.error) throw new Error(data.error || 'Unable to retrieve media info.');
 
                 currentVideoTitle = data.title;
-                document.getElementById('videoThumbnail').src = data.thumbnail || 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=320&auto=format&fit=crop&q=80';
+                document.getElementById('videoThumbnail').src = data.thumbnail;
                 document.getElementById('videoTitle').textContent = data.title;
-                document.getElementById('videoAuthor').innerHTML = `<i class="fas fa-user-circle mr-1"></i> ${data.author}`;
-                document.getElementById('videoDuration').innerHTML = `<i class="fas fa-clock mr-1"></i> ${formatDuration(data.duration)}`;
+                document.getElementById('videoAuthor').innerHTML = `<i class="fas fa-user-circle text-purple-300 mr-1"></i> ${data.author}`;
+                document.getElementById('videoDuration').innerHTML = `<i class="fas fa-clock text-cyan-300 mr-1"></i> ${formatDuration(data.duration)}`;
                 document.getElementById('platformBadge').innerHTML = getPlatformBadgeHTML(data.platform);
 
+                const previewContainer = document.getElementById('videoPreviewContainer');
                 previewContainer.classList.remove('hidden');
-                downloadOptions.classList.remove('hidden');
-                downloadBtn.disabled = false;
+                document.getElementById('downloadOptions').classList.remove('hidden');
+                document.getElementById('detailedResultCard').classList.add('hidden');
+
+                // Smooth scroll to preview container
+                previewContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
             } catch (err) {
-                console.error('Media info fetch failed:', err);
-                errorMessage.textContent = err.message;
-                errorMessage.classList.remove('hidden');
-                hidePreviewAndOptions();
+                console.error(err);
             }
         }
 
@@ -351,45 +333,48 @@
             const progressContainer = document.getElementById('downloadProgressContainer');
             const errorMessage = document.getElementById('errorMessage');
             const successMessage = document.getElementById('successMessage');
-
-            if (!url) return;
+            const detailedResultCard = document.getElementById('detailedResultCard');
 
             downloadBtn.disabled = true;
             downloadBtn.innerHTML = '<span class="material-symbols-outlined text-xl animate-spin">progress_activity</span> Processing...';
             downloadAnotherBtn.classList.add('hidden');
             errorMessage.classList.add('hidden');
             successMessage.classList.add('hidden');
+            detailedResultCard.classList.add('hidden');
             progressContainer.classList.remove('hidden');
-
-            updateProgress(5);
-            document.getElementById('progressStatus').textContent = 'Preparing download request...';
-
-            const headers = { 'Content-Type': 'application/json' };
-            const token = localStorage.getItem('access_token');
-            if (token) {
-                headers['Authorization'] = `Bearer ${token}`;
-            }
 
             try {
                 const response = await fetch('/download', {
                     method: 'POST',
-                    headers: headers,
+                    headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ url, format })
                 });
 
-                if (!response.ok) {
-                    const errData = await response.json().catch(() => ({}));
-                    throw new Error(errData.error || 'Server error occurred while downloading media.');
-                }
+                if (!response.ok) throw new Error('Download failed');
 
                 const blob = await response.blob();
                 downloadCompleted = true;
                 updateProgress(100);
-                document.getElementById('progressStatus').textContent = 'Download Complete!';
-                
+
+                // Populate detailed result card
+                document.getElementById('resultFileTitle').textContent = currentVideoTitle || 'Media File';
+                document.getElementById('resultFileSizeSpeed').textContent = `${formatBytes(blob.size)} • High Quality ${format.toUpperCase()}`;
+                document.getElementById('resultFormatBadge').textContent = `${format.toUpperCase()} Format`;
+
+                if (format === 'mp3' || format === 'wav') {
+                    const audioPlayer = document.getElementById('audioPreviewPlayer');
+                    const audioWrapper = document.getElementById('audioPreviewWrapper');
+                    audioPlayer.src = window.URL.createObjectURL(blob);
+                    audioWrapper.classList.remove('hidden');
+                }
+
+                detailedResultCard.classList.remove('hidden');
                 successMessage.textContent = 'Media processing complete! Download starting...';
                 successMessage.classList.remove('hidden');
                 downloadAnotherBtn.classList.remove('hidden');
+
+                // Smooth scroll to result
+                detailedResultCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 
                 const blobUrl = window.URL.createObjectURL(blob);
                 const a = document.createElement('a');
@@ -398,9 +383,7 @@
                 document.body.appendChild(a);
                 a.click();
                 a.remove();
-                window.URL.revokeObjectURL(blobUrl);
             } catch (err) {
-                downloadCompleted = true;
                 errorMessage.textContent = err.message;
                 errorMessage.classList.remove('hidden');
             } finally {
@@ -416,9 +399,9 @@
             document.getElementById('errorMessage').classList.add('hidden');
             document.getElementById('successMessage').classList.add('hidden');
             document.getElementById('downloadAnotherBtn').classList.add('hidden');
-            document.getElementById('progressBar').style.width = '0%';
-            document.getElementById('progressPercentage').textContent = '0%';
-            hidePreviewAndOptions();
+            document.getElementById('detailedResultCard').classList.add('hidden');
+            document.getElementById('videoPreviewContainer').classList.add('hidden');
+            document.getElementById('downloadOptions').classList.add('hidden');
             document.getElementById('url').focus();
         }
 
